@@ -17,8 +17,6 @@ Setup the following environment variables in a `.env` file at the root of the pr
 |--------------|-------------|---------|
 | `API_HOST` | API host address | http://your.api.host.com |
 | `FACEBOOK_APP_ID` | Facebook App ID | 252972648810233 |
-| `GOOGLE_WEB_CLIENT_ID` | /android/app/google-services.json (client > oauth_client > client_id) | ****.apps.googleusercontent.com |
-| `GOOGLE_IOS_CLIENT_ID` | IOS client ID | * |
 
 google-services.json
 
@@ -50,6 +48,6 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Acknowledgments
 
 ### TODO
-- IOS : ract native config
+- IOS : react native config
 - IOS : fb sdk
 - IOS : google sign-in
