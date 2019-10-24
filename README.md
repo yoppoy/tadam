@@ -1,4 +1,4 @@
-# yoppoy-template
+# Tadam
 
 ## Setup
 #### Facebook SDK
