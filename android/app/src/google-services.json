@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "1093485914946",
+    "firebase_url": "https://tadam-4807c.firebaseio.com",
+    "project_id": "tadam-4807c",
+    "storage_bucket": "tadam-4807c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1093485914946:android:e206953dc3c0c6f4fe36db",
+        "android_client_info": {
+          "package_name": "com.tadam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1093485914946-6025e9alelf3nqh3qk024u91tv8k95qm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tadam",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "1093485914946-op4u45cfsjhll9mcth5mlmvuq90p7alg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tadam",
+            "certificate_hash": "6140460f6b0174c04a8e764372be6a836db7922b"
+          }
+        },
+        {
+          "client_id": "1093485914946-tmacimvsomhre7celoc6ptcf3i5rd9v5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABvH24OtAfvxX51xj1LDzvm7ZIzVfEweA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1093485914946-tmacimvsomhre7celoc6ptcf3i5rd9v5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
