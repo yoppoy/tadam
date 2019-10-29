@@ -35,6 +35,13 @@ react-native run-android
 npm run android:build
 ```
 
+## Docker
+In order to run the docker image for the go server :
+```
+docker build -t tadam .
+docker run -d -it -p 80:8080 tadam
+```
+
 ## Built With
 
 ## Authors

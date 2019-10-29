@@ -2,8 +2,9 @@
 import React, {useState} from 'react';
 import {View, Text, TouchableNativeFeedback} from 'react-native';
 import {LoginManager, AccessToken} from 'react-native-fbsdk';
+import {DefaultButton} from '../../components/Button';
 
-export const AuthFacebook = ({callback}) => {
+const AuthFacebook = ({callback}) => {
     const [state, setState] = useState({error: null});
 
     const requestLoginPermission = async () => {
@@ -26,14 +27,23 @@ export const AuthFacebook = ({callback}) => {
 
     return (
         <View>
-            <TouchableNativeFeedback
+            <DefaultButton
                 onPress={requestLoginPermission}
-                background={TouchableNativeFeedback.SelectableBackground()}>
-                <View>
-                    <Text style={{padding: 10}}>Facebook Login</Text>
-                    {state.error && <Text>Error : {state.error}</Text>}
-                </View>
-            </TouchableNativeFeedback>
+                text={'Facebook Login'}
+                style={{backgroundColor: '#3b5998'}}/>
+            {state.error && <Text>Error : {state.error}</Text>}
         </View>
     );
 };
+
+export const AuthFacebookVerifyLogin = async callback => {
+    try {
+        console.log('Facebook : verifying login');
+        const data = await AccessToken.getCurrentAccessToken();
+        callback(data, null);
+    } catch (error) {
+        callback(null, error);
+    }
+};
+
+export default AuthFacebook;
