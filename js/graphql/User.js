@@ -12,7 +12,7 @@ export const GET_USERS = gql`
 `;
 
 export const CREATE_USER = gql`
-    {
+    mutation createUser($user: NewUser!) {
         createUser(input: $user) {
             id
             email

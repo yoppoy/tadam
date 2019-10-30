@@ -7,26 +7,26 @@ const TabBarComponent = props => <BottomTabBar {...props} />;
 const appNavigation = createBottomTabNavigator(
     {
         Home: {
-            screen: AuthLogin
+            screen: AuthLogin,
         },
         VIP: {
-            screen: AuthLogin
+            screen: AuthLogin,
         },
         Chat: {
-            screen: AuthLogin
+            screen: AuthLogin,
         },
         Notification: {
-            screen: AuthLogin
+            screen: AuthLogin,
         },
         Menu: {
-            screen: AuthLogin
+            screen: AuthLogin,
         },
     },
     {
         tabBarComponent: props => {
             return (
                 <TabBarComponent {...props} style={{borderTopColor: '#605F60'}}/>
-            )
+            );
         },
     },
 );

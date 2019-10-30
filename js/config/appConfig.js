@@ -1,4 +1,4 @@
 export default {
     debugErrorMessages: false,
-    graphqlHost: 'http://192.168.43.91/query'
-}
+    graphqlHost: 'http://178.62.87.154:8001/query',
+};

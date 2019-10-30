@@ -4,6 +4,8 @@ import AuthFacebook, {AuthFacebookVerifyLogin} from './AuthFacebook';
 import AuthGoogle, {AuthGoogleVerifyLogin} from './AuthGoogle';
 import {ApplicationStyles} from '../../styles';
 import {DefaultButton} from '../../components/Button';
+import AuthLogin from './AuthLogin';
+import UserList from '../User/UserList';
 
 const AuthHome = (props) => {
     useEffect(() => {
@@ -22,6 +24,7 @@ const AuthHome = (props) => {
     return (
         <React.Fragment>
             <View>
+                <AuthLogin/>
                 <DefaultButton
                     onPress={() => props.navigation.navigate('Register')}
                     text={'Create Account'}
