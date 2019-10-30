@@ -1,12 +1,11 @@
 import React, {useEffect} from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import AuthFacebook, {AuthFacebookVerifyLogin} from './AuthFacebook';
 import AuthGoogle, {AuthGoogleVerifyLogin} from './AuthGoogle';
-import {ApplicationStyles, Colors} from '../../styles';
+import {ApplicationStyles} from '../../styles';
 import {DefaultButton} from '../../components/Button';
-import AuthLogin from './AuthLogin';
 
-const AuthHome = () => {
+const AuthHome = (props) => {
     useEffect(() => {
         AuthFacebookVerifyLogin((data, error) => {
             console.log('Verifying facebook : ');
@@ -22,10 +21,9 @@ const AuthHome = () => {
 
     return (
         <React.Fragment>
-            <AuthLogin/>
             <View>
                 <DefaultButton
-                    onPress={() => console.log('Create Account')}
+                    onPress={() => props.navigation.navigate('Register')}
                     text={'Create Account'}
                     style={{backgroundColor: 'red'}}
                     textStyle={{}}

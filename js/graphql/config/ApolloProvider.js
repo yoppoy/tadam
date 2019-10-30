@@ -5,7 +5,7 @@ import {ApolloProvider as Provider} from 'react-apollo';
 import React from 'react';
 import {onError} from 'apollo-link-error';
 import appConfig from '../../config/appConfig';
-import { ApolloLink, concat } from 'apollo-link';
+import {concat} from 'apollo-link';
 import authMiddleware from './authMiddleware';
 
 const errorAfterware = onError((error) => {

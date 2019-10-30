@@ -7,7 +7,6 @@ import GraphqlError from '../../components/Error/GraphqlError';
 export default function UserList() {
     const {loading, error, data} = useQuery(GET_USERS);
 
-    console.log(loading, error, data);
     return (
         <View>
             {loading && <Text>Loading...</Text>}
@@ -15,7 +14,9 @@ export default function UserList() {
             <View>
                 {error ? <GraphqlError error={error}/> :
                     data.users.map(user => (
-                        <Text>{user.firstname} - {user.lastname}</Text>
+                        <Text key={`${user.firstname}-${user.lastname}`}>
+                            {user.firstname} - {user.lastname}
+                        </Text>
                     ))}
             </View>
             }

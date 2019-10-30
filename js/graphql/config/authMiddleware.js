@@ -12,7 +12,7 @@ const authMiddleware = new ApolloLink(async (operation, forward) => {
             },
         });
     } catch (error) {
-        console.error('Auth Middleware :', JSON.stringify(error));
+        console.error('Auth Middleware Error:', JSON.stringify(error));
     }
     return forward(operation);
 });
