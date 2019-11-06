@@ -1,16 +1,16 @@
 import React from 'react';
-import {createStore, apolloClient} from './redux/index';
-import RootContainer from './containers/RootContainer';
-import {ApolloProvider} from '@apollo/react-hooks';
+import {createStore} from './redux/index';
+import ApolloProvider from './graphql/config/ApolloProvider';
+import Navigation from './config/Navigation';
 import {Provider} from 'react-redux';
 
 const store = createStore();
 
 export default () => {
     return (
-        <ApolloProvider client={apolloClient}>
+        <ApolloProvider>
             <Provider store={store}>
-                <RootContainer />
+                <Navigation />
             </Provider>
         </ApolloProvider>
     );
