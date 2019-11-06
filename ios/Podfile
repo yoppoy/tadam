@@ -1,8 +1,8 @@
 platform :ios, '9.0'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
-target 'Yan' do
-  # Pods for Yan
+target 'Tadam' do
+  # Pods for Tadam
   pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"
   pod 'FBReactNativeSpec', :path => "../node_modules/react-native/Libraries/FBReactNativeSpec"
   pod 'RCTRequired', :path => "../node_modules/react-native/Libraries/RCTRequired"
@@ -34,9 +34,7 @@ target 'Yan' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-
-
-  target 'YanTests' do
+  target 'TadamTests' do
     inherit! :search_paths
     # Pods for testing
   end
@@ -44,10 +42,10 @@ target 'Yan' do
   use_native_modules!
 end
 
-target 'Yan-tvOS' do
-  # Pods for Yan-tvOS
+target 'Tadam-tvOS' do
+  # Pods for Tadam-tvOS
 
-  target 'Yan-tvOSTests' do
+  target 'Tadam-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end

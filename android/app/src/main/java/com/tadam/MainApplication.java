@@ -1,4 +1,4 @@
-package com.yoppoy;
+package com.tadam;
 
 import android.app.Application;
 import android.content.Context;
