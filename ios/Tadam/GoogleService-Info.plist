@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1093485914946-d2rai86uj6poo5cn4hv676kq8bbpfkpj.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1093485914946-d2rai86uj6poo5cn4hv676kq8bbpfkpj</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>1093485914946-6025e9alelf3nqh3qk024u91tv8k95qm.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDdTZezU21t4BIoT7hY5YlR0B9r0cgo8hQ</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1093485914946</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.tadam</string>
+	<key>PROJECT_ID</key>
+	<string>tadam-4807c</string>
+	<key>STORAGE_BUCKET</key>
+	<string>tadam-4807c.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1093485914946:ios:2e2ff97d3bb37980fe36db</string>
+	<key>DATABASE_URL</key>
+	<string>https://tadam-4807c.firebaseio.com</string>
+</dict>
+</plist>

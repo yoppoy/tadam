@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
     TouchableNativeFeedback,
+    TouchableOpacity,
     Platform,
     View,
     StyleSheet,
@@ -9,20 +10,31 @@ import {
 } from 'react-native';
 import {ApplicationStyles} from '../../styles';
 
+const TouchableView = ({children, ...props}) => {
+    if (Platform.OS === 'android') {
+        return (
+            <TouchableNativeFeedback
+                background={
+                    Platform.Version >= 21
+                        ? TouchableNativeFeedback.Ripple(rgba(255, 255, 255, 1), false)
+                        : TouchableNativeFeedback.SelectableBackground()
+                }
+                delayPressIn={0}
+                {...props}>
+                {children}
+            </TouchableNativeFeedback>
+        );
+    }
+    return <TouchableOpacity {...props}>{children}</TouchableOpacity>;
+};
+
 const DefaultButton = props => {
     const colorRipple = props.colorRipple
         ? props.colorRipple
         : 'rgba(255, 255, 255, 1)';
 
     return (
-        <TouchableNativeFeedback
-            background={
-                Platform.Version >= 21
-                    ? TouchableNativeFeedback.Ripple(colorRipple, false)
-                    : TouchableNativeFeedback.SelectableBackground()
-            }
-            delayPressIn={0}
-            onPress={props.onPress}>
+        <TouchableView onPress={props.onPress}>
             <View style={props.style ? [styles.main, props.style] : styles.main}>
                 {props.text ? (
                     <Text style={props.textStyle ? [styles.text, props.textStyle] : styles.text}>{props.text}</Text>
@@ -30,7 +42,7 @@ const DefaultButton = props => {
                     props.children
                 )}
             </View>
-        </TouchableNativeFeedback>
+        </TouchableView>
     );
 };
 

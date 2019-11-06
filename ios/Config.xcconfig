@@ -1,0 +1,11 @@
+//
+//  Config.xcconfig
+//  Tadam
+//
+//  Created by Yan on 06/11/2019.
+//  Copyright © 2019 Facebook. All rights reserved.
+//  Used for react-native-config
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+#include? "tmp.xcconfig"
