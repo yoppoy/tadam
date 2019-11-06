@@ -40,6 +40,12 @@ const ApplicationStyles = {
         alignItems: 'center',
         textAlign: 'center',
     },
+    centerAlign: {
+        flex: 1,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
 };
 
 export default ApplicationStyles;
