@@ -54,7 +54,23 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-### TODO
-- IOS : react native config
-- IOS : fb sdk
-- IOS : google sign-in
+### NPM tmp fixes :
+- RUBY PARSE ERROR: node_modules/@react-native-community/cli-platform-ios/build/link-pods/getDependenciesFromPodfileLock.js
+https://github.com/react-native-community/cli/issues/805#issuecomment-543426189
+```
+node_modules/@react-native-community/cli-platform-ios/build/link-pods/getDependenciesFromPodfileLock.js
+Replace
+...
+return Object.keys((0, _jsYaml().safeLoad)(fileContent)['SPEC CHECKSUMS'] || {});
+with the solution provided above:
+
+With
+...
+const { safeLoad } = require("js-yaml");
+const CHECKSUM_KEY = 'SPEC CHECKSUMS';
+// Previous portions of the lock file could be invalid yaml.
+// Only parse parts that are valid
+const tail = fileContent.split(CHECKSUM_KEY).slice(1);
+const checksumTail = CHECKSUM_KEY + tail;
+return Object.keys(safeLoad(checksumTail)[CHECKSUM_KEY] || {});
+```
