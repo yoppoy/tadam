@@ -6,6 +6,8 @@ PODS:
   - AppAuth/ExternalUserAgent (1.2.0)
   - boost-for-react-native (1.63.0)
   - DoubleConversion (1.1.6)
+  - EXAppleAuthentication (1.0.0):
+    - UMCore
   - EXAppLoaderProvider (7.0.0)
   - EXConstants (7.0.1):
     - UMConstantsInterface
@@ -304,6 +306,7 @@ PODS:
 
 DEPENDENCIES:
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
+  - EXAppleAuthentication (from `../node_modules/expo-apple-authentication/ios`)
   - EXAppLoaderProvider (from `../node_modules/expo-app-loader-provider/ios`)
   - EXConstants (from `../node_modules/expo-constants/ios`)
   - EXFileSystem (from `../node_modules/expo-file-system/ios`)
@@ -371,6 +374,9 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   DoubleConversion:
     :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
+  EXAppleAuthentication:
+    :path: !ruby/object:Pathname
+    path: "../node_modules/expo-apple-authentication/ios"
   EXAppLoaderProvider:
     :path: !ruby/object:Pathname
     path: "../node_modules/expo-app-loader-provider/ios"
@@ -486,6 +492,7 @@ SPEC CHECKSUMS:
   AppAuth: bce82c76043657c99d91e7882e8a9e1a93650cd4
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: 5805e889d232975c086db112ece9ed034df7a0b2
+  EXAppleAuthentication: 25210302320b3d61d8b9fa6af3059a113a12018a
   EXAppLoaderProvider: 98f3e889fa48b441b19c64f19193c82ebb1c15ca
   EXConstants: db705745139c4c674b1a54ddce94766d9ddf8387
   EXFileSystem: 217d1480b63c595d0620e64d6a6845dc52229bbd

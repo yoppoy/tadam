@@ -10,13 +10,17 @@ import {
 } from 'react-native';
 import {ApplicationStyles} from '../../styles';
 
-const TouchableView = ({children, ...props}) => {
+const TouchableView = ({
+    children,
+    rippleColor = 'rgba(255, 255, 255, 1)',
+    ...props
+}) => {
     if (Platform.OS === 'android') {
         return (
             <TouchableNativeFeedback
                 background={
                     Platform.Version >= 21
-                        ? TouchableNativeFeedback.Ripple(rgba(255, 255, 255, 1), false)
+                        ? TouchableNativeFeedback.Ripple(rippleColor, false)
                         : TouchableNativeFeedback.SelectableBackground()
                 }
                 delayPressIn={0}
