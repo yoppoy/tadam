@@ -6,6 +6,7 @@ import useForm from 'react-hook-form';
 import * as yup from 'yup';
 import {CREATE_USER} from '../../graphql/User';
 import GraphqlError from '../../components/Error/GraphqlError';
+import FormError from '../../components/Error/FormError';
 
 const RegisterSchema = yup.object().shape({
     firstname: yup.string().min(1).max(128).required(),
@@ -60,6 +61,7 @@ const AuthRegister = ({navigation}) => {
                 placeholder={'firstname'}
                 textContentType={'familyName'}
             />
+            {errors.firstname && <FormError>{errors.firstname.message}</FormError>}
             <TextInput
                 autoCompleteType={'name'}
                 ref={register({name: 'lastname'})}
@@ -68,6 +70,7 @@ const AuthRegister = ({navigation}) => {
                 placeholder={'lastname'}
                 textContentType={'familyName'}
             />
+            {errors.lastname && <FormError>{errors.lastname.message}</FormError>}
             <TextInput
                 autoCompleteType={'email'}
                 ref={register({name: 'email'})}
@@ -77,6 +80,7 @@ const AuthRegister = ({navigation}) => {
                 keyboardType={'email-address'}
                 textContentType={'emailAddress'}
             />
+            {errors.email && <FormError>{errors.email.message}</FormError>}
             <TextInput
                 returnKeyType="go"
                 autoCorrect={false}
@@ -90,16 +94,7 @@ const AuthRegister = ({navigation}) => {
                 onSubmitEditing={onVerify}
                 secureTextEntry
             />
-            {
-                state.displayErrors &&
-                Object.keys(errors).map(key => {
-                    return (
-                        <Text key={errors[key].message}>
-                            {errors[key].message}
-                        </Text>
-                    );
-                })
-            }
+            {errors.password && <FormError>{errors.password.message}</FormError>}
             <Button title="Créer mon compte" disabled={loading} onPress={onVerify}/>
             <GraphqlError error={error}/>
         </View>

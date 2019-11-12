@@ -1,38 +1,36 @@
 import {createActions, createReducer} from 'reduxsauce';
 import AsyncStorage from '@react-native-community/async-storage';
+import authApi from '../config/authApi';
 
-const types = {
+export const connectionTypes = {
     DEFAULT: 0,
     FACEBOOK: 1,
     GOOGLE: 2,
 };
 
 export const INITIAL_STATE = {
-    type: null,
+    api: authApi.create(),
+    connectionType: null,
     token: null,
 };
 
-export const connect = (state, {type, data}) => {
-    if (type.DEFAULT) {
-        return {...state, type: type};
-    } else {
-        return {...state, type: type};
-    }
+export const onConnected = (state, {connectionType, token}) => {
+    return {...state, connectionType, token};
 };
 
-export const disconnect = state => {
-    return {...state, type: null, token: null};
+export const onDisconnected = state => {
+    return {...state, connectionType: null, token: null};
 };
 
 /* ------------- Types and Action Creators ------------- */
 const {Types, Creators} = createActions({
-    onConnected: ['type', 'data'],
+    onConnected: ['connectionType', 'token'],
     onDisconnected: [null],
 });
 /* ------------- Hookup Reducers To Types ------------- */
 export const reducer = createReducer(INITIAL_STATE, {
-    [Types.ON_CONNECTED]: connect,
-    [Types.ON_DISCONNECTED]: disconnect,
+    [Types.ON_CONNECTED]: onConnected,
+    [Types.ON_DISCONNECTED]: onDisconnected,
 });
 /* ------------- Export Creators, Types, Selectors ---- */
 export default Creators;
@@ -41,5 +39,5 @@ export const AuthSelectors = {};
 export const AuthPersistConfig = {
     key: 'auth',
     storage: AsyncStorage,
-    whitelist: [],
+    whitelist: ['token', 'connectionType'],
 };

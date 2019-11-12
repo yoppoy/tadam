@@ -5,9 +5,11 @@ import rootSaga from './config/config-saga';
 import {persistReducer} from 'redux-persist';
 import {persistConfig} from './config/config-persist';
 import {AppPersistConfig} from './app-reducer';
+import {AuthPersistConfig} from './auth-reducer';
 
 export const reducers = combineReducers({
     app: persistReducer(AppPersistConfig, require('./app-reducer').reducer),
+    auth: persistReducer(AuthPersistConfig, require('./auth-reducer').reducer),
 });
 
 export const createStore = () => {

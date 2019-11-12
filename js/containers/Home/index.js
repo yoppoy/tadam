@@ -15,5 +15,3 @@ export default function Index() {
 const styles = StyleSheet.create({
     ...ApplicationStyles,
 });
-
-console.log(styles.centerAlign);

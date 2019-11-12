@@ -1,14 +1,14 @@
 import React, {useEffect} from 'react';
-import {StyleSheet, View} from 'react-native';
-import AuthFacebook, {AuthFacebookVerifyLogin} from './AuthFacebook';
-import AuthGoogle, {AuthGoogleVerifyLogin} from './AuthGoogle';
+import {StyleSheet, View, SafeAreaView} from 'react-native';
+import AuthFacebook from './AuthFacebook';
+import AuthGoogle from './AuthGoogle';
 import {ApplicationStyles} from '../../styles';
 import {DefaultButton} from '../../components/Button';
 import AuthLogin from './AuthLogin';
 import UserList from '../User/UserList';
 
-const AuthHome = (props) => {
-    useEffect(() => {
+const AuthHome = props => {
+    /*useEffect(() => {
         AuthFacebookVerifyLogin((data, error) => {
             console.log('Verifying facebook : ');
             console.log('Data : ', data);
@@ -19,12 +19,12 @@ const AuthHome = (props) => {
             console.log('Data : ', data);
             console.log('Error : ', JSON.stringify(error));
         });
-    }, []);
+    }, []);*/
 
     return (
-        <React.Fragment>
+        <SafeAreaView>
             <View>
-                <AuthLogin/>
+                <AuthLogin onSuccess={() => props.navigation.navigate('App')}/>
                 <DefaultButton
                     onPress={() => props.navigation.navigate('Register')}
                     text={'Create Account'}
@@ -32,11 +32,11 @@ const AuthHome = (props) => {
                     textStyle={{}}
                 />
                 <View styles={styles.socialMediaContainer}>
-                    <AuthFacebook callback={(token) => console.log(token)}/>
-                    <AuthGoogle callback={(token) => console.log(token)}/>
+                    <AuthFacebook onSuccess={() => props.navigation.navigate('App')}/>
+                    <AuthGoogle onSuccess={() => props.navigation.navigate('App')}/>
                 </View>
             </View>
-        </React.Fragment>
+        </SafeAreaView>
     );
 };
 

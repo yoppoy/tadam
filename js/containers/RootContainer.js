@@ -1,18 +1,6 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
-import AuthHome from './Auth/AuthHome';
-import {ApplicationStyles} from '../styles';
+import Navigation from '../config/Navigation';
 
-const RootContainer = () => {
-    return (
-        <View style={styles.mainContainer}>
-            <AuthHome/>
-        </View>
-    );
-};
-
-export default RootContainer;
-
-const styles = StyleSheet.create({
-    ...ApplicationStyles,
-});
+export default function RootContainer() {
+    return <Navigation/>;
+}

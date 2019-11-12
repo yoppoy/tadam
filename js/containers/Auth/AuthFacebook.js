@@ -1,11 +1,57 @@
 //@flow
 import React, {useState} from 'react';
-import {View, Text, TouchableNativeFeedback} from 'react-native';
+import {View, Text, Alert} from 'react-native';
 import {LoginManager, AccessToken} from 'react-native-fbsdk';
 import {DefaultButton} from '../../components/Button';
+import AuthActions, {connectionTypes} from '../../redux/auth-reducer';
+import {connect} from 'react-redux';
+import formatError from '../../config/constants/networkErrors';
 
-const AuthFacebook = ({callback}) => {
-    const [state, setState] = useState({error: null});
+const AuthFacebook = ({type = 'signup', api, onConnected, onSuccess}) => {
+    const [state, setState] = useState({
+        passwordVisible: false,
+        error: null,
+    });
+
+    const onSignup = async data => {
+        let request;
+
+        try {
+            request = await api.signUpFacebook(data.accessToken.toString());
+            if (!request.error) {
+                onConnected(request.data.token);
+            } else if (request.status === 409) {
+                return await onLogin(data);
+            } else {
+                Alert.alert(
+                    'Erreur Facebook',
+                    formatError(request, 'auth'),
+                );
+                setState({error: request.error});
+            }
+        } catch (e) {
+            console.log(e);
+            setState({...state, requestError: e.message});
+        }
+    };
+
+    const onLogin = async data => {
+        let request;
+
+        try {
+            request = await api.loginFacebook(data.accessToken.toString());
+            if (!request.error) {
+                onConnected(request.data.token);
+                onSuccess();
+            } else {
+                Alert.alert('Erreur Facebook', formatError(request, 'auth'));
+                setState({requestError: request.error});
+            }
+        } catch (e) {
+            console.log(e);
+            setState({...state, requestError: e.message});
+        }
+    };
 
     const requestLoginPermission = async () => {
         setState({error: null});
@@ -15,13 +61,22 @@ const AuthFacebook = ({callback}) => {
                     const data = await AccessToken.getCurrentAccessToken();
 
                     if (!data) {
+                        Alert.alert(
+                            'Erreur Facebook',
+                            'La génération de token a échouée',
+                        );
                         setState({error: 'Access token retrieval failed'});
-                    } else if (callback) {
-                        await callback(data.accessToken.toString());
+                    } else if (type === 'signup') {
+                        await onSignup(data);
+                    } else if (type === 'login') {
+                        await onLogin(data);
                     }
                 }
             },
-            error => setState({error}),
+            error => {
+                Alert.alert('Erreur de connexion', JSON.stringify(error));
+                setState({error});
+            },
         );
     };
 
@@ -36,6 +91,23 @@ const AuthFacebook = ({callback}) => {
     );
 };
 
+const mapStateToProps = state => {
+    return {
+        api: state.auth.api,
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onConnected: token => dispatch(AuthActions.onConnected(connectionTypes.FACEBOOK, token)),
+    };
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)(AuthFacebook);
+
 export const AuthFacebookVerifyLogin = async callback => {
     try {
         console.log('Facebook : verifying login');
@@ -45,5 +117,3 @@ export const AuthFacebookVerifyLogin = async callback => {
         callback(null, error);
     }
 };
-
-export default AuthFacebook;
