@@ -5,6 +5,9 @@ import {
     GoogleSignin,
     GoogleSigninButton,
 } from '@react-native-community/google-signin';
+import {DefaultButton} from '../../components/Button';
+
+const CANCELLED_ERROR = '12501';
 
 const AuthGoogle = ({callback}) => {
     const [state, setState] = useState({
@@ -20,24 +23,25 @@ const AuthGoogle = ({callback}) => {
             const userInfo = await GoogleSignin.signIn();
             callback(userInfo);
         } catch (error) {
-            setState({
-                ...state,
-                error: `${error.message}, code: ${error.code}`,
-            });
+            if (error.code !== CANCELLED_ERROR) {
+                setState({
+                    ...state,
+                    error: `${error.message}, code: ${error.code}`,
+                });
+            }
         }
     };
 
     return (
         <React.Fragment>
             <View>
-                <GoogleSigninButton
-                    style={{width: 192, height: 48}}
-                    size={GoogleSigninButton.Size.Wide}
-                    color={GoogleSigninButton.Color.Dark}
+                <DefaultButton
+                    text={'Continuer avec Google'}
+                    style={{backgroundColor: '#DD4B39', margin: 0, marginBottom: 12}}
+                    textStyle={{alignSelf: 'flex-start'}}
                     onPress={requestLoginPermission}
-                    disabled={state.isSigninInProgress}
-                />
-                {state.error && <Text>Error : {state.error}</Text>}
+                    disabled={state.isSigninInProgress}/>
+                {state.error && <Text style={{alignSelf: 'center'}}>Erreur : {state.error}</Text>}
             </View>
         </React.Fragment>
     );

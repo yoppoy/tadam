@@ -1,10 +1,11 @@
 import React, {useEffect} from 'react';
-import {StyleSheet, View, SafeAreaView} from 'react-native';
+import {StyleSheet, View, SafeAreaView, Text} from 'react-native';
 import AuthFacebook from './AuthFacebook';
 import AuthGoogle from './AuthGoogle';
 import {ApplicationStyles} from '../../styles';
 import {DefaultButton} from '../../components/Button';
 import AuthLogin from './AuthLogin';
+import {NavigationActions, StackActions} from 'react-navigation';
 import UserList from '../User/UserList';
 
 const AuthHome = props => {
@@ -24,7 +25,7 @@ const AuthHome = props => {
     return (
         <SafeAreaView>
             <View>
-                <AuthLogin onSuccess={() => props.navigation.navigate('App')}/>
+                <AuthLogin navigation={props.navigation}/>
                 <DefaultButton
                     onPress={() => props.navigation.navigate('Register')}
                     text={'Create Account'}
@@ -32,8 +33,8 @@ const AuthHome = props => {
                     textStyle={{}}
                 />
                 <View styles={styles.socialMediaContainer}>
-                    <AuthFacebook onSuccess={() => props.navigation.navigate('App')}/>
-                    <AuthGoogle onSuccess={() => props.navigation.navigate('App')}/>
+                    <AuthFacebook navigation={props.navigation}/>
+                    <AuthGoogle onSuccess={() => console.log("nonthinge")}/>
                 </View>
             </View>
         </SafeAreaView>

@@ -1,16 +1,32 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
-import ProfileSlider from '../../components/ProfileSlider';
+import {connect} from 'react-redux';
+import {StyleSheet, View, Text, Button} from 'react-native';
 import {ApplicationStyles} from '../../styles';
+import AuthActions from '../../redux/auth-reducer';
 
-export default function Index() {
+const HomeScreen = props => {
     return (
         <View style={styles.centerAlign}>
-            <ProfileSlider/>
+            <Text>Logged in</Text>
+            <Button title='Disconnect' onPress={props.onDisconnected} />
         </View>
     );
-}
+};
 
+const mapStateToProps = state => {
+    return {};
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onDisconnected: () => dispatch(AuthActions.onDisconnected()),
+    };
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)(HomeScreen);
 
 const styles = StyleSheet.create({
     ...ApplicationStyles,

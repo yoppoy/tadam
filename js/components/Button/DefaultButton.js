@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
         marginBottom: 0,
         backgroundColor: 'black',
         alignItems: 'center',
-        borderRadius: 2,
+        borderRadius: 4
     },
     text: {
         fontSize: 16,

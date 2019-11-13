@@ -53,8 +53,16 @@ const style = {
     },
 };
 
+const defaultStyles = {
+    h1: {
+        ...style.h1,
+        ...size.h1,
+    },
+};
+
 export default {
     type,
     size,
     style,
+    ...defaultStyles,
 };

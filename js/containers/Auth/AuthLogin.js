@@ -6,6 +6,7 @@ import * as yup from 'yup';
 import FormError from '../../components/Error/FormError';
 import AuthActions, {connectionTypes} from '../../redux/auth-reducer';
 import formatError from '../../config/constants/networkErrors';
+import {navigationReset} from '../../config/Navigation/navigatorService';
 
 yup.setLocale({
     mixed: {
@@ -23,7 +24,7 @@ const LoginSchema = yup.object().shape({
     password: yup.string().required(),
 });
 
-const AuthLogin = ({api, onConnected, onSuccess}) => {
+const AuthLogin = ({api, onConnected, navigation}) => {
     const {register, setValue, handleSubmit, errors} = useForm({
         validationSchema: LoginSchema,
         submitFocusError: true,
@@ -44,7 +45,7 @@ const AuthLogin = ({api, onConnected, onSuccess}) => {
                 request = await api.loginLocal(data.email, data.password);
                 if (!request.error) {
                     onConnected(request.data.token);
-                    onSuccess();
+                    navigationReset(navigation, 'App');
                 } else {
                     setState({requestError: formatError(request, 'auth')});
                 }

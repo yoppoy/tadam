@@ -1,28 +1,29 @@
 import React from 'react';
 import {createBottomTabNavigator, BottomTabBar} from 'react-navigation-tabs';
-import AuthLogin from '../../containers/Auth/AuthLogin';
+import HomeScreen from '../../containers/Home/index';
 
 const TabBarComponent = props => <BottomTabBar {...props} />;
 
 const appNavigation = createBottomTabNavigator(
     {
         Home: {
-            screen: AuthLogin,
+            screen: HomeScreen,
         },
         VIP: {
-            screen: AuthLogin,
+            screen: HomeScreen,
         },
-        Chat: {
-            screen: AuthLogin,
+        Pronos: {
+            screen: HomeScreen,
         },
         Notification: {
-            screen: AuthLogin,
+            screen: HomeScreen,
         },
         Menu: {
-            screen: AuthLogin,
+            screen: HomeScreen,
         },
     },
     {
+        initialRouteName: 'Pronos',
         tabBarComponent: props => {
             return (
                 <TabBarComponent {...props} style={{borderTopColor: '#605F60'}}/>

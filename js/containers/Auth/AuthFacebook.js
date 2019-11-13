@@ -6,8 +6,9 @@ import {DefaultButton} from '../../components/Button';
 import AuthActions, {connectionTypes} from '../../redux/auth-reducer';
 import {connect} from 'react-redux';
 import formatError from '../../config/constants/networkErrors';
+import {navigationReset} from '../../config/Navigation/navigatorService';
 
-const AuthFacebook = ({type = 'signup', api, onConnected, onSuccess}) => {
+const AuthFacebook = ({type = 'signup', api, onConnected, onSuccess, navigation}) => {
     const [state, setState] = useState({
         passwordVisible: false,
         error: null,
@@ -20,6 +21,7 @@ const AuthFacebook = ({type = 'signup', api, onConnected, onSuccess}) => {
             request = await api.signUpFacebook(data.accessToken.toString());
             if (!request.error) {
                 onConnected(request.data.token);
+                navigation.navigate('Register');
             } else if (request.status === 409) {
                 return await onLogin(data);
             } else {
@@ -42,7 +44,7 @@ const AuthFacebook = ({type = 'signup', api, onConnected, onSuccess}) => {
             request = await api.loginFacebook(data.accessToken.toString());
             if (!request.error) {
                 onConnected(request.data.token);
-                onSuccess();
+                navigationReset(navigation, 'App');
             } else {
                 Alert.alert('Erreur Facebook', formatError(request, 'auth'));
                 setState({requestError: request.error});
@@ -85,7 +87,8 @@ const AuthFacebook = ({type = 'signup', api, onConnected, onSuccess}) => {
             <DefaultButton
                 onPress={requestLoginPermission}
                 text={'Facebook Login'}
-                style={{backgroundColor: '#3b5998'}}/>
+                style={{backgroundColor: '#3B5999', margin: 0, marginBottom: 12}}
+                textStyle={{alignSelf: 'flex-start'}}/>
             {state.error && <Text>Error : {state.error}</Text>}
         </View>
     );
