@@ -3,13 +3,18 @@ import {connect} from 'react-redux';
 import {StyleSheet, View, Text, Button} from 'react-native';
 import {ApplicationStyles} from '../../styles';
 import AuthActions from '../../redux/auth-reducer';
+import CalendarPicker from '../../components/CalendarPicker';
+
+/*
+<View style={styles.centerAlign}>
+    <Text>Logged in</Text>
+    <Button title='Disconnect' onPress={props.onDisconnected} />
+</View>
+*/
 
 const HomeScreen = props => {
     return (
-        <View style={styles.centerAlign}>
-            <Text>Logged in</Text>
-            <Button title='Disconnect' onPress={props.onDisconnected} />
-        </View>
+        <CalendarPicker/>
     );
 };
 

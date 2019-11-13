@@ -1,36 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-    TouchableNativeFeedback,
-    TouchableOpacity,
-    Platform,
     View,
     StyleSheet,
     Text,
 } from 'react-native';
+import TouchableView from './TouchableView';
 import {ApplicationStyles, Fonts} from '../../styles';
-
-const TouchableView = ({
-    children,
-    rippleColor = 'rgba(255, 255, 255, 1)',
-    ...props
-}) => {
-    if (Platform.OS === 'android') {
-        return (
-            <TouchableNativeFeedback
-                background={
-                    Platform.Version >= 21
-                        ? TouchableNativeFeedback.Ripple(rippleColor, false)
-                        : TouchableNativeFeedback.SelectableBackground()
-                }
-                delayPressIn={0}
-                {...props}>
-                {children}
-            </TouchableNativeFeedback>
-        );
-    }
-    return <TouchableOpacity {...props}>{children}</TouchableOpacity>;
-};
 
 const DefaultButton = props => {
     const rippleColor = props.rippleColor

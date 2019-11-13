@@ -1,5 +1,7 @@
 import Config from 'react-native-config';
 
+console.disableYellowBox = true;
+
 export default {
     debugErrorMessages: false,
     apiHost: Config.API_HOST
