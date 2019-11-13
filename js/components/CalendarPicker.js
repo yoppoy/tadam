@@ -1,10 +1,12 @@
 import React from 'react';
-import {View, Button, StyleSheet} from 'react-native';
+import {View, Button, StyleSheet, Dimensions} from 'react-native';
 import {LocaleConfig, CalendarList} from 'react-native-calendars';
 import {Colors, Fonts} from '../styles';
 import Icon from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
 import TouchableView from '../components/Button/TouchableView';
+
+const SCREEN_WIDTH = Math.round(Dimensions.get('window').width);
 
 export default function CalendarPicker({onSelect, ...props}) {
     const currentDate = props.currentDate.toISOString().slice(0, 10);
@@ -47,14 +49,14 @@ export default function CalendarPicker({onSelect, ...props}) {
                 theme={calendarStyles}
             />
             <LinearGradient
-                colors={['rgba(0,0,0,0)', 'white']}
-                style={styles.absoluteContainer}>
-                <TouchableView>
-                    <View style={styles.roundButton}>
-                        <Icon name={'md-close'} style={{fontSize: 28, color: 'white'}}/>
-                    </View>
-                </TouchableView>
-            </LinearGradient>
+                pointerEvents={'none'}
+                colors={['rgba(255, 255, 255, 0)', 'white']}
+                style={styles.bottomGradient}/>
+            <TouchableView>
+                <View style={styles.roundButton}>
+                    <Icon name={'md-close'} style={{fontSize: 28, color: 'white'}}/>
+                </View>
+            </TouchableView>
         </React.Fragment>
     );
 }
@@ -64,27 +66,28 @@ CalendarPicker.defaultProps = {
 };
 
 const styles = StyleSheet.create({
-        absoluteContainer: {
-            position: 'absolute',
-            left: 0,
-            right: 0,
-            bottom: 0,
-            zIndex: 100,
-            alignItems: 'center',
-            justifyContent: 'flex-end',
-            height: 100,
-        },
-        roundButton: {
-            backgroundColor: Colors.darkBlue,
-            borderRadius: 33,
-            width: 66,
-            height: 66,
-            justifyContent: 'center',
-            alignItems: 'center',
-            marginBottom: 10,
-        },
+    bottomGradient: {
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        bottom: 0,
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+        height: 150,
     },
-);
+    roundButton: {
+        bottom: 0,
+        width: 66,
+        height: 66,
+        left: SCREEN_WIDTH / 2 - 33,
+        position: 'absolute',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: 10,
+        borderRadius: 33,
+        backgroundColor: Colors.darkBlue,
+    },
+});
 
 const calendarStyles = {
     backgroundColor: '#ffffff',
