@@ -8,7 +8,7 @@ import {
     StyleSheet,
     Text,
 } from 'react-native';
-import {ApplicationStyles} from '../../styles';
+import {ApplicationStyles, Fonts} from '../../styles';
 
 const TouchableView = ({
     children,
@@ -33,13 +33,14 @@ const TouchableView = ({
 };
 
 const DefaultButton = props => {
-    const colorRipple = props.colorRipple
-        ? props.colorRipple
+    const rippleColor = props.rippleColor
+        ? props.rippleColor
         : 'rgba(255, 255, 255, 1)';
 
     return (
-        <TouchableView onPress={props.onPress}>
+        <TouchableView onPress={props.onPress} rippleColor={rippleColor}>
             <View style={props.style ? [styles.main, props.style] : styles.main}>
+                {props.icon && props.icon}
                 {props.text ? (
                     <Text style={props.textStyle ? [styles.text, props.textStyle] : styles.text}>{props.text}</Text>
                 ) : (
@@ -53,14 +54,16 @@ const DefaultButton = props => {
 DefaultButton.propTypes = {
     onPress: PropTypes.func.isRequired,
     text: PropTypes.string,
-    colorRipple: PropTypes.string,
+    rippleColor: PropTypes.string,
     style: PropTypes.object,
     textStyle: PropTypes.object,
+    icon: PropTypes.object
 };
 
 const styles = StyleSheet.create({
     ...ApplicationStyles,
     main: {
+        flexDirection: 'row',
         padding: 15,
         margin: 5,
         marginBottom: 0,
@@ -69,6 +72,7 @@ const styles = StyleSheet.create({
         borderRadius: 4
     },
     text: {
+        ...Fonts.button,
         fontSize: 16,
         color: 'white',
     },

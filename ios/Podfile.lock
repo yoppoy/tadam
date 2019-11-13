@@ -287,6 +287,8 @@ PODS:
     - React
   - RNScreens (2.0.0-alpha.8):
     - React
+  - RNVectorIcons (6.6.0):
+    - React
   - UMBarCodeScannerInterface (4.0.0)
   - UMCameraInterface (4.0.0)
   - UMConstantsInterface (4.0.0)
@@ -346,6 +348,7 @@ DEPENDENCIES:
   - "RNGoogleSignin (from `../node_modules/@react-native-community/google-signin`)"
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
+  - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - UMBarCodeScannerInterface (from `../node_modules/unimodules-barcode-scanner-interface/ios`)
   - UMCameraInterface (from `../node_modules/unimodules-camera-interface/ios`)
   - UMConstantsInterface (from `../node_modules/unimodules-constants-interface/ios`)
@@ -449,6 +452,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
     :path: "../node_modules/react-native-screens"
+  RNVectorIcons:
+    :path: "../node_modules/react-native-vector-icons"
   UMBarCodeScannerInterface:
     :path: !ruby/object:Pathname
     path: "../node_modules/unimodules-barcode-scanner-interface/ios"
@@ -533,6 +538,7 @@ SPEC CHECKSUMS:
   RNGoogleSignin: a10b849c165088c737d4465de6c2062f24d06002
   RNReanimated: b2ab0b693dddd2339bd2f300e770f6302d2e960c
   RNScreens: bfa9143ca291bcf3804c932f77b9617ff324704f
+  RNVectorIcons: 0bb4def82230be1333ddaeee9fcba45f0b288ed4
   UMBarCodeScannerInterface: 07047b4faa779e7963efa3d2c5951a71a0a807bf
   UMCameraInterface: f6a3e71ddd928617637084bfd67db2daec3b1927
   UMConstantsInterface: 20e6caaba4ddac70d0b50827d6cf35a202ac988f
@@ -547,6 +553,6 @@ SPEC CHECKSUMS:
   UMTaskManagerInterface: 8f2117979aacb688fe304f834ff8800fadc320bb
   Yoga: 14927e37bd25376d216b150ab2a561773d57911f
 
-PODFILE CHECKSUM: c3b174c65523be72f74f869fa2b7df9c1ae5bbb8
+PODFILE CHECKSUM: 99d3cebc8d71ee99ec0194f421e65b64928586b6
 
 COCOAPODS: 1.8.4

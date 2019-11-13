@@ -1,5 +1,5 @@
 const colors = {
-    background: '#ffffff',
+    darkBlue: '#202433',
     transparent: 'rgba(0,0,0,0)',
 };
 

@@ -1,12 +1,14 @@
 //@flow
 import React, {useState} from 'react';
-import {View, Text, Alert} from 'react-native';
+import {View, Text, Alert, StyleSheet} from 'react-native';
 import {LoginManager, AccessToken} from 'react-native-fbsdk';
 import {DefaultButton} from '../../components/Button';
 import AuthActions, {connectionTypes} from '../../redux/auth-reducer';
 import {connect} from 'react-redux';
 import formatError from '../../config/constants/networkErrors';
 import {navigationReset} from '../../config/Navigation/navigatorService';
+import Icon from 'react-native-vector-icons/Ionicons';
+import {ApplicationStyles} from '../../styles';
 
 const AuthFacebook = ({type = 'signup', api, onConnected, onSuccess, navigation}) => {
     const [state, setState] = useState({
@@ -86,8 +88,9 @@ const AuthFacebook = ({type = 'signup', api, onConnected, onSuccess, navigation}
         <View>
             <DefaultButton
                 onPress={requestLoginPermission}
-                text={'Facebook Login'}
-                style={{backgroundColor: '#3B5999', margin: 0, marginBottom: 12}}
+                text={'Continuer avec Facebook'}
+                style={styles.AuthButton}
+                icon={<Icon name={'logo-facebook'} style={styles.buttonIcon}/>}
                 textStyle={{alignSelf: 'flex-start'}}/>
             {state.error && <Text>Error : {state.error}</Text>}
         </View>
@@ -110,6 +113,15 @@ export default connect(
     mapStateToProps,
     mapDispatchToProps,
 )(AuthFacebook);
+
+const styles = StyleSheet.create({
+    ...ApplicationStyles,
+    AuthButton: {
+        backgroundColor: '#3B5999',
+        margin: 0,
+        marginBottom: 12,
+    },
+});
 
 export const AuthFacebookVerifyLogin = async callback => {
     try {

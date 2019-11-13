@@ -6,6 +6,7 @@ export const connectionTypes = {
     DEFAULT: 0,
     FACEBOOK: 1,
     GOOGLE: 2,
+    APPLE: 3
 };
 
 export const INITIAL_STATE = {

@@ -1,11 +1,10 @@
 //@flow
 import React, {useState} from 'react';
-import {View, Text} from 'react-native';
-import {
-    GoogleSignin,
-    GoogleSigninButton,
-} from '@react-native-community/google-signin';
+import {View, Text, StyleSheet} from 'react-native';
+import {GoogleSignin} from '@react-native-community/google-signin';
 import {DefaultButton} from '../../components/Button';
+import Icon from 'react-native-vector-icons/Ionicons';
+import {ApplicationStyles} from '../../styles';
 
 const CANCELLED_ERROR = '12501';
 
@@ -37,7 +36,8 @@ const AuthGoogle = ({callback}) => {
             <View>
                 <DefaultButton
                     text={'Continuer avec Google'}
-                    style={{backgroundColor: '#DD4B39', margin: 0, marginBottom: 12}}
+                    style={styles.AuthButton}
+                    icon={<Icon name={'logo-google'} style={styles.buttonIcon}/>}
                     textStyle={{alignSelf: 'flex-start'}}
                     onPress={requestLoginPermission}
                     disabled={state.isSigninInProgress}/>
@@ -46,6 +46,15 @@ const AuthGoogle = ({callback}) => {
         </React.Fragment>
     );
 };
+
+const styles = StyleSheet.create({
+    ...ApplicationStyles,
+    AuthButton: {
+        backgroundColor: '#DD4B39',
+        margin: 0,
+        marginBottom: 12,
+    },
+});
 
 export const AuthGoogleVerifyLogin = async callback => {
     try {

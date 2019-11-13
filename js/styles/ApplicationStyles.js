@@ -5,7 +5,7 @@ import Colors from './Colors';
 const ApplicationStyles = {
     mainContainer: {
         flex: 1,
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.darkBlue,
     },
     container: {
         flex: 1,
@@ -40,11 +40,22 @@ const ApplicationStyles = {
         alignItems: 'center',
         textAlign: 'center',
     },
+    title: {
+        ...Fonts.style.title,
+        fontSize: 40,
+        color: 'white',
+    },
     centerAlign: {
         flex: 1,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    buttonIcon: {
+        fontSize: 20,
+        marginLeft: 4,
+        marginRight: 15,
+        color: 'white',
     },
 };
 
