@@ -1,6 +1,6 @@
 // leave off @2x/@3x
 const images = {
-    //logo: require('../Images/yeti_logo.png'),
+    IconMenuPronos: require('../assets/img/menu/icon-pronos.png'),
 };
 
 export default images;

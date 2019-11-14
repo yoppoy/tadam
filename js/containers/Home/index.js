@@ -5,16 +5,12 @@ import {ApplicationStyles} from '../../styles';
 import AuthActions from '../../redux/auth-reducer';
 import CalendarPicker from '../../components/CalendarPicker';
 
-/*
-<View style={styles.centerAlign}>
-    <Text>Logged in</Text>
-    <Button title='Disconnect' onPress={props.onDisconnected} />
-</View>
-*/
-
 const HomeScreen = props => {
     return (
-        <CalendarPicker/>
+        <View style={styles.centerAlign}>
+            <Text>Logged in</Text>
+            <Button title='Disconnect' onPress={props.onDisconnected} />
+        </View>
     );
 };
 
