@@ -9,8 +9,6 @@ import IconNotif from '../../assets/img/menu/icon-notif';
 import OverflowTab from './OverflowTab';
 import {Colors, Fonts, Images} from '../../styles';
 
-const TabBarComponent = props => <BottomTabBar {...props} />;
-
 const appNavigation = createBottomTabNavigator(
     {
         Home: {
@@ -33,7 +31,15 @@ const appNavigation = createBottomTabNavigator(
             screen: HomeScreen,
             navigationOptions: () => ({
                 tabBarIcon: ({tintColor}) => (
-                    <OverflowTab tintColor={tintColor} icon={<Image style={{width: 24, height: 24}} source={Images.IconMenuPronos}/>}/>
+                    <OverflowTab
+                        tintColor={tintColor}
+                        icon={
+                            <Image
+                                style={{width: 24, height: 24}}
+                                source={Images.IconMenuPronos}
+                            />
+                        }
+                    />
                 ),
             }),
         },
