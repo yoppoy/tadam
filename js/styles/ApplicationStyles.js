@@ -57,6 +57,10 @@ const ApplicationStyles = {
         marginRight: 15,
         color: 'white',
     },
+    formCheckBoxText: {
+        color: 'white',
+        fontFamily: Fonts.type.base,
+    },
     formIcon: {
         padding: 20,
         fontSize: 20,
