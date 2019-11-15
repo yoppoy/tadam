@@ -2,6 +2,7 @@ const type = {
     bold: 'BaiJamjuree-Bold',
     medium: 'BaiJamjuree-Medium',
     base: 'BaiJamjuree-Regular',
+    sofia: 'SofiaProSemiBold'
 };
 
 const size = {

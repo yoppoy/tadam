@@ -21,7 +21,7 @@ const appNavigation = createBottomTabNavigator(
         },
         VIP: {
             screen: HomeScreen,
-            navigationOptions: (props) => ({
+            navigationOptions: () => ({
                 tabBarIcon: ({tintColor}) => (
                     <IconLiveScore tintColor={tintColor}/>
                 ),
@@ -66,7 +66,8 @@ const appNavigation = createBottomTabNavigator(
             activeTintColor: Colors.green,
             indicatorStyle: {opacity: 0},
             labelStyle: {
-                fontFamily: Fonts.type.bold,
+                fontFamily: Fonts.type.sofia,
+                fontSize: 10,
                 marginBottom: 5,
                 marginTop: 0,
             },

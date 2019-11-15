@@ -11,14 +11,13 @@ export default function BottomModal({style, modalStyle, children, ...props}) {
             <Modal
                 swipeDirection={['down']}
                 backdropTransitionOutTiming={0}
+                animationInTiming={100}
                 onSwipeComplete={() => setState({visible: false})}
                 onBackdropPress={() => setState({visible: false})}
                 isVisible={state.visible}
                 style={{...styles.modal, ...modalStyle}}
                 {...props}>
-                <View style={{...styles.view, ...style}}>
-                    {children}
-                </View>
+                <View style={{...styles.view, ...style}}>{children}</View>
             </Modal>
         </View>
     );

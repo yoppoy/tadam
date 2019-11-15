@@ -1,18 +1,21 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {StyleSheet, View, Text, Button} from 'react-native';
+import {StyleSheet, ScrollView, View, Text, Button} from 'react-native';
 import {ApplicationStyles} from '../../styles';
 import AuthActions from '../../redux/auth-reducer';
-import CalendarPicker from '../../components/CalendarPicker';
-import BottomModal from '../../components/BottomModal';
+import {Colors} from '../../styles';
+import FormField from '../../components/Form/FormField';
 
 const HomeScreen = props => {
     return (
-        <View style={styles.centerAlign}>
-            <Text>Logged in</Text>
-            <Button title='Disconnect' onPress={props.onDisconnected} />
-            <BottomModal/>
-        </View>
+        <ScrollView style={{backgroundColor: Colors.darkBlue, flex: 1, flexDirection: 'column'}}>
+            <FormField/>
+            <FormField/>
+            <FormField/>
+            <FormField/>
+            <FormField/>
+            <FormField/>
+        </ScrollView>
     );
 };
 

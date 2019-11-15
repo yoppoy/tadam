@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* TadamTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* TadamTests.m */; };
 		057E9B21EA69B64E62250CAE /* libPods-Tadam.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B0BD00B02E681FFE956D435 /* libPods-Tadam.a */; };
@@ -35,6 +34,7 @@
 		2EDBA5364F282DFB37A00F87 /* libPods-TadamTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC39F849DF451342528446F2 /* libPods-TadamTests.a */; };
 		8A65DAB854A8055F3465EE82 /* libPods-Tadam-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67AA8B33A9413D25E096A6B4 /* libPods-Tadam-tvOSTests.a */; };
 		C66876B6E40913CBCD1050AC /* libPods-Tadam-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 104FABCA53A437D6F2D8E591 /* libPods-Tadam-tvOS.a */; };
+		BF64BA7A4F954839B9C8120F /* SofiaProSemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27044B7DB8F14F4D903ECEC7 /* SofiaProSemiBold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +112,7 @@
 		FC39F849DF451342528446F2 /* libPods-TadamTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TadamTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCA7CF3CA7874493A9A2CF07 /* BaiJamjuree-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BaiJamjuree-MediumItalic.ttf"; path = "../js/assets/fonts/BaiJamjuree-MediumItalic.ttf"; sourceTree = "<group>"; };
 		FCF02B825BC1477AC0CB1AF7 /* Pods-Tadam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tadam.debug.xcconfig"; path = "Target Support Files/Pods-Tadam/Pods-Tadam.debug.xcconfig"; sourceTree = "<group>"; };
+		27044B7DB8F14F4D903ECEC7 /* SofiaProSemiBold.ttf */ = {isa = PBXFileReference; name = "SofiaProSemiBold.ttf"; path = "../js/assets/fonts/SofiaProSemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,6 +277,7 @@
 				25B34212261D49F2A2BA7C90 /* Octicons.ttf */,
 				377AE8F42C3641F1AC47159F /* SimpleLineIcons.ttf */,
 				035E841CA1A54BB4985AD073 /* Zocial.ttf */,
+				27044B7DB8F14F4D903ECEC7 /* SofiaProSemiBold.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -441,6 +443,7 @@
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				2CFDE6022373446300503D2C /* GoogleService-Info.plist in Resources */,
+				BF64BA7A4F954839B9C8120F /* SofiaProSemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
         borderRadius: 70,
         borderColor: 'white',
         borderWidth: 10,
-        marginBottom: Platform.OS === 'android' ? -10 : -4,
+        marginBottom: Platform.OS === 'android' ? -6 : -3,
         backgroundColor: Colors.green,
     },
 });
