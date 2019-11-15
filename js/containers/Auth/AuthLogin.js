@@ -8,17 +8,6 @@ import AuthActions, {connectionTypes} from '../../redux/auth-reducer';
 import formatError from '../../config/constants/networkErrors';
 import {navigationReset} from '../../config/Navigation/navigatorService';
 
-yup.setLocale({
-    mixed: {
-        required: 'Veuillez remplir ce champ',
-    },
-    string: {
-        email: 'Adresse mail invalide',
-        min: 'Un minimum de ${min} charactères sont requis',
-        max: 'Ce champ est limité à ${max} charactères',
-    },
-});
-
 const LoginSchema = yup.object().shape({
     email: yup.string().email().required(),
     password: yup.string().required(),

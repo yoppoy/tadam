@@ -22,19 +22,16 @@ const RegisterSchema = yup.object().shape({
     email: yup.string().email().required(),
     age: yup.number().min(18).max(90).required(),
     password: yup.string().min(6).max(128).required(),
-    /*phone: yup.string().matches(/^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/, 'Phone number is not valid'),
-    pseudo: yup.string().min(1).max(128).required(),
-    age: yup.number().required(),*/
+    validated: yup.boolean().oneOf([true]).required('Veuillez Valider les conditions générales'),
+    /*phone: yup.string().matches(/^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/, 'Phone number is not valid'),*/
 });
 
 const AuthRegister = ({navigation}) => {
-    const {register, setValue, handleSubmit, errors} = useForm({
+    const {register, setValue, handleSubmit, errors, triggerValidation} = useForm({
         validationSchema: RegisterSchema,
         submitFocusError: true,
     });
     const [state, setState] = useState({
-        displayErrors: false,
-        conditionsValidated: false,
         filledFields: {},
         passwordVisible: false,
     });
@@ -58,15 +55,15 @@ const AuthRegister = ({navigation}) => {
     };
 
     const onVerify = events => {
-        setState({...state, displayErrors: true});
         handleSubmit(onSubmit)(events);
     };
 
     return (
         <View style={{flex: 1, backgroundColor: Colors.darkBlue}}>
             <SafeAreaView style={styles.container}>
-                <ScrollView keyboardShouldPersistTaps={'handled'} style={styles.scrollContainer}
-                            contentContainerStyle={{flexGrow: 1, justifyContent: 'space-between'}}>
+                <ScrollView
+                    keyboardShouldPersistTaps={'handled'} style={styles.scrollContainer}
+                    contentContainerStyle={{flexGrow: 1, justifyContent: 'space-between'}}>
                     <View>
                         <Text style={styles.title}>
                             Inscription
@@ -85,6 +82,7 @@ const AuthRegister = ({navigation}) => {
                                         filledFields: {...state.filledFields, 'pseudo': text.length > 0},
                                     });
                                 },
+                                onBlur: () => triggerValidation({name: 'pseudo'}),
                                 textContentType: 'familyName',
                             }}
                             left={<FormPrefix>@</FormPrefix>}
@@ -103,6 +101,7 @@ const AuthRegister = ({navigation}) => {
                                         filledFields: {...state.filledFields, 'firstname': text.length > 0},
                                     });
                                 },
+                                onBlur: () => triggerValidation({name: 'firstname'}),
                                 textContentType: 'familyName',
                             }}
                             error={errors.firstname && <FormError title={errors.firstname.message}/>}
@@ -121,6 +120,7 @@ const AuthRegister = ({navigation}) => {
                                         filledFields: {...state.filledFields, 'lastname': text.length > 0},
                                     });
                                 },
+                                onBlur: () => triggerValidation({name: 'lastname'}),
                                 textContentType: 'familyName',
                             }}
                             error={errors.lastname && <FormError title={errors.lastname.message}/>}
@@ -138,6 +138,7 @@ const AuthRegister = ({navigation}) => {
                                         filledFields: {...state.filledFields, 'age': text.length > 0},
                                     });
                                 },
+                                onBlur: () => triggerValidation({name: 'age'}),
                                 textContentType: 'familyName',
                             }}
                             error={errors.age && <FormError title={errors.age.message}/>}/>
@@ -160,6 +161,7 @@ const AuthRegister = ({navigation}) => {
                                         filledFields: {...state.filledFields, 'password': text.length > 0},
                                     });
                                 },
+                                onBlur: () => triggerValidation({name: 'password'}),
                                 onSubmitEditing: onVerify,
                             }}
                             right={
@@ -172,9 +174,16 @@ const AuthRegister = ({navigation}) => {
                             error={errors.password && <FormError title={errors.password.message}/>}
                         />
                         <FormCheckboxLine
-                            onPress={() => setState({...state, conditionsValidated: !state.conditionsValidated})}
-                            checked={state.conditionsValidated}>
-                            <Text style={ApplicationStyles.formCheckBoxText}>J’accèpte les</Text>
+                            onPress={(checked) => {
+                                setValue('validated', checked, false);
+                                triggerValidation({name: 'validated'});
+                            }}
+                            ref={register({name: 'validated'})}
+                            color={errors.validated ? Colors.redError : null}>
+                            <Text
+                                style={[ApplicationStyles.formCheckBoxText, errors.validated && {color: Colors.redError}]}>
+                                J’accèpte les
+                            </Text>
                             <TouchableOpacity onPress={() => console.log('Display terms')}>
                                 <Text style={styles.checkBoxLine}>
                                     conditions générales de vente
@@ -192,7 +201,7 @@ const AuthRegister = ({navigation}) => {
                             justifyContent: 'center',
                             padding: 12,
                             margin: 0,
-                            marginBottom: 25
+                            marginBottom: 25,
                         }}
                         textStyle={{fontFamily: Fonts.type.bold}}
                     />

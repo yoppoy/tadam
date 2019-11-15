@@ -9,6 +9,7 @@ export default function FormCheckBox({onPress, checked, style, color, size, ...p
         <TouchableView
             onPress={onPress}
             rippleColor={color}
+            hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
             underlayColor="transparent">
             <View style={[styles.checkBox, {width: size, height: size}, style]} {...props}>
                 {checked && <View style={styles.checked}/>}

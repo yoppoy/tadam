@@ -1,14 +1,32 @@
-import React from 'react';
+import React, {useState} from 'react';
 import FormCheckBox from './FormCheckBox';
 import {TouchableOpacity, View, StyleSheet} from 'react-native';
 import {Colors, Fonts} from '../../styles';
 import {PropTypes} from 'prop-types';
 
-export default function FormCheckboxLine({children, onPress, checked, style, ...props}) {
+export default function FormCheckboxLine({children, onPress, style, ...props}) {
+    const [checked, setChecked] = useState(false);
+
     return (
         <View style={[styles.container, style]}>
-            <FormCheckBox checked={checked} onPress={onPress} style={{margin: 5, marginRight: 12}}/>
-            <TouchableOpacity onPress={onPress}>
+            <FormCheckBox
+                checked={checked}
+                onPress={() => {
+                    onPress(!checked);
+                    setChecked(!checked);
+                }}
+                style={[
+                    {margin: 5, marginRight: 12},
+                    props.color && {
+                        color: props.color,
+                        borderColor: props.color,
+                    },
+                ]}/>
+            <TouchableOpacity
+                onPress={() => {
+                    onPress(!checked);
+                    setChecked(!checked);
+                }}>
                 <View style={{flexDirection: 'row', justifyContent: 'flex-start'}}>
                     {children}
                 </View>
