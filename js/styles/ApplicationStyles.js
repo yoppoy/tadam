@@ -57,6 +57,11 @@ const ApplicationStyles = {
         marginRight: 15,
         color: 'white',
     },
+    formIcon: {
+        padding: 20,
+        fontSize: 20,
+        color: 'white',
+    },
 };
 
 export default ApplicationStyles;

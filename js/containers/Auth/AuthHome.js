@@ -9,19 +9,6 @@ import {NavigationActions, StackActions} from 'react-navigation';
 import UserList from '../User/UserList';
 
 const AuthHome = props => {
-    /*useEffect(() => {
-        AuthFacebookVerifyLogin((data, error) => {
-            console.log('Verifying facebook : ');
-            console.log('Data : ', data);
-            console.log('Error : ', error);
-        });
-        AuthGoogleVerifyLogin((data, error) => {
-            console.log('Verifying google : ');
-            console.log('Data : ', data);
-            console.log('Error : ', JSON.stringify(error));
-        });
-    }, []);*/
-
     return (
         <SafeAreaView>
             <View>

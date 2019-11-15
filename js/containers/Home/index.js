@@ -1,21 +1,16 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {StyleSheet, ScrollView, View, Text, Button} from 'react-native';
+import {StyleSheet, SafeAreaView, ScrollView, View, Text, Button} from 'react-native';
 import {ApplicationStyles} from '../../styles';
 import AuthActions from '../../redux/auth-reducer';
 import {Colors} from '../../styles';
 import FormField from '../../components/Form/FormField';
+import FormError from '../../components/Form/FormError';
+import FormPrefix from '../../components/Form/FormPrefix';
 
 const HomeScreen = props => {
     return (
-        <ScrollView style={{backgroundColor: Colors.darkBlue, flex: 1, flexDirection: 'column'}}>
-            <FormField/>
-            <FormField/>
-            <FormField/>
-            <FormField/>
-            <FormField/>
-            <FormField/>
-        </ScrollView>
+        <View><Text>HEY THerer</Text></View>
     );
 };
 

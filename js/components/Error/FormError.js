@@ -7,7 +7,6 @@ export default function FormError({children}) {
 
 const styles = StyleSheet.create({
     error: {
-        backgroundColor: 'red',
         color: 'white',
         padding: 5,
     },

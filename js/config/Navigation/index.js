@@ -9,7 +9,7 @@ const Navigation = createStackNavigator(
         Auth: authNavigation,
     },
     {
-        initialRouteName: 'App',
+        initialRouteName: 'Auth',
         defaultNavigationOptions: {
             header: null,
         },
