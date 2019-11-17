@@ -57,6 +57,13 @@ const ApplicationStyles = {
         marginRight: 15,
         color: 'white',
     },
+    formButton: {
+        backgroundColor: Colors.green,
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 12,
+        margin: 0,
+    },
     formCheckBoxText: {
         color: 'white',
         fontFamily: Fonts.type.base,

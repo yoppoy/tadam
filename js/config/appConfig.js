@@ -19,7 +19,7 @@ yup.setLocale({
         required: 'Veuillez remplir ce champ',
     },
     string: {
-        email: 'Adresse mail invalide',
+        email: "L'adresse email n'est pas valide",
         min: 'Un minimum de ${min} charactères sont requis',
         max: 'Ce champ est limité à ${max} charactères',
     },

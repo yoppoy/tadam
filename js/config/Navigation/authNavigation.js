@@ -1,18 +1,18 @@
 import {createStackNavigator} from 'react-navigation-stack';
 import AuthHome from '../../containers/Auth/AuthHome';
 import AuthLogin from '../../containers/Auth/AuthLogin';
-import AuthRegister from '../../containers/Auth/AuthRegister';
-import AuthSignUpHome from '../../containers/Auth/AuthSignUpHome';
+import ScreenRegister from '../../containers/Auth/ScreenRegister';
+import ScreenRegisterHome from '../../containers/Auth/ScreenRegisterHome';
+import ScreenRegisterEmail from '../../containers/Auth/ScreenRegisterEmail';
 
 const authNavigation = createStackNavigator(
     {
-        Home: AuthHome,
-        SignUpHome: AuthSignUpHome,
-        Login: AuthLogin,
-        Register: AuthRegister,
+        RegisterHome: ScreenRegisterHome,
+        RegisterEmail: ScreenRegisterEmail,
+        Register: ScreenRegister,
     },
     {
-        initialRouteName: 'SignUpHome',
+        initialRouteName: 'RegisterHome',
         defaultNavigationOptions: {
             header: null,
         },

@@ -4,9 +4,9 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import {Colors, Fonts} from '../../styles';
 import PropTypes from 'prop-types';
 
-export default function FormError({title, customIcon, ...props}) {
+export default function FormError({title, style, customIcon, ...props}) {
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, style]}>
             {!customIcon ? <Icon name={'md-alert'} style={styles.icon}/> : customIcon}
             <Text style={styles.error}>{title}</Text>
         </View>
@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
 });
 
 FormError.defaultProps = {
+    style: {},
     textInputProps: {},
 };
 

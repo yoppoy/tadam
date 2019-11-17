@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
         alignItems: 'flex-start',
         flexDirection: 'column',
         marginTop: 0,
-        marginBottom: 8,
+        marginBottom: 8
     },
     fieldContainer: {
         borderBottomWidth: 1,

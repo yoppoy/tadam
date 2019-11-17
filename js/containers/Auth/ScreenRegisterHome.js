@@ -8,7 +8,7 @@ import {DefaultButton} from '../../components/Button';
 import AuthLogin from './AuthLogin';
 import AuthApple from './AuthApple';
 
-const AuthSignUpHome = props => {
+const ScreenRegisterHome = props => {
     return (
         <SafeAreaView style={styles.mainContainer}>
             <View style={styles.mainContainer}>
@@ -19,7 +19,7 @@ const AuthSignUpHome = props => {
                     <AuthApple navigation={props.navigation}/>
                     <AuthFacebook navigation={props.navigation}/>
                     <AuthGoogle onSuccess={() => console.log('nonthinge')}/>
-                    <TouchableOpacity onPress={() => props.navigation.navigate('Register')}>
+                    <TouchableOpacity onPress={() => props.navigation.navigate('RegisterEmail')}>
                         <View style={{alignSelf: 'center'}}>
                             <Text style={styles.buttonLocalSignup}>
                                 Ou vous pouvez utilisez une adresse mail
@@ -32,7 +32,7 @@ const AuthSignUpHome = props => {
     );
 };
 
-export default AuthSignUpHome;
+export default ScreenRegisterHome;
 
 const styles = StyleSheet.create({
     ...ApplicationStyles,
