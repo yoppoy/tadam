@@ -1,16 +1,43 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, View, SafeAreaView, TouchableOpacity, ScrollView, TextInput} from 'react-native';
+import {
+    StyleSheet,
+    Text,
+    View,
+    SafeAreaView,
+    TouchableOpacity,
+    ScrollView,
+    TextInput,
+    Platform,
+    Linking,
+} from 'react-native';
 import useForm from 'react-hook-form';
 import {ApplicationStyles, Colors, Fonts} from '../../styles';
 import FormError from '../../components/Form/FormError';
 import FormField from '../../components/Form/FormField';
+import MailOpener from '../../config/NativeModules/MailOpener';
 import {DefaultButton} from '../../components/Button';
 import IconRegister from '../../assets/img/auth/IconRegister';
 
 const ScreenRegisterEmailConfirm = ({navigation}) => {
+    const [error, setError] = useState(null);
 
     const onPress = () => {
-
+        setError(null);
+        if (Platform.OS === 'android') {
+            MailOpener.open();
+        } else {
+            Linking.canOpenURL('message:')
+                .then(supported => {
+                    if (!supported) {
+                        setError('Une erreur est survenue');
+                    } else {
+                        return Linking.openURL('message:');
+                    }
+                })
+                .catch(err => {
+                    setError(`Une erreur est survenue: ${err.message}`);
+                });
+        }
     };
 
     return (
@@ -30,6 +57,7 @@ const ScreenRegisterEmailConfirm = ({navigation}) => {
                         </Text>
                     </View>
                     <View>
+                        {error && <FormError title={error} style={{marginBottom: 10}}/>}
                         <DefaultButton
                             onPress={onPress}
                             text={'Voir mes mails'}
@@ -54,7 +82,7 @@ const styles = StyleSheet.create({
         color: 'white',
         textAlign: 'center',
         marginTop: 22,
-        marginBottom: 15
+        marginBottom: 15,
     },
     scrollContainer: {
         flex: 1,
