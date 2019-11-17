@@ -31,7 +31,7 @@ const ScreenRegisterEmail = ({navigation}) => {
 
     const onSubmit = async formData => {
         try {
-            setState({...state, error: 'Aucunes routes API'});
+            //setState({...state, error: 'Aucunes routes API'});
             console.log('done');
         } catch (err) {
             console.log(err);

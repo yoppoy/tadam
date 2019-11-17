@@ -1,44 +1,16 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, View, SafeAreaView, TouchableOpacity, ScrollView, TextInput} from 'react-native';
-import {NavigationActions, StackActions} from 'react-navigation';
-import {useMutation} from '@apollo/react-hooks';
 import useForm from 'react-hook-form';
-import * as yup from 'yup';
-import {CREATE_USER} from '../../graphql/User';
 import {ApplicationStyles, Colors, Fonts} from '../../styles';
 import FormError from '../../components/Form/FormError';
 import FormField from '../../components/Form/FormField';
 import {DefaultButton} from '../../components/Button';
-import FormPrefix from '../../components/Form/FormPrefix';
-import TouchableView from '../../components/Button/TouchableView';
-import Icon from 'react-native-vector-icons/index';
-import FormCheckboxLine from '../../components/Form/FormCheckboxLine';
-import GraphqlError from '../../components/Error/GraphqlError';
+import IconRegister from '../../assets/img/auth/IconRegister';
 
-const RegisterSchema = yup.object().shape({
-    email: yup.string().email().required(),
-});
+const ScreenRegisterEmailConfirm = ({navigation}) => {
 
-const ScreenRegisterEmail = ({navigation}) => {
-    const {register, setValue, handleSubmit, errors, triggerValidation} = useForm({
-        validationSchema: RegisterSchema,
-        submitFocusError: true,
-    });
-    const [state, setState] = useState({
-        filledFields: {},
-    });
+    const onPress = () => {
 
-    const onSubmit = async formData => {
-        try {
-            console.log('done');
-            navigation.navigate('');
-        } catch (err) {
-            console.log(err);
-        }
-    };
-
-    const onVerify = events => {
-        handleSubmit(onSubmit)(events);
     };
 
     return (
@@ -46,41 +18,21 @@ const ScreenRegisterEmail = ({navigation}) => {
             <SafeAreaView style={styles.container}>
                 <ScrollView
                     keyboardShouldPersistTaps={'handled'} style={styles.scrollContainer}
-                    contentContainerStyle={{flexGrow: 1}}>
+                    contentContainerStyle={{flexGrow: 1, justifyContent: 'space-between'}}>
+                    <View/>
                     <View>
+                        <IconRegister style={{alignSelf: 'center'}}/>
                         <Text style={styles.title}>
-                            Votre Email
+                            Confirmez votre inscription
+                        </Text>
+                        <Text style={ApplicationStyles.sectionText}>
+                            Nous vous avons envoyé un mail pour valider votre inscription.
                         </Text>
                     </View>
-                    <View style={{marginTop: 20}}>
-                        <FormField
-                            label={'Email'}
-                            filled={state.filledFields['email']}
-                            textInputProps={{
-                                autoCompleteType: 'email',
-                                autoCapitalize: 'none',
-                                ref: register({name: 'email'}),
-                                onChangeText: (text) => {
-                                    setValue('email', text, false);
-                                    setState({
-                                        ...state,
-                                        filledFields: {...state.filledFields, 'email': text.length > 0},
-                                    });
-                                },
-                                onBlur: () => triggerValidation({name: 'email'}),
-                                keyboardType: 'email-address',
-                                textContentType: 'email',
-                            }}
-                            error={errors.mail && <FormError title={errors.mail.message}/>}
-                            iconName={'md-mail'}
-                        />
-                    </View>
-                    <View style={{flexGrow: 1}}/>
                     <View>
-                        <FormError title={"Erreur de connexion"}/>
                         <DefaultButton
-                            onPress={onVerify}
-                            text={'Continuer'}
+                            onPress={onPress}
+                            text={'Voir mes mails'}
                             style={{...ApplicationStyles.formButton, marginBottom: 15}}
                             textStyle={{fontFamily: Fonts.type.bold}}
                         />
@@ -91,7 +43,7 @@ const ScreenRegisterEmail = ({navigation}) => {
     );
 };
 
-export default ScreenRegisterEmail;
+export default ScreenRegisterEmailConfirm;
 
 const styles = StyleSheet.create({
     container: {
@@ -100,13 +52,15 @@ const styles = StyleSheet.create({
     title: {
         ...Fonts.title,
         color: 'white',
-        flexGrow: 1,
+        textAlign: 'center',
+        marginTop: 22,
+        marginBottom: 15
     },
     scrollContainer: {
         flex: 1,
         flexGrow: 1,
         flexDirection: 'column',
-        padding: 16,
+        padding: 32,
         backgroundColor: Colors.darkBlue,
     },
     checkBoxLine: {

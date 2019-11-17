@@ -17,10 +17,11 @@ const ApplicationStyles = {
         padding: Metrics.baseMargin,
     },
     sectionText: {
-        ...Fonts.style.normal,
-        paddingVertical: Metrics.doubleBaseMargin,
-        marginVertical: Metrics.smallMargin,
+        ...Fonts.style.base,
         textAlign: 'center',
+        fontSize: 16,
+        lineHeight: 24,
+        color: 'white'
     },
     subtitle: {
         padding: Metrics.smallMargin,
