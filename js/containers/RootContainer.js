@@ -10,7 +10,9 @@ export default function RootContainer() {
     useEffect(() => {
         //navigate('tadam://register?token=foeoifoeifozeifo&love=89');
         Linking.getInitialURL().then(url => {
-            handleDeepLink({url});
+            if (url) {
+                handleDeepLink({url});
+            }
         });
         Linking.addEventListener('url', handleDeepLink);
         return () => Linking.removeEventListener('url', handleDeepLink);

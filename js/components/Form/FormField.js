@@ -7,6 +7,18 @@ import PropTypes from 'prop-types';
 export default function FormField({error, children, ...props}) {
     const [focused, setFocused] = useState(false);
 
+    const onBlur = () => {
+        setFocused(false);
+        if (props.textInputProps && props.textInputProps.onBlur)
+            props.textInputProps.onBlur();
+    };
+
+    const onFocus = () => {
+        setFocused(true);
+        if (props.textInputProps && props.textInputProps.onFocus)
+            props.textInputProps.onFocus();
+    };
+
     return (
         <View style={[styles.container, props.style]}>
             <View style={[styles.fieldContainer, error && styles.error]}>
@@ -18,11 +30,11 @@ export default function FormField({error, children, ...props}) {
                                 <Text style={[styles.label, (props.filled || focused) && styles.labelFocused]}>{props.label}</Text>
                             )}
                             <TextInput
-                                onFocus={() => setFocused(true)}
-                                onBlur={() => setFocused(false)}
                                 blurOnSubmit
                                 style={styles.input}
                                 {...props.textInputProps}
+                                onFocus={onFocus}
+                                onBlur={onBlur}
                             />
                         </View>
                         {!props.right ? (

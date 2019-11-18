@@ -158,7 +158,7 @@ const ScreenRegister = ({navigation}) => {
                                 <TouchableView
                                     onPress={() => setState({...state, passwordVisible: !state.passwordVisible})}>
                                     <Icon
-                                        name={state.passwordVisible ? 'md-eye-off' : 'md-eye'}
+                                        name={state.passwordVisible ? 'md-eye' : 'md-eye-off'}
                                         style={ApplicationStyles.formIcon}/>
                                 </TouchableView>}
                             error={errors.password && <FormError title={errors.password.message}/>}

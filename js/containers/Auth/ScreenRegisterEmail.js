@@ -11,21 +11,22 @@ import FormField from '../../components/Form/FormField';
 import {DefaultButton} from '../../components/Button';
 import FormPrefix from '../../components/Form/FormPrefix';
 import TouchableView from '../../components/Button/TouchableView';
-import Icon from 'react-native-vector-icons/index';
+import Icon from 'react-native-vector-icons/Ionicons';
 import FormCheckboxLine from '../../components/Form/FormCheckboxLine';
 import GraphqlError from '../../components/Error/GraphqlError';
 
-const RegisterSchema = yup.object().shape({
+const EmailSchema = yup.object().shape({
     email: yup.string().email().required(),
 });
 
 const ScreenRegisterEmail = ({navigation}) => {
     const {register, setValue, handleSubmit, errors, triggerValidation} = useForm({
-        validationSchema: RegisterSchema,
+        validationSchema: EmailSchema,
         submitFocusError: true,
     });
     const [state, setState] = useState({
         filledFields: {},
+        passwordVisible: false,
         error: null,
     });
 
@@ -76,6 +77,36 @@ const ScreenRegisterEmail = ({navigation}) => {
                             }}
                             error={errors.email && <FormError title={errors.email.message}/>}
                             iconName={'md-mail'}
+                        />
+                        <FormField
+                            label={'Mot de passe'}
+                            filled={state.filledFields['password']}
+                            textInputProps={{
+                                returnKeyType: 'go',
+                                autoCorrect: false,
+                                autoCapitalize: 'none',
+                                autoCompleteType: 'password',
+                                ref: register({name: 'password'}),
+                                textContentType: 'password',
+                                secureTextEntry: !state.passwordVisible,
+                                onChangeText: text => {
+                                    setValue('password', text, false);
+                                    setState({
+                                        ...state,
+                                        filledFields: {...state.filledFields, 'password': text.length > 0},
+                                    });
+                                },
+                                onBlur: () => triggerValidation({name: 'password'}),
+                                onSubmitEditing: onVerify,
+                            }}
+                            right={
+                                <TouchableView
+                                    onPress={() => setState({...state, passwordVisible: !state.passwordVisible})}>
+                                    <Icon
+                                        name={state.passwordVisible ? 'md-eye' : 'md-eye-off'}
+                                        style={ApplicationStyles.formIcon}/>
+                                </TouchableView>}
+                            error={errors.password && <FormError title={errors.password.message}/>}
                         />
                     </View>
                     <View style={{flexGrow: 1}}/>
