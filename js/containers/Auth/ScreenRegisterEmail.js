@@ -31,7 +31,8 @@ const ScreenRegisterEmail = ({navigation}) => {
 
     const onSubmit = async formData => {
         try {
-            //setState({...state, error: 'Aucunes routes API'});
+            //SEND EMAIL
+            navigation.navigate('RegisterEmailConfirm');
             console.log('done');
         } catch (err) {
             console.log(err);
@@ -39,7 +40,6 @@ const ScreenRegisterEmail = ({navigation}) => {
     };
 
     const onVerify = events => {
-        console.log('VERI');
         setState({...state, error: null});
         handleSubmit(onSubmit)(events);
     };

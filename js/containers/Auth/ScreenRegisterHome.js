@@ -16,8 +16,8 @@ const ScreenRegisterHome = props => {
                     Créer un compte pour accèder à l'ensemble du contenu
                 </Text>
                 <View style={styles.buttonContainer}>
-                    <AuthApple navigation={props.navigation}/>
-                    <AuthFacebook navigation={props.navigation}/>
+                    <AuthApple/>
+                    <AuthFacebook/>
                     <AuthGoogle onSuccess={() => console.log('nonthinge')}/>
                     <TouchableOpacity onPress={() => props.navigation.navigate('RegisterEmail')}>
                         <View style={{alignSelf: 'center'}}>

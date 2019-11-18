@@ -20,7 +20,7 @@ const AuthHome = props => {
                     textStyle={{}}
                 />
                 <View styles={styles.socialMediaContainer}>
-                    <AuthFacebook navigation={props.navigation}/>
+                    <AuthFacebook/>
                     <AuthGoogle onSuccess={() => console.log("nonthinge")}/>
                 </View>
             </View>

@@ -2,7 +2,7 @@ const type = {
     bold: 'BaiJamjuree-Bold',
     medium: 'BaiJamjuree-Medium',
     base: 'BaiJamjuree-Regular',
-    sofia: 'SofiaProSemiBold'
+    sofia: 'SofiaProSemiBold',
 };
 
 const size = {
@@ -37,9 +37,10 @@ export default {
     title: {
         fontFamily: type.bold,
         fontSize: 40,
+        lineHeight: 40,
     },
     button: {
         fontFamily: type.medium,
-        fontSize: 15
-    }
+        fontSize: 15,
+    },
 };

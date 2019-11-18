@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {Linking} from 'react-native';
 import {createStore} from './redux/index';
 import ApolloProvider from './graphql/config/ApolloProvider';
 import {Provider} from 'react-redux';

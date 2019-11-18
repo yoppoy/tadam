@@ -19,7 +19,6 @@ const RegisterSchema = yup.object().shape({
     pseudo: yup.string().min(1).max(128).required(),
     firstname: yup.string().min(1).max(128).required(),
     lastname: yup.string().min(1).max(128).required(),
-    email: yup.string().email().required(),
     age: yup.number().min(18).max(90).required(),
     password: yup.string().min(6).max(128).required(),
     validated: yup.boolean().oneOf([true]).required('Veuillez Valider les conditions générales'),
@@ -39,16 +38,7 @@ const ScreenRegister = ({navigation}) => {
 
     const onSubmit = async formData => {
         try {
-            const result = await createUser({
-                variables: {user: {...formData}},
-            });
-            console.log('Created user : ', result.data.createUser);
-            navigation.dispatch(
-                StackActions.reset({
-                    index: 0,
-                    actions: [NavigationActions.navigate({routeName: 'App'})],
-                }),
-            );
+            navigation.navigate('RegisterSuccess');
         } catch (err) {
             console.log(err);
         }

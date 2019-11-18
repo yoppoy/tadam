@@ -8,6 +8,7 @@ import {connect} from 'react-redux';
 import formatError from '../../config/constants/networkErrors';
 import {navigationReset} from '../../config/Navigation/navigatorService';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {withNavigation} from 'react-navigation';
 import {ApplicationStyles} from '../../styles';
 
 const AuthApple = ({api, onConnected, onSuccess, navigation}) => {
@@ -90,7 +91,7 @@ const mapDispatchToProps = dispatch => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps,
-)(AuthApple);
+)(withNavigation(AuthApple));
 
 const styles = StyleSheet.create({
     ...ApplicationStyles,
