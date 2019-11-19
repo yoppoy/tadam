@@ -35,6 +35,18 @@
 		8A65DAB854A8055F3465EE82 /* libPods-Tadam-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67AA8B33A9413D25E096A6B4 /* libPods-Tadam-tvOSTests.a */; };
 		C66876B6E40913CBCD1050AC /* libPods-Tadam-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 104FABCA53A437D6F2D8E591 /* libPods-Tadam-tvOS.a */; };
 		BF64BA7A4F954839B9C8120F /* SofiaProSemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27044B7DB8F14F4D903ECEC7 /* SofiaProSemiBold.ttf */; };
+		F6D9B94AB06B4AB4BD66BDEA /* AvenirNext-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF7B50A42601486D92F44750 /* AvenirNext-Bold.ttf */; };
+		670FE80DB8FD4C228C4E6029 /* AvenirNext-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8B238D9F844E4C6995B6F5E1 /* AvenirNext-BoldItalic.ttf */; };
+		6595852BF87B4EFB9BE670A9 /* AvenirNext-DemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A66D44847BE647108A30196B /* AvenirNext-DemiBold.ttf */; };
+		275511A49B504081AA906E39 /* AvenirNext-DemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 947634B216C940798962CA23 /* AvenirNext-DemiBoldItalic.ttf */; };
+		1ABF65E2ADFC4BDE9AE8346C /* AvenirNext-Heavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DEC02674D69F47A6AAEC4A80 /* AvenirNext-Heavy.ttf */; };
+		3A563DE4D44C4F8D8B66C7E8 /* AvenirNext-HeavyItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4A5935C4A3B47B4B0531E85 /* AvenirNext-HeavyItalic.ttf */; };
+		7758A4D52CD1484DAE476DAB /* AvenirNext-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD6EAB789DD94E44AE33AB6A /* AvenirNext-Italic.ttf */; };
+		DB2FF72C29E84796819EF929 /* AvenirNext-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 576F260C1154451ABCE16980 /* AvenirNext-Medium.ttf */; };
+		A81E1CD91C964C68AA5206B3 /* AvenirNext-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 325D2D2876BE4EE38AC1EFD9 /* AvenirNext-MediumItalic.ttf */; };
+		37984EAC52A343149498BAB0 /* AvenirNext-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1894C0710644CF4BA8D6574 /* AvenirNext-Regular.ttf */; };
+		A69B7257EECE4AF28D823942 /* AvenirNext-UltraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C241DCD217534BA5B1E3B4A9 /* AvenirNext-UltraLight.ttf */; };
+		F8DF886D9AA044E09E9DB642 /* AvenirNext-UltraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA95BAD81F204EF5A43F5990 /* AvenirNext-UltraLightItalic.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +125,18 @@
 		FCA7CF3CA7874493A9A2CF07 /* BaiJamjuree-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BaiJamjuree-MediumItalic.ttf"; path = "../js/assets/fonts/BaiJamjuree-MediumItalic.ttf"; sourceTree = "<group>"; };
 		FCF02B825BC1477AC0CB1AF7 /* Pods-Tadam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tadam.debug.xcconfig"; path = "Target Support Files/Pods-Tadam/Pods-Tadam.debug.xcconfig"; sourceTree = "<group>"; };
 		27044B7DB8F14F4D903ECEC7 /* SofiaProSemiBold.ttf */ = {isa = PBXFileReference; name = "SofiaProSemiBold.ttf"; path = "../js/assets/fonts/SofiaProSemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		FF7B50A42601486D92F44750 /* AvenirNext-Bold.ttf */ = {isa = PBXFileReference; name = "AvenirNext-Bold.ttf"; path = "../js/assets/fonts/AvenirNext-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		8B238D9F844E4C6995B6F5E1 /* AvenirNext-BoldItalic.ttf */ = {isa = PBXFileReference; name = "AvenirNext-BoldItalic.ttf"; path = "../js/assets/fonts/AvenirNext-BoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A66D44847BE647108A30196B /* AvenirNext-DemiBold.ttf */ = {isa = PBXFileReference; name = "AvenirNext-DemiBold.ttf"; path = "../js/assets/fonts/AvenirNext-DemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		947634B216C940798962CA23 /* AvenirNext-DemiBoldItalic.ttf */ = {isa = PBXFileReference; name = "AvenirNext-DemiBoldItalic.ttf"; path = "../js/assets/fonts/AvenirNext-DemiBoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		DEC02674D69F47A6AAEC4A80 /* AvenirNext-Heavy.ttf */ = {isa = PBXFileReference; name = "AvenirNext-Heavy.ttf"; path = "../js/assets/fonts/AvenirNext-Heavy.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A4A5935C4A3B47B4B0531E85 /* AvenirNext-HeavyItalic.ttf */ = {isa = PBXFileReference; name = "AvenirNext-HeavyItalic.ttf"; path = "../js/assets/fonts/AvenirNext-HeavyItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		FD6EAB789DD94E44AE33AB6A /* AvenirNext-Italic.ttf */ = {isa = PBXFileReference; name = "AvenirNext-Italic.ttf"; path = "../js/assets/fonts/AvenirNext-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		576F260C1154451ABCE16980 /* AvenirNext-Medium.ttf */ = {isa = PBXFileReference; name = "AvenirNext-Medium.ttf"; path = "../js/assets/fonts/AvenirNext-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		325D2D2876BE4EE38AC1EFD9 /* AvenirNext-MediumItalic.ttf */ = {isa = PBXFileReference; name = "AvenirNext-MediumItalic.ttf"; path = "../js/assets/fonts/AvenirNext-MediumItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F1894C0710644CF4BA8D6574 /* AvenirNext-Regular.ttf */ = {isa = PBXFileReference; name = "AvenirNext-Regular.ttf"; path = "../js/assets/fonts/AvenirNext-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C241DCD217534BA5B1E3B4A9 /* AvenirNext-UltraLight.ttf */ = {isa = PBXFileReference; name = "AvenirNext-UltraLight.ttf"; path = "../js/assets/fonts/AvenirNext-UltraLight.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		CA95BAD81F204EF5A43F5990 /* AvenirNext-UltraLightItalic.ttf */ = {isa = PBXFileReference; name = "AvenirNext-UltraLightItalic.ttf"; path = "../js/assets/fonts/AvenirNext-UltraLightItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -278,6 +302,18 @@
 				377AE8F42C3641F1AC47159F /* SimpleLineIcons.ttf */,
 				035E841CA1A54BB4985AD073 /* Zocial.ttf */,
 				27044B7DB8F14F4D903ECEC7 /* SofiaProSemiBold.ttf */,
+				FF7B50A42601486D92F44750 /* AvenirNext-Bold.ttf */,
+				8B238D9F844E4C6995B6F5E1 /* AvenirNext-BoldItalic.ttf */,
+				A66D44847BE647108A30196B /* AvenirNext-DemiBold.ttf */,
+				947634B216C940798962CA23 /* AvenirNext-DemiBoldItalic.ttf */,
+				DEC02674D69F47A6AAEC4A80 /* AvenirNext-Heavy.ttf */,
+				A4A5935C4A3B47B4B0531E85 /* AvenirNext-HeavyItalic.ttf */,
+				FD6EAB789DD94E44AE33AB6A /* AvenirNext-Italic.ttf */,
+				576F260C1154451ABCE16980 /* AvenirNext-Medium.ttf */,
+				325D2D2876BE4EE38AC1EFD9 /* AvenirNext-MediumItalic.ttf */,
+				F1894C0710644CF4BA8D6574 /* AvenirNext-Regular.ttf */,
+				C241DCD217534BA5B1E3B4A9 /* AvenirNext-UltraLight.ttf */,
+				CA95BAD81F204EF5A43F5990 /* AvenirNext-UltraLightItalic.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -444,6 +480,18 @@
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				2CFDE6022373446300503D2C /* GoogleService-Info.plist in Resources */,
 				BF64BA7A4F954839B9C8120F /* SofiaProSemiBold.ttf in Resources */,
+				F6D9B94AB06B4AB4BD66BDEA /* AvenirNext-Bold.ttf in Resources */,
+				670FE80DB8FD4C228C4E6029 /* AvenirNext-BoldItalic.ttf in Resources */,
+				6595852BF87B4EFB9BE670A9 /* AvenirNext-DemiBold.ttf in Resources */,
+				275511A49B504081AA906E39 /* AvenirNext-DemiBoldItalic.ttf in Resources */,
+				1ABF65E2ADFC4BDE9AE8346C /* AvenirNext-Heavy.ttf in Resources */,
+				3A563DE4D44C4F8D8B66C7E8 /* AvenirNext-HeavyItalic.ttf in Resources */,
+				7758A4D52CD1484DAE476DAB /* AvenirNext-Italic.ttf in Resources */,
+				DB2FF72C29E84796819EF929 /* AvenirNext-Medium.ttf in Resources */,
+				A81E1CD91C964C68AA5206B3 /* AvenirNext-MediumItalic.ttf in Resources */,
+				37984EAC52A343149498BAB0 /* AvenirNext-Regular.ttf in Resources */,
+				A69B7257EECE4AF28D823942 /* AvenirNext-UltraLight.ttf in Resources */,
+				F8DF886D9AA044E09E9DB642 /* AvenirNext-UltraLightItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

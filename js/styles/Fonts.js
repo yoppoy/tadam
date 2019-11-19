@@ -3,6 +3,9 @@ const type = {
     medium: 'BaiJamjuree-Medium',
     base: 'BaiJamjuree-Regular',
     sofia: 'SofiaProSemiBold',
+    Avenir: 'AvenirNext-Regular',
+    AvenirB: 'AvenirNext-Bold',
+    AvenirDB: 'AvenirNext-DemiBold',
 };
 
 const size = {

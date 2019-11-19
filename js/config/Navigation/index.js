@@ -1,18 +1,20 @@
-import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
-import appNavigation from './appNavigation';
-import authNavigation from './authNavigation';
+import {createAppContainer} from 'react-navigation';
+import navigationRoot from './navigationRoot';
+import CalendarPicker from '../../components/HeaderCalendar/CalendarPicker';
 
 const Navigation = createStackNavigator(
     {
-        App: appNavigation,
-        Auth: authNavigation,
+        Main: {
+            screen: navigationRoot,
+        },
+        CalendarPicker: {
+            screen: CalendarPicker,
+        },
     },
     {
-        initialRouteName: 'App',
-        defaultNavigationOptions: {
-            header: null,
-        },
+        mode: 'modal',
+        headerMode: 'none',
     },
 );
 

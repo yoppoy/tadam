@@ -21,7 +21,7 @@ const ApplicationStyles = {
         textAlign: 'center',
         fontSize: 16,
         lineHeight: 24,
-        color: 'white'
+        color: 'white',
     },
     subtitle: {
         padding: Metrics.smallMargin,
@@ -73,6 +73,15 @@ const ApplicationStyles = {
         padding: 20,
         fontSize: 20,
         color: 'white',
+    },
+    row: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    rowSpaceBetween: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        flexWrap: 'wrap',
     },
 };
 

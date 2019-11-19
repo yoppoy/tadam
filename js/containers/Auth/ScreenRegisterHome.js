@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {StyleSheet, View, SafeAreaView, Text, TouchableOpacity} from 'react-native';
 import AuthFacebook from './AuthFacebook';
 import AuthGoogle from './AuthGoogle';
@@ -7,6 +7,7 @@ import {Fonts} from '../../styles';
 import {DefaultButton} from '../../components/Button';
 import AuthLogin from './AuthLogin';
 import AuthApple from './AuthApple';
+import {NavigationActions, StackActions} from 'react-navigation';
 
 const ScreenRegisterHome = props => {
     return (

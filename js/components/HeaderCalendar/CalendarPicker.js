@@ -1,26 +1,35 @@
 import React from 'react';
-import {View, Button, StyleSheet, Dimensions} from 'react-native';
+import {View, Button, StyleSheet, Dimensions, SafeAreaView} from 'react-native';
 import {LocaleConfig, CalendarList} from 'react-native-calendars';
-import {Colors, Fonts} from '../styles';
+import {Colors, Fonts} from '../../styles';
 import Icon from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
-import TouchableView from '../components/Button/TouchableView';
+import TouchableView from '../Button/TouchableView';
 
 const SCREEN_WIDTH = Math.round(Dimensions.get('window').width);
 
-export default function CalendarPicker({onSelect, ...props}) {
+export default function CalendarPicker({navigation, ...props}) {
     const currentDate = props.currentDate.toISOString().slice(0, 10);
 
+    const onSelect = day => {
+        navigation.goBack();
+        navigation.state.params.onSelect(day);
+    };
+
+    const onExit = () => {
+        navigation.goBack();
+    };
+
     return (
-        <React.Fragment>
+        <SafeAreaView style={{backgroundColor: 'white'}}>
             <CalendarList
-                // Initially visible month. Default = Date()
                 current={currentDate}
                 minDate={currentDate}
                 // Maximum date that can be selected, dates after maxDate will be grayed out. Default = undefined
                 //maxDate={'2012-05-30'}
                 // Handler which gets executed on day press. Default = undefined
                 onDayPress={day => {
+                    console.log("Hey there")
                     onSelect(day);
                 }}
                 // Handler which gets executed on day long press. Default = undefined
@@ -52,12 +61,12 @@ export default function CalendarPicker({onSelect, ...props}) {
                 pointerEvents={'none'}
                 colors={['rgba(255, 255, 255, 0)', 'white']}
                 style={styles.bottomGradient}/>
-            <TouchableView>
+            <TouchableView onPress={onExit}>
                 <View style={styles.roundButton}>
                     <Icon name={'md-close'} style={{fontSize: 28, color: 'white'}}/>
                 </View>
             </TouchableView>
-        </React.Fragment>
+        </SafeAreaView>
     );
 }
 
@@ -113,11 +122,3 @@ const calendarStyles = {
     textMonthFontSize: 16,
     textDayHeaderFontSize: 16,
 };
-LocaleConfig.locales['fr'] = {
-    monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
-    monthNamesShort: ['Janv.', 'Févr.', 'Mars', 'Avril', 'Mai', 'Juin', 'Juil.', 'Août', 'Sept.', 'Oct.', 'Nov.', 'Déc.'],
-    dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
-    dayNamesShort: ['Dim.', 'Lun.', 'Mar.', 'Mer.', 'Jeu.', 'Ven.', 'Sam.'],
-    today: 'Aujourd\'hui',
-};
-LocaleConfig.defaultLocale = 'fr';

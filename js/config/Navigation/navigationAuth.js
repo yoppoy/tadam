@@ -5,7 +5,7 @@ import ScreenRegisterEmail from '../../containers/Auth/ScreenRegisterEmail';
 import ScreenRegisterEmailConfirm from '../../containers/Auth/ScreenRegisterEmailConfirm';
 import ScreenRegisterSuccess from '../../containers/Auth/ScreenRegisterSuccess';
 
-const authNavigation = createStackNavigator(
+const navigationAuth = createStackNavigator(
     {
         RegisterHome: ScreenRegisterHome,
         RegisterEmail: ScreenRegisterEmail,
@@ -21,4 +21,4 @@ const authNavigation = createStackNavigator(
     },
 );
 
-export default authNavigation;
+export default navigationAuth;

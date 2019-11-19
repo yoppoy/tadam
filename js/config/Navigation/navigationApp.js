@@ -6,10 +6,10 @@ import IconVip from '../../assets/img/menu/icon-vip';
 import IconLiveScore from '../../assets/img/menu/icon-livescore';
 import IconMenu from '../../assets/img/menu/icon-menu';
 import IconNotif from '../../assets/img/menu/icon-notif';
-import OverflowTab from './OverflowTab';
+import OverflowTab from '../../components/Navigation/OverflowTab';
 import {Colors, Fonts, Images} from '../../styles';
 
-const appNavigation = createBottomTabNavigator(
+const navigationApp = createBottomTabNavigator(
     {
         Home: {
             screen: HomeScreen,
@@ -84,4 +84,4 @@ const appNavigation = createBottomTabNavigator(
     },
 );
 
-export default appNavigation;
+export default navigationApp;

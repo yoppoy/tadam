@@ -1,5 +1,7 @@
 import Config from 'react-native-config';
 import * as yup from 'yup';
+import {LocaleConfig} from 'react-native-calendars';
+import moment from 'moment';
 
 console.disableYellowBox = true;
 
@@ -19,11 +21,21 @@ yup.setLocale({
         required: 'Veuillez remplir ce champ',
     },
     string: {
-        email: "L'adresse email n'est pas valide",
+        email: 'L\'adresse email n\'est pas valide',
         min: 'Un minimum de ${min} charactères sont requis',
         max: 'Ce champ est limité à ${max} charactères',
     },
     number: {
-        min: 'Le minimum requis est ${min}'
-    }
+        min: 'Le minimum requis est ${min}',
+    },
 });
+
+LocaleConfig.locales['fr'] = {
+    monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+    monthNamesShort: ['Janv.', 'Févr.', 'Mars', 'Avril', 'Mai', 'Juin', 'Juil.', 'Août', 'Sept.', 'Oct.', 'Nov.', 'Déc.'],
+    dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+    dayNamesShort: ['Dim.', 'Lun.', 'Mar.', 'Mer.', 'Jeu.', 'Ven.', 'Sam.'],
+    today: 'Aujourd\'hui',
+};
+LocaleConfig.defaultLocale = 'fr';
+

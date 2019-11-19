@@ -1,27 +1,242 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {StyleSheet, SafeAreaView, ScrollView, View, Button, Text} from 'react-native';
-import {ApplicationStyles} from '../../styles';
+import {ApplicationStyles, Colors, Fonts} from '../../styles';
 import AuthActions from '../../redux/auth-reducer';
-import {Colors} from '../../styles';
-import FormField from '../../components/Form/FormField';
-import FormError from '../../components/Form/FormError';
-import FormPrefix from '../../components/Form/FormPrefix';
-import Dash from 'react-native-dash';
+import Card from '../../components/Card/Card';
+import CardSection from '../../components/Card/CardSection';
+import CardProfile from '../../components/Card/CardProfile';
+import CardMatch from '../../components/Card/CardMatch';
+import DefaultButton from '../../components/Button/DefaultButton';
+import HeaderCalendar from '../../components/HeaderCalendar/HeaderCalendar';
 
 const HomeScreen = props => {
     return (
-        <View style={{backgroundColor: '#EFEFEF', flex: 1}}>
-            <View style={styles.card}>
-                <View style={{padding: 10}}>
-                    <Text>Test</Text>
+        <SafeAreaView style={{backgroundColor: Colors.darkBlue, flex: 1}}>
+            <ScrollView style={{flex: 1}}>
+                <View style={{backgroundColor: Colors.darkBlue}}>
+                    <HeaderCalendar/>
                 </View>
-                <Dash style={{height:1}} dashGap={5} dashLength={5} dashColor={'#979797'} dashThickness={0.4}/>
-                <View style={{padding: 10}}>
-                    <Text>Test</Text>
+                <View style={{backgroundColor: '#EFEFEF', }}>
+                    <Card>
+                        <CardSection dashed>
+                            <CardProfile/>
+                        </CardSection>
+                        <CardSection>
+                            <CardMatch/>
+                            <DefaultButton
+                                text={'Lyon Gagne par 2 buts (cote 2.20)'}
+                                onPress={() => console.log('hey')}
+                                style={{
+                                    backgroundColor: '#5856D6',
+                                    paddingVertical: 5,
+                                    justifyContent: 'center',
+                                    margin: 0,
+                                    borderColor: '#4644BC',
+                                    borderWidth: 1,
+                                    borderRadius: 6,
+                                }}
+                                textStyle={{
+                                    fontSize: 11,
+                                    letterSpacing: 0.44,
+                                    lineHeight: 15,
+                                    fontFamily: Fonts.type.AvenirB,
+                                }}
+                            />
+                        </CardSection>
+                    </Card>
+                    <Card>
+                        <CardSection dashed>
+                            <CardProfile/>
+                        </CardSection>
+                        <CardSection>
+                            <CardMatch/>
+                            <DefaultButton
+                                text={'Lyon Gagne par 2 buts (cote 2.20)'}
+                                onPress={() => console.log('hey')}
+                                style={{
+                                    backgroundColor: '#5856D6',
+                                    paddingVertical: 5,
+                                    justifyContent: 'center',
+                                    margin: 0,
+                                    borderColor: '#4644BC',
+                                    borderWidth: 1,
+                                    borderRadius: 6,
+                                }}
+                                textStyle={{
+                                    fontSize: 11,
+                                    letterSpacing: 0.44,
+                                    lineHeight: 15,
+                                    fontFamily: Fonts.type.AvenirB,
+                                }}
+                            />
+                        </CardSection>
+                    </Card>
+                    <Card>
+                        <CardSection dashed>
+                            <CardProfile/>
+                        </CardSection>
+                        <CardSection>
+                            <CardMatch/>
+                            <DefaultButton
+                                text={'Lyon Gagne par 2 buts (cote 2.20)'}
+                                onPress={() => console.log('hey')}
+                                style={{
+                                    backgroundColor: '#5856D6',
+                                    paddingVertical: 5,
+                                    justifyContent: 'center',
+                                    margin: 0,
+                                    borderColor: '#4644BC',
+                                    borderWidth: 1,
+                                    borderRadius: 6,
+                                }}
+                                textStyle={{
+                                    fontSize: 11,
+                                    letterSpacing: 0.44,
+                                    lineHeight: 15,
+                                    fontFamily: Fonts.type.AvenirB,
+                                }}
+                            />
+                        </CardSection>
+                    </Card>
+                    <Card>
+                        <CardSection dashed>
+                            <CardProfile/>
+                        </CardSection>
+                        <CardSection>
+                            <CardMatch/>
+                            <DefaultButton
+                                text={'Lyon Gagne par 2 buts (cote 2.20)'}
+                                onPress={() => console.log('hey')}
+                                style={{
+                                    backgroundColor: '#5856D6',
+                                    paddingVertical: 5,
+                                    justifyContent: 'center',
+                                    margin: 0,
+                                    borderColor: '#4644BC',
+                                    borderWidth: 1,
+                                    borderRadius: 6,
+                                }}
+                                textStyle={{
+                                    fontSize: 11,
+                                    letterSpacing: 0.44,
+                                    lineHeight: 15,
+                                    fontFamily: Fonts.type.AvenirB,
+                                }}
+                            />
+                        </CardSection>
+                    </Card>
+                    <Card>
+                        <CardSection dashed>
+                            <CardProfile/>
+                        </CardSection>
+                        <CardSection>
+                            <CardMatch/>
+                            <DefaultButton
+                                text={'Lyon Gagne par 2 buts (cote 2.20)'}
+                                onPress={() => console.log('hey')}
+                                style={{
+                                    backgroundColor: '#5856D6',
+                                    paddingVertical: 5,
+                                    justifyContent: 'center',
+                                    margin: 0,
+                                    borderColor: '#4644BC',
+                                    borderWidth: 1,
+                                    borderRadius: 6,
+                                }}
+                                textStyle={{
+                                    fontSize: 11,
+                                    letterSpacing: 0.44,
+                                    lineHeight: 15,
+                                    fontFamily: Fonts.type.AvenirB,
+                                }}
+                            />
+                        </CardSection>
+                    </Card>
+                    <Card>
+                        <CardSection dashed>
+                            <CardProfile/>
+                        </CardSection>
+                        <CardSection>
+                            <CardMatch/>
+                            <DefaultButton
+                                text={'Lyon Gagne par 2 buts (cote 2.20)'}
+                                onPress={() => console.log('hey')}
+                                style={{
+                                    backgroundColor: '#5856D6',
+                                    paddingVertical: 5,
+                                    justifyContent: 'center',
+                                    margin: 0,
+                                    borderColor: '#4644BC',
+                                    borderWidth: 1,
+                                    borderRadius: 6,
+                                }}
+                                textStyle={{
+                                    fontSize: 11,
+                                    letterSpacing: 0.44,
+                                    lineHeight: 15,
+                                    fontFamily: Fonts.type.AvenirB,
+                                }}
+                            />
+                        </CardSection>
+                    </Card>
+                    <Card>
+                        <CardSection dashed>
+                            <CardProfile/>
+                        </CardSection>
+                        <CardSection>
+                            <CardMatch/>
+                            <DefaultButton
+                                text={'Lyon Gagne par 2 buts (cote 2.20)'}
+                                onPress={() => console.log('hey')}
+                                style={{
+                                    backgroundColor: '#5856D6',
+                                    paddingVertical: 5,
+                                    justifyContent: 'center',
+                                    margin: 0,
+                                    borderColor: '#4644BC',
+                                    borderWidth: 1,
+                                    borderRadius: 6,
+                                }}
+                                textStyle={{
+                                    fontSize: 11,
+                                    letterSpacing: 0.44,
+                                    lineHeight: 15,
+                                    fontFamily: Fonts.type.AvenirB,
+                                }}
+                            />
+                        </CardSection>
+                    </Card>
+                    <Card>
+                        <CardSection dashed>
+                            <CardProfile/>
+                        </CardSection>
+                        <CardSection>
+                            <CardMatch/>
+                            <DefaultButton
+                                text={'Lyon Gagne par 2 buts (cote 2.20)'}
+                                onPress={() => console.log('hey')}
+                                style={{
+                                    backgroundColor: '#5856D6',
+                                    paddingVertical: 5,
+                                    justifyContent: 'center',
+                                    margin: 0,
+                                    borderColor: '#4644BC',
+                                    borderWidth: 1,
+                                    borderRadius: 6,
+                                }}
+                                textStyle={{
+                                    fontSize: 11,
+                                    letterSpacing: 0.44,
+                                    lineHeight: 15,
+                                    fontFamily: Fonts.type.AvenirB,
+                                }}
+                            />
+                        </CardSection>
+                    </Card>
                 </View>
-            </View>
-        </View>
+            </ScrollView>
+        </SafeAreaView>
     );
 };
 
@@ -39,17 +254,3 @@ export default connect(
     mapStateToProps,
     mapDispatchToProps,
 )(HomeScreen);
-
-const styles = StyleSheet.create({
-    ...ApplicationStyles,
-    card: {
-        backgroundColor: 'white',
-        margin: 8,
-        elevation: 2,
-        shadowOpacity: 0.75,
-        shadowRadius: 5,
-        shadowColor: 'rgba(0,0,0,0.1)',
-        borderRadius: 8,
-
-    },
-});
