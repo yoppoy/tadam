@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import FormCheckBox from './FormCheckBox';
 import {TouchableOpacity, View, StyleSheet} from 'react-native';
 import {Colors, Fonts} from '../../styles';
-import {PropTypes} from 'prop-types';
+import PropTypes from 'prop-types';
 
 export default function FormCheckboxLine({children, onPress, style, ...props}) {
     const [checked, setChecked] = useState(false);

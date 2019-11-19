@@ -39,6 +39,11 @@ export default {
         fontSize: 40,
         lineHeight: 40,
     },
+    label: {
+        fontFamily: type.regular,
+        fontSize: 15,
+        color: 'rgba(255, 255, 255, 0.5)',
+    },
     button: {
         fontFamily: type.medium,
         fontSize: 15,

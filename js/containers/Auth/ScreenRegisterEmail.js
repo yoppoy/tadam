@@ -73,7 +73,7 @@ const ScreenRegisterEmail = ({navigation}) => {
                                 },
                                 onBlur: () => triggerValidation({name: 'email'}),
                                 onSubmitEditing: onVerify,
-                                textContentType: 'email',
+                                textContentType: 'emailAddress',
                             }}
                             error={errors.email && <FormError title={errors.email.message}/>}
                             iconName={'md-mail'}

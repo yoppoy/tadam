@@ -33,7 +33,6 @@ const styles = StyleSheet.create({
 });
 
 FormCheckBox.propTypes = {
-    style: PropTypes.object,
     onPress: PropTypes.func,
     color: PropTypes.string,
     check: PropTypes.bool,

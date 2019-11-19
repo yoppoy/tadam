@@ -14,16 +14,19 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import TouchableView from '../../components/Button/TouchableView';
 import {DefaultButton} from '../../components/Button';
 import FormCheckboxLine from '../../components/Form/FormCheckboxLine';
+import FormDropdown from '../../components/Form/FormDropdown';
 
 const RegisterSchema = yup.object().shape({
     pseudo: yup.string().min(1).max(128).required(),
     firstname: yup.string().min(1).max(128).required(),
     lastname: yup.string().min(1).max(128).required(),
     age: yup.number().min(18).max(90).required(),
+    sex: yup.string().required(),
     password: yup.string().min(6).max(128).required(),
     validated: yup.boolean().oneOf([true]).required('Veuillez Valider les conditions générales'),
     /*phone: yup.string().matches(/^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/, 'Phone number is not valid'),*/
 });
+
 
 const ScreenRegister = ({navigation}) => {
     const {register, setValue, handleSubmit, errors, triggerValidation} = useForm({
@@ -42,6 +45,25 @@ const ScreenRegister = ({navigation}) => {
         } catch (err) {
             console.log(err);
         }
+    };
+
+    const onChangeValue = (value, name) => {
+        let tmp = {};
+        tmp[name] = value.length > 0;
+        setState({
+            ...state,
+            filledFields: {...state.filledFields, ...tmp},
+        });
+        setValue(name, value, false);
+    };
+
+    const createTextInputProps = (name, additionalProps = {}) => {
+        return ({
+            ref: register({name: name}),
+            onChangeText: text => onChangeValue(text, name),
+            onBlur: () => triggerValidation({name: name}),
+            ...additionalProps,
+        });
     };
 
     const onVerify = events => {
@@ -63,97 +85,48 @@ const ScreenRegister = ({navigation}) => {
                         <FormField
                             label={'Pseudo'}
                             filled={state.filledFields['pseudo']}
-                            textInputProps={{
-                                ref: register({name: 'pseudo'}),
-                                onChangeText: (text) => {
-                                    setValue('pseudo', text, false);
-                                    setState({
-                                        ...state,
-                                        filledFields: {...state.filledFields, 'pseudo': text.length > 0},
-                                    });
-                                },
-                                onBlur: () => triggerValidation({name: 'pseudo'}),
-                                textContentType: 'familyName',
-                            }}
+                            textInputProps={createTextInputProps('pseudo', {textContentType: 'username'})}
                             left={<FormPrefix>@</FormPrefix>}
                             error={errors.pseudo && <FormError title={errors.pseudo.message}/>}
                             iconName={'md-person'}/>
                         <FormField
                             label={'Prénom'}
                             filled={state.filledFields['firstname']}
-                            textInputProps={{
-                                autoCompleteType: 'name',
-                                ref: register({name: 'firstname'}),
-                                onChangeText: (text) => {
-                                    setValue('firstname', text, false);
-                                    setState({
-                                        ...state,
-                                        filledFields: {...state.filledFields, 'firstname': text.length > 0},
-                                    });
-                                },
-                                onBlur: () => triggerValidation({name: 'firstname'}),
-                                textContentType: 'familyName',
-                            }}
+                            textInputProps={createTextInputProps('firstname', {textContentType: 'name'})}
                             error={errors.firstname && <FormError title={errors.firstname.message}/>}
                             iconName={'md-person'}
                         />
                         <FormField
                             label={'Nom'}
                             filled={state.filledFields['lastname']}
-                            textInputProps={{
-                                autoCompleteType: 'name',
-                                ref: register({name: 'lastname'}),
-                                onChangeText: (text) => {
-                                    setValue('lastname', text, false);
-                                    setState({
-                                        ...state,
-                                        filledFields: {...state.filledFields, 'lastname': text.length > 0},
-                                    });
-                                },
-                                onBlur: () => triggerValidation({name: 'lastname'}),
-                                textContentType: 'familyName',
-                            }}
+                            textInputProps={createTextInputProps('lastname', {textContentType: 'familyName'})}
                             error={errors.lastname && <FormError title={errors.lastname.message}/>}
                             iconName={'md-person'}
                         />
                         <FormField
                             label={'Age'}
-                            textInputProps={{
-                                ref: register({name: 'age'}),
-                                keyboardType: 'number-pad',
-                                onChangeText: (text) => {
-                                    setValue('age', text, false);
-                                    setState({
-                                        ...state,
-                                        filledFields: {...state.filledFields, 'age': text.length > 0},
-                                    });
-                                },
-                                onBlur: () => triggerValidation({name: 'age'}),
-                                textContentType: 'familyName',
-                            }}
+                            filled={state.filledFields['age']}
+                            textInputProps={createTextInputProps('age', {keyboardType: 'number-pad'})}
+                            iconName={'md-person'}
                             error={errors.age && <FormError title={errors.age.message}/>}/>
-                        <FormField label={'Sexe'}/>
+                        <FormDropdown
+                            ref={register({name: 'sex'})}
+                            onValueChange={value => {
+                                onChangeValue(value, 'sex');
+                                triggerValidation({name: 'sex'});
+                            }}
+                            error={errors.sex && <FormError title={errors.sex.message}/>}
+                        />
                         <FormField
                             label={'Mot de passe'}
                             filled={state.filledFields['password']}
-                            textInputProps={{
+                            textInputProps={createTextInputProps('password', {
                                 returnKeyType: 'go',
+                                onSubmitEditing: onVerify,
+                                secureTextEntry: !state.passwordVisible,
                                 autoCorrect: false,
                                 autoCapitalize: 'none',
-                                autoCompleteType: 'password',
-                                ref: register({name: 'password'}),
-                                textContentType: 'password',
-                                secureTextEntry: !state.passwordVisible,
-                                onChangeText: text => {
-                                    setValue('password', text, false);
-                                    setState({
-                                        ...state,
-                                        filledFields: {...state.filledFields, 'password': text.length > 0},
-                                    });
-                                },
-                                onBlur: () => triggerValidation({name: 'password'}),
-                                onSubmitEditing: onVerify,
-                            }}
+                            })}
                             right={
                                 <TouchableView
                                     onPress={() => setState({...state, passwordVisible: !state.passwordVisible})}>
@@ -185,14 +158,7 @@ const ScreenRegister = ({navigation}) => {
                     <DefaultButton
                         onPress={onVerify}
                         text={'Inscription'}
-                        style={{
-                            backgroundColor: Colors.green,
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            padding: 12,
-                            margin: 0,
-                            marginBottom: 25,
-                        }}
+                        style={{...ApplicationStyles.formButton, marginBottom: 25}}
                         textStyle={{fontFamily: Fonts.type.bold}}
                     />
                 </ScrollView>

@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import {Colors, Fonts} from '../../styles';
 import PropTypes from 'prop-types';
 
-export default function FormField({error, children, ...props}) {
+export default function FormField({error, children, filled, ...props}) {
     const [focused, setFocused] = useState(false);
 
     const onBlur = () => {
@@ -21,13 +21,13 @@ export default function FormField({error, children, ...props}) {
 
     return (
         <View style={[styles.container, props.style]}>
-            <View style={[styles.fieldContainer, error && styles.error]}>
+            <View style={[styles.fieldContainer, error && styles.error, (!error && filled) && styles.success]}>
                 {!children ? (
                     <React.Fragment>
                         {props.left && props.left}
                         <View style={styles.inputContainer}>
                             {(props.label) && (
-                                <Text style={[styles.label, (props.filled || focused) && styles.labelFocused]}>{props.label}</Text>
+                                <Text style={[styles.label, (filled || focused) && styles.labelFocused]}>{props.label}</Text>
                             )}
                             <TextInput
                                 blurOnSubmit
@@ -75,6 +75,10 @@ const styles = StyleSheet.create({
         color: Colors.redError,
         borderBottomColor: Colors.redError,
     },
+    success: {
+        color: Colors.green,
+        borderBottomColor: Colors.green,
+    },
     inputContainer: {
         flex: 1,
         flexGrow: 1,
@@ -112,7 +116,7 @@ FormField.defaultProps = {
 };
 
 FormField.propTypes = {
-    filled: PropTypes.boolean,
+    filled: PropTypes.bool,
     textInputProps: PropTypes.object,
     label: PropTypes.string,
     iconName: PropTypes.string,
