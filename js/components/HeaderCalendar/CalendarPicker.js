@@ -13,7 +13,7 @@ export default function CalendarPicker({navigation, ...props}) {
 
     const onSelect = day => {
         navigation.goBack();
-        navigation.state.params.onSelect(day.dateString);
+        navigation.state.params.onSelect(new Date(day.dateString));
     };
 
     const onExit = () => {

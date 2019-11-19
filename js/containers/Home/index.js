@@ -9,12 +9,14 @@ import CardProfile from '../../components/Card/CardProfile';
 import CardMatch from '../../components/Card/CardMatch';
 import DefaultButton from '../../components/Button/DefaultButton';
 import HeaderCalendar from '../../components/HeaderCalendar/HeaderCalendar';
+import SportSelector from '../../components/Selectors/SportSelector';
 
 const HomeScreen = props => {
     return (
         <SafeAreaView style={{backgroundColor: Colors.darkBlue, flex: 1}}>
             <ScrollView style={{flex: 1}} contentContainerStyle={{flexGrow: 1}}>
                 <View style={{backgroundColor: Colors.darkBlue}}>
+                    <SportSelector/>
                     <HeaderCalendar onDateSelect={date => console.log(date)}/>
                 </View>
                 <View style={{backgroundColor: '#EFEFEF', flex: 1}}>

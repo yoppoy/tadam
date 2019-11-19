@@ -1,19 +1,15 @@
-import React, {useState, useEffect, useMemo} from 'react';
-import {Platform, Text, TextInput, View, StyleSheet, Animated} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import React, {useMemo} from 'react';
+import {Text, StyleSheet} from 'react-native';
 import {Colors, Fonts} from '../../styles';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import 'moment/locale/fr';
-import {ApplicationStyles} from '../../styles';
-import TouchableView from '../Button/TouchableView';
 import HeaderCalendarSelect from './HeaderCalendarSelect';
-import {LocaleConfig} from 'react-native-calendars';
 
 export default function HeaderCalendarDay({date, selectedDate, ...props}) {
     const displayDate = useMemo(() => moment(date), [date]);
     const selected = useMemo(() => moment(selectedDate), [selectedDate]);
-    const isSelected = useMemo(() => (displayDate.format('DD/MM/YYYY') === selected.format('DD/MM/YYYY')), [date, selectedDate]);
+    const isSelected = displayDate.format('DD/MM/YYYY') === selected.format('DD/MM/YYYY');
 
     displayDate.locale('fr');
     const weekDay = useMemo(() => displayDate.format('ddd').toUpperCase(), [date]);
