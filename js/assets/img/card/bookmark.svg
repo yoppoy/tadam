@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="10px" height="14px" viewBox="0 0 10 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.1 (78136) - https://sketchapp.com -->
+    <title>element / fav</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.558640253">
+        <g id="component-/-prono-link-profil" transform="translate(-16.000000, -71.000000)" fill="#D8D8D8">
+            <g id="Group-13">
+                <g id="component-/-match-" transform="translate(16.000000, 71.000000)">
+                    <g id="Group-27">
+                        <g id="element-/-fav">
+                            <polygon id="Rectangle" points="0 0 10 0 10 14 5.33333333 10.6666667 0 14"></polygon>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

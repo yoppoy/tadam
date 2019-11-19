@@ -1,15 +1,13 @@
-import React, {useState, useEffect} from 'react';
-import {Platform, Text, TextInput, View, StyleSheet, Animated} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import React from 'react';
+import {View, StyleSheet} from 'react-native';
 import {Colors, Fonts} from '../../styles';
 import PropTypes from 'prop-types';
-import {ApplicationStyles} from '../../styles';
 import TouchableView from '../Button/TouchableView';
 
-export default function HeaderCalendarSelect({selected, children, onPress, ...props}) {
+export default function HeaderCalendarSelect({selected, children, style, onPress, ...props}) {
     return (
         <TouchableView onPress={onPress} rippleColor={Colors.darkBlue} style={{flex: 1}}>
-            <View style={[styles.container, selected && styles.selected]}>
+            <View style={[styles.container, style, selected && styles.selected]}>
                 {children}
             </View>
         </TouchableView>
@@ -54,6 +52,7 @@ const styles = StyleSheet.create({
 });
 
 HeaderCalendarSelect.defaultProps = {
+    style: {},
     selected: false,
     onPress: () => console.log('onPress not assigned'),
 };

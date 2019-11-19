@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useMemo} from 'react';
 import {Platform, Text, TextInput, View, StyleSheet, Animated} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {Colors, Fonts} from '../../styles';
@@ -10,14 +10,17 @@ import TouchableView from '../Button/TouchableView';
 import HeaderCalendarSelect from './HeaderCalendarSelect';
 import {LocaleConfig} from 'react-native-calendars';
 
-export default function HeaderCalendarDay({date, offset, ...props}) {
-    const displayDate = moment(date).add(offset, 'd');
+export default function HeaderCalendarDay({date, selectedDate, ...props}) {
+    const displayDate = useMemo(() => moment(date), [date]);
+    const selected = useMemo(() => moment(selectedDate), [selectedDate]);
+    const isSelected = useMemo(() => (displayDate.format('DD/MM/YYYY') === selected.format('DD/MM/YYYY')), [date, selectedDate]);
+
     displayDate.locale('fr');
-    const weekDay = displayDate.format('ddd').toUpperCase();
-    const day = displayDate.format('DD').toUpperCase();
-    const month = displayDate.format('MMM').toUpperCase();
+    const weekDay = useMemo(() => displayDate.format('ddd').toUpperCase(), [date]);
+    const day = useMemo(() => displayDate.format('DD').toUpperCase(), [date]);
+    const month = useMemo(() => displayDate.format('MMM').toUpperCase(), [date]);
     return (
-        <HeaderCalendarSelect {...props}>
+        <HeaderCalendarSelect selected={isSelected} {...props}>
             <Text style={styles.day}>{weekDay}</Text>
             <Text style={styles.date}>{day}</Text>
             <Text style={styles.month}>{month}</Text>
@@ -62,7 +65,6 @@ const styles = StyleSheet.create({
 });
 
 HeaderCalendarDay.defaultProps = {
-    selected: false,
     offset: 0,
     onPress: () => console.log('onPress not assigned'),
 };
@@ -70,5 +72,5 @@ HeaderCalendarDay.defaultProps = {
 HeaderCalendarDay.propTypes = {
     selected: PropTypes.bool,
     onPress: PropTypes.func,
-    offset: PropTypes.number
+    offset: PropTypes.number,
 };
