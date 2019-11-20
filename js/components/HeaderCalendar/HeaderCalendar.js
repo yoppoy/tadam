@@ -34,30 +34,34 @@ function HeaderCalendar({navigation, onDateSelect, ...props}) {
 
     return (
         <View style={[styles.container, props.style]}>
-
-            <HeaderCalendarDay
-                date={state.startDate}
-                onPress={() => onDaySelect(dates[0])}
-                selectedDate={state.selectedDate}/>
-            <HeaderCalendarDay
-                date={dates[1]}
-                onPress={() => onDaySelect(dates[1])}
-                selectedDate={state.selectedDate}/>
-            <HeaderCalendarDay
-                date={dates[2]}
-                onPress={() => onDaySelect(dates[2])}
-                selectedDate={state.selectedDate}/>
-            <HeaderCalendarDay
-                date={dates[3]}
-                onPress={() => onDaySelect(dates[3])}
-                selectedDate={state.selectedDate}/>
-            <HeaderCalendarDay
-                date={dates[4]}
-                onPress={() => onDaySelect(dates[4])}
-                selectedDate={state.selectedDate}/>
-            <HeaderCalendarSelect onPress={() => navigation.navigate('CalendarPicker', {onSelect: onCalendarSelect})}>
-                <IconCalendar/>
-            </HeaderCalendarSelect>
+            <View style={{flexDirection: 'row', flex: 5, height: 90, overflow: 'hidden'}}>
+                <HeaderCalendarDay
+                    date={state.startDate}
+                    onPress={() => onDaySelect(dates[0])}
+                    selectedDate={state.selectedDate}/>
+                <HeaderCalendarDay
+                    date={dates[1]}
+                    onPress={() => onDaySelect(dates[1])}
+                    selectedDate={state.selectedDate}/>
+                <HeaderCalendarDay
+                    date={dates[2]}
+                    onPress={() => onDaySelect(dates[2])}
+                    selectedDate={state.selectedDate}/>
+                <HeaderCalendarDay
+                    date={dates[3]}
+                    onPress={() => onDaySelect(dates[3])}
+                    selectedDate={state.selectedDate}/>
+                <HeaderCalendarDay
+                    date={dates[4]}
+                    onPress={() => onDaySelect(dates[4])}
+                    selectedDate={state.selectedDate}/>
+            </View>
+            <View style={{flex: 1}}>
+                <HeaderCalendarSelect
+                    onPress={() => navigation.navigate('CalendarPicker', {onSelect: onCalendarSelect})}>
+                    <IconCalendar/>
+                </HeaderCalendarSelect>
+            </View>
         </View>
     );
 }

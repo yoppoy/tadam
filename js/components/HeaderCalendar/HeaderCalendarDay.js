@@ -16,7 +16,7 @@ export default function HeaderCalendarDay({date, selectedDate, ...props}) {
     const day = useMemo(() => displayDate.format('DD').toUpperCase(), [date]);
     const month = useMemo(() => displayDate.format('MMM').toUpperCase(), [date]);
     return (
-        <HeaderCalendarSelect selected={isSelected} {...props}>
+        <HeaderCalendarSelect selected={isSelected} {...props} style={{minWidth: 65}}>
             <Text style={styles.day}>{weekDay}</Text>
             <Text style={styles.date}>{day}</Text>
             <Text style={styles.month}>{month}</Text>
@@ -31,7 +31,6 @@ const styles = StyleSheet.create({
         paddingVertical: 12,
         paddingHorizontal: 18,
         opacity: 0.32,
-        flex: 1,
         borderBottomWidth: 3,
         borderColor: 'white',
     },

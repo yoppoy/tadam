@@ -10,6 +10,7 @@ import CardMatch from '../../components/Card/CardMatch';
 import DefaultButton from '../../components/Button/DefaultButton';
 import HeaderCalendar from '../../components/HeaderCalendar/HeaderCalendar';
 import SportSelector from '../../components/Selectors/SportSelector';
+import CardPronostic from '../../components/Card/CardPronostic';
 
 const HomeScreen = props => {
     return (
@@ -20,33 +21,11 @@ const HomeScreen = props => {
                     <HeaderCalendar onDateSelect={date => console.log(date)}/>
                 </View>
                 <View style={{backgroundColor: '#EFEFEF', flex: 1}}>
-                    <Card>
-                        <CardSection dashed>
-                            <CardProfile/>
-                        </CardSection>
-                        <CardSection>
-                            <CardMatch/>
-                            <DefaultButton
-                                text={'Lyon Gagne par 2 buts (cote 2.20)'}
-                                onPress={() => console.log('hey')}
-                                style={{
-                                    backgroundColor: '#5856D6',
-                                    paddingVertical: 5,
-                                    justifyContent: 'center',
-                                    margin: 0,
-                                    borderColor: '#4644BC',
-                                    borderWidth: 1,
-                                    borderRadius: 6,
-                                }}
-                                textStyle={{
-                                    fontSize: 11,
-                                    letterSpacing: 0.44,
-                                    lineHeight: 15,
-                                    fontFamily: Fonts.type.AvenirB,
-                                }}
-                            />
-                        </CardSection>
-                    </Card>
+                    <CardPronostic />
+                    <CardPronostic />
+                    <CardPronostic />
+                    <CardPronostic />
+                    <CardPronostic />
                 </View>
             </ScrollView>
         </SafeAreaView>

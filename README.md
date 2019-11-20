@@ -5,9 +5,11 @@
 - [Documentation](https://github.com/facebook/react-native-fbsdk)
 - [Guide Android](https://developers.facebook.com/docs/android/getting-started/)
 - [Guide IOS](https://developers.facebook.com/docs/ios/getting-started/)
+- Generate Base64 Hash key : ```keytool -exportcert -alias androiddebugkey -keystore ~/.android/my-upload-key.keystore | openssl sha1 -binary | openssl base64```
 
 #### Google Signin
-[Documentation](https://github.com/react-native-community/react-native-google-signin/tree/master/docs)
+- [Documentation](https://github.com/react-native-community/react-native-google-signin/tree/master/docs)
+- [Generate SHA1 Key](https://stackoverflow.com/questions/39144629/how-to-add-sha-1-to-android-application)
 - Generate a google-services.json and paste it in /android/app/
 
 ### Environment variables
