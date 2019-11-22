@@ -4,6 +4,7 @@ import {Colors, Fonts, Images} from '../../styles';
 import PropTypes from 'prop-types';
 import LinearGradient from 'react-native-linear-gradient';
 import TouchableView from '../Button/TouchableView';
+import OddsGrid from '../Card/OddsGrid';
 
 function HeadLineSliderItem({teamA, teamB, odds, imageSource, ...props}) {
     return (
@@ -20,13 +21,7 @@ function HeadLineSliderItem({teamA, teamB, odds, imageSource, ...props}) {
                     <Text style={styles.textMatch}>{teamA}</Text>
                     <Text style={styles.textMatch}>{teamB}</Text>
                 </View>
-                <View style={styles.oddsContainer}>
-                    <Text style={styles.oddsText}>{Number(odds[0]).toFixed(2)}</Text>
-                    <Text style={{...styles.oddsText, backgroundColor: '#4E4CC1', opacity: 0.8}}>
-                        {Number(odds[1]).toFixed(2)}
-                    </Text>
-                    <Text style={styles.oddsText}>{Number(odds[2]).toFixed(2)}</Text>
-                </View>
+                <OddsGrid style={styles.oddsContainer} odds={odds}/>
             </View>
         </TouchableView>
     );
@@ -77,10 +72,6 @@ const styles = StyleSheet.create({
         bottom: 0,
         left: 0,
         margin: 8,
-        backgroundColor: Colors.violet,
-        flexDirection: 'row',
-        justifyContent: 'center',
-        borderRadius: 4,
     },
     topGradient: {
         borderTopLeftRadius: 8,
