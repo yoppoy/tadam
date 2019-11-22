@@ -7,7 +7,10 @@ export default function TouchableView({children, rippleColor = 'rgba(255, 255, 2
             <TouchableNativeFeedback
                 background={
                     Platform.Version >= 21
-                        ? TouchableNativeFeedback.Ripple(rippleColor, rippleBorderless)
+                        ? TouchableNativeFeedback.Ripple(
+                              rippleColor,
+                              rippleBorderless,
+                          )
                         : TouchableNativeFeedback.SelectableBackground()
                 }
                 delayPressIn={0}

@@ -3,7 +3,7 @@ import TouchableView from '../Button/TouchableView';
 import {Colors, Fonts} from '../../styles';
 import React from 'react';
 
-export default function SportSelectorItem({name, icon, selected}) {
+export default function SportSliderItem({name, icon, selected}) {
     return (
         <View style={{marginRight: 8, alignItems: 'center', opacity: selected ? 1 : 0.32}}>
             <TouchableView rippleColor={Colors.darkBlue}>
