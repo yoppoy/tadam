@@ -1,14 +1,14 @@
 import React from 'react';
 import {StyleSheet, View, Text, Image} from 'react-native';
 import PropTypes from 'prop-types';
-import {ApplicationStyles, Colors, Images, Fonts} from '../../styles';
+import {Index, Colors, Images, Fonts} from '../../styles';
 import BookMark from '../../assets/img/card/BookMark';
 
-export default function CardMatch({dashed, children, ...props}) {
+export default function CardComponentMatch({dashed, children, ...props}) {
     return (
         <View styles={styles.container}>
-            <View style={{...ApplicationStyles.rowSpaceBetween}}>
-                <View style={{...ApplicationStyles.row}}>
+            <View style={{...Index.rowSpaceBetween}}>
+                <View style={{...Index.row}}>
                     <BookMark style={{marginRight: 16}}/>
                     <Text style={styles.dateInfo}>MER, 04/03</Text>
                 </View>
@@ -16,8 +16,8 @@ export default function CardMatch({dashed, children, ...props}) {
                     <Text style={styles.dateInfo}>20:45</Text>
                 </View>
             </View>
-            <View style={{...ApplicationStyles.rowSpaceBetween}}>
-                <View style={{...ApplicationStyles.row, paddingVertical: 15}}>
+            <View style={{...Index.rowSpaceBetween}}>
+                <View style={{...Index.row, paddingVertical: 15}}>
                     <View style={styles.teamLogoContainer}>
                         <Image
                             style={{width: 19}}
@@ -27,7 +27,7 @@ export default function CardMatch({dashed, children, ...props}) {
                     </View>
                     <Text style={{...styles.teamInfo, marginLeft: 8}}>Olympique Lyonnais</Text>
                 </View>
-                <View style={{...ApplicationStyles.row, paddingVertical: 15, opacity: 0.5}}>
+                <View style={{...Index.row, paddingVertical: 15, opacity: 0.5}}>
                     <Text style={{...styles.teamInfo, marginRight: 8}}>FC Barcelone</Text>
                     <View style={{...styles.teamLogoContainer, elevation: 0}}>
                         <Image
@@ -42,9 +42,9 @@ export default function CardMatch({dashed, children, ...props}) {
     );
 }
 
-CardMatch.defaultProps = {};
+CardComponentMatch.defaultProps = {};
 
-CardMatch.propTypes = {};
+CardComponentMatch.propTypes = {};
 
 const styles = StyleSheet.create({
     container: {

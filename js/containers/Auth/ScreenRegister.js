@@ -6,7 +6,7 @@ import useForm from 'react-hook-form';
 import * as yup from 'yup';
 import {CREATE_USER} from '../../graphql/User';
 import GraphqlError from '../../components/Error/GraphqlError';
-import {ApplicationStyles, Colors, Fonts} from '../../styles';
+import {Index, Colors, Fonts} from '../../styles';
 import FormError from '../../components/Form/FormError';
 import FormField from '../../components/Form/FormField';
 import FormPrefix from '../../components/Form/FormPrefix';
@@ -132,7 +132,7 @@ const ScreenRegister = ({navigation}) => {
                                     onPress={() => setState({...state, passwordVisible: !state.passwordVisible})}>
                                     <Icon
                                         name={state.passwordVisible ? 'md-eye' : 'md-eye-off'}
-                                        style={ApplicationStyles.formIcon}/>
+                                        style={Index.formIcon}/>
                                 </TouchableView>}
                             error={errors.password && <FormError title={errors.password.message}/>}
                         />
@@ -144,7 +144,7 @@ const ScreenRegister = ({navigation}) => {
                             ref={register({name: 'validated'})}
                             color={errors.validated ? Colors.redError : null}>
                             <Text
-                                style={[ApplicationStyles.formCheckBoxText, errors.validated && {color: Colors.redError}]}>
+                                style={[Index.formCheckBoxText, errors.validated && {color: Colors.redError}]}>
                                 J’accèpte les
                             </Text>
                             <TouchableOpacity onPress={() => console.log('Display terms')}>
@@ -158,7 +158,7 @@ const ScreenRegister = ({navigation}) => {
                     <DefaultButton
                         onPress={onVerify}
                         text={'Inscription'}
-                        style={{...ApplicationStyles.formButton, marginBottom: 25}}
+                        style={{...Index.formButton, marginBottom: 25}}
                         textStyle={{fontFamily: Fonts.type.bold}}
                     />
                 </ScrollView>
@@ -186,7 +186,7 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.darkBlue,
     },
     checkBoxLine: {
-        ...ApplicationStyles.formCheckBoxText,
+        ...Index.formCheckBoxText,
         marginLeft: 4,
         color: Colors.green,
     },

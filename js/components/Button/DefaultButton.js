@@ -6,7 +6,7 @@ import {
     Text,
 } from 'react-native';
 import TouchableView from './TouchableView';
-import {ApplicationStyles, Fonts} from '../../styles';
+import {Index, Fonts} from '../../styles';
 
 const DefaultButton = props => {
     const rippleColor = props.rippleColor
@@ -37,7 +37,7 @@ DefaultButton.propTypes = {
 };
 
 const styles = StyleSheet.create({
-    ...ApplicationStyles,
+    ...Index,
     main: {
         flexDirection: 'row',
         padding: 15,

@@ -1,30 +1,28 @@
 import React from 'react';
 import {StyleSheet, Text, View, Image} from 'react-native';
-import PropTypes from 'prop-types';
-import {ApplicationStyles, Fonts, Images} from '../../styles';
-import Dash from 'react-native-dash';
-import CardSection from './CardSection';
-import CardProfile from './CardProfile';
-import CardMatch from './CardMatch';
+import {Index, Fonts, Images} from '../../styles';
+import CardComponentSection from './CardComponentSection';
+import CardComponentProfile from './CardComponentProfile';
+import CardComponentMatch from './CardComponentMatch';
 import DefaultButton from '../Button/DefaultButton';
-import Card from './Card';
+import CardStyles from '../../styles/ApplicationStyles/CardStyles';
 
-export default function CardPronostic({name, ...props}) {
+export default function CardPronostic({name, style = {}, ...props}) {
     return (
-        <Card>
-            <CardSection dashed>
-                <CardProfile/>
-            </CardSection>
-            <CardSection>
-                <CardMatch/>
+        <View style={[CardStyles.card, style]} {...props}>
+            <CardComponentSection dashed>
+                <CardComponentProfile/>
+            </CardComponentSection>
+            <CardComponentSection>
+                <CardComponentMatch/>
                 <DefaultButton
                     text={'Lyon Gagne par 2 buts (cote 2.20)'}
                     onPress={() => console.log('hey')}
                     style={styles.buttonStyle}
                     textStyle={styles.buttonText}
                 />
-            </CardSection>
-        </Card>
+            </CardComponentSection>
+        </View>
     );
 }
 

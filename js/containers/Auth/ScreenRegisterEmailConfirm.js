@@ -11,7 +11,7 @@ import {
     Linking,
 } from 'react-native';
 import useForm from 'react-hook-form';
-import {ApplicationStyles, Colors, Fonts} from '../../styles';
+import {Index, Colors, Fonts} from '../../styles';
 import FormError from '../../components/Form/FormError';
 import FormField from '../../components/Form/FormField';
 import MailOpener from '../../config/NativeModules/MailOpener';
@@ -52,7 +52,7 @@ const ScreenRegisterEmailConfirm = ({navigation}) => {
                         <Text style={styles.title}>
                             Confirmez votre inscription
                         </Text>
-                        <Text style={ApplicationStyles.sectionText}>
+                        <Text style={Index.sectionText}>
                             Nous vous avons envoyé un mail pour valider votre inscription.
                         </Text>
                     </View>
@@ -61,7 +61,7 @@ const ScreenRegisterEmailConfirm = ({navigation}) => {
                         <DefaultButton
                             onPress={onPress}
                             text={'Voir mes mails'}
-                            style={{...ApplicationStyles.formButton, marginBottom: 15}}
+                            style={{...Index.formButton, marginBottom: 15}}
                             textStyle={{fontFamily: Fonts.type.bold}}
                         />
                     </View>
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.darkBlue,
     },
     checkBoxLine: {
-        ...ApplicationStyles.formCheckBoxText,
+        ...Index.formCheckBoxText,
         marginLeft: 4,
         color: Colors.green,
     },

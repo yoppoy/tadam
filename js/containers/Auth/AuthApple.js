@@ -9,7 +9,7 @@ import formatError from '../../config/constants/networkErrors';
 import {navigationReset} from '../../config/Navigation/navigatorService';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {withNavigation} from 'react-navigation';
-import {ApplicationStyles} from '../../styles';
+import {Index} from '../../styles';
 
 const AuthApple = ({api, onConnected, onSuccess, navigation}) => {
     const [state, setState] = useState({
@@ -94,7 +94,7 @@ export default connect(
 )(withNavigation(AuthApple));
 
 const styles = StyleSheet.create({
-    ...ApplicationStyles,
+    ...Index,
     AuthButton: {
         backgroundColor: '#F0F1F5',
         margin: 0,

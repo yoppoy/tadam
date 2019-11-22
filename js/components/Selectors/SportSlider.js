@@ -1,7 +1,7 @@
-import React, {useState, useMemo} from 'react';
+import React from 'react';
 import {View, Text, StyleSheet, ScrollView} from 'react-native';
 import PropTypes from 'prop-types';
-import {ApplicationStyles, Colors, Fonts} from '../../styles';
+import {Index, Colors, Fonts} from '../../styles';
 import Icon from 'react-native-vector-icons/Ionicons';
 import TouchableView from '../Button/TouchableView';
 import SportSliderItem from './SportSliderItem';
@@ -9,10 +9,21 @@ import SportSliderItem from './SportSliderItem';
 function SportSlider({navigation, onSelect, ...props}) {
     return (
         <ScrollView
+            snapToEnd
+            snapToAlignment={'end'}
+            snapToInterval={80}
             showsHorizontalScrollIndicator={false}
             horizontal={true}
             contentContainerStyle={{flexDirection: 'row', marginVertical: 16, marginLeft: 9}}>
             <SportSliderItem name={'Football'} icon={<Icon name='md-baseball' style={{fontSize: 32}}/>} selected/>
+            <SportSliderItem name={'Football'} icon={<Icon name='md-baseball' style={{fontSize: 32}}/>}/>
+            <SportSliderItem name={'Football'} icon={<Icon name='md-baseball' style={{fontSize: 32}}/>}/>
+            <SportSliderItem name={'Football'} icon={<Icon name='md-baseball' style={{fontSize: 32}}/>}/>
+            <SportSliderItem name={'Football'} icon={<Icon name='md-baseball' style={{fontSize: 32}}/>}/>
+            <SportSliderItem name={'Football'} icon={<Icon name='md-baseball' style={{fontSize: 32}}/>}/>
+            <SportSliderItem name={'Football'} icon={<Icon name='md-baseball' style={{fontSize: 32}}/>}/>
+            <SportSliderItem name={'Football'} icon={<Icon name='md-baseball' style={{fontSize: 32}}/>}/>
+            <SportSliderItem name={'Football'} icon={<Icon name='md-baseball' style={{fontSize: 32}}/>}/>
             <SportSliderItem name={'Football'} icon={<Icon name='md-baseball' style={{fontSize: 32}}/>}/>
             <SportSliderItem name={'Football'} icon={<Icon name='md-baseball' style={{fontSize: 32}}/>}/>
             <SportSliderItem name={'Football'} icon={<Icon name='md-baseball' style={{fontSize: 32}}/>}/>
@@ -25,7 +36,7 @@ function SportSlider({navigation, onSelect, ...props}) {
 
 const styles = StyleSheet.create({
     container: {
-        ...ApplicationStyles.row,
+        ...Index.row,
     },
 });
 

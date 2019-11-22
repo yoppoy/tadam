@@ -5,7 +5,7 @@ import {useMutation} from '@apollo/react-hooks';
 import useForm from 'react-hook-form';
 import * as yup from 'yup';
 import {CREATE_USER} from '../../graphql/User';
-import {ApplicationStyles, Colors, Fonts} from '../../styles';
+import {Index, Colors, Fonts} from '../../styles';
 import FormError from '../../components/Form/FormError';
 import FormField from '../../components/Form/FormField';
 import {DefaultButton} from '../../components/Button';
@@ -104,7 +104,7 @@ const ScreenRegisterEmail = ({navigation}) => {
                                     onPress={() => setState({...state, passwordVisible: !state.passwordVisible})}>
                                     <Icon
                                         name={state.passwordVisible ? 'md-eye' : 'md-eye-off'}
-                                        style={ApplicationStyles.formIcon}/>
+                                        style={Index.formIcon}/>
                                 </TouchableView>}
                             error={errors.password && <FormError title={errors.password.message}/>}
                         />
@@ -115,7 +115,7 @@ const ScreenRegisterEmail = ({navigation}) => {
                         <DefaultButton
                             onPress={onVerify}
                             text={'Continuer'}
-                            style={{...ApplicationStyles.formButton, marginBottom: 25}}
+                            style={{...Index.formButton, marginBottom: 25}}
                             textStyle={{fontFamily: Fonts.type.bold}}
                         />
                     </View>
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.darkBlue,
     },
     checkBoxLine: {
-        ...ApplicationStyles.formCheckBoxText,
+        ...Index.formCheckBoxText,
         marginLeft: 4,
         color: Colors.green,
     },

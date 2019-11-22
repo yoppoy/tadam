@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import LinearGradient from 'react-native-linear-gradient';
 import TouchableView from '../Button/TouchableView';
 
-function OddsGrid({odds, style, ...props}) {
+function CardComponentOdds({odds, style, ...props}) {
     return (
 
         <View style={[styles.oddsContainer, style]}>
@@ -37,12 +37,12 @@ const styles = StyleSheet.create({
     },
 });
 
-OddsGrid.defaultProps = {
+CardComponentOdds.defaultProps = {
     style: {},
 };
 
-OddsGrid.propTypes = {
+CardComponentOdds.propTypes = {
     odds: PropTypes.arrayOf(PropTypes.number).isRequired,
 };
 
-export default OddsGrid;
+export default CardComponentOdds;

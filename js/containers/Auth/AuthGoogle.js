@@ -4,7 +4,7 @@ import {View, Text, StyleSheet} from 'react-native';
 import {GoogleSignin} from '@react-native-community/google-signin';
 import {DefaultButton} from '../../components/Button';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {ApplicationStyles} from '../../styles';
+import {Index} from '../../styles';
 
 const CANCELLED_ERROR = '12501';
 
@@ -48,7 +48,7 @@ const AuthGoogle = ({callback}) => {
 };
 
 const styles = StyleSheet.create({
-    ...ApplicationStyles,
+    ...Index,
     AuthButton: {
         backgroundColor: '#DD4B39',
         margin: 0,

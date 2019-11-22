@@ -1,7 +1,7 @@
 import React, {useState, useMemo} from 'react';
 import {View, StyleSheet, ScrollView} from 'react-native';
 import PropTypes from 'prop-types';
-import {ApplicationStyles} from '../../styles';
+import {Index} from '../../styles';
 import HeaderCalendarSelect from './HeaderCalendarSelect';
 import HeaderCalendarDay from './HeaderCalendarDay';
 import IconCalendar from '../../assets/img/misc/IconCalendar';
@@ -68,7 +68,7 @@ function HeaderCalendar({navigation, onDateSelect, ...props}) {
 
 const styles = StyleSheet.create({
     container: {
-        ...ApplicationStyles.row,
+        ...Index.row,
         backgroundColor: 'white',
         borderTopLeftRadius: 14,
         borderTopRightRadius: 14,

@@ -1,8 +1,8 @@
-import Fonts from './Fonts';
-import Metrics from './Metrics';
-import Colors from './Colors';
+import Fonts from '../Fonts';
+import Metrics from '../Metrics';
+import Colors from '../Colors';
 
-const ApplicationStyles = {
+const Index = {
     mainContainer: {
         flex: 1,
         backgroundColor: Colors.darkBlue,
@@ -32,14 +32,18 @@ const ApplicationStyles = {
         ...Fonts.style.h2,
         fontSize: 14,
     },
-    sectionTitle: {
-        ...Fonts.style.h4,
-        padding: Metrics.smallMargin,
-        marginTop: Metrics.smallMargin,
-        marginHorizontal: Metrics.baseMargin,
-        borderWidth: 1,
-        alignItems: 'center',
-        textAlign: 'center',
+    sectionBanner: {
+        fontFamily: Fonts.type.AvenirB,
+        fontSize: 10,
+        letterSpacing: 0.8,
+        flex: 1,
+        borderRadius: 4,
+        paddingVertical: 8,
+        paddingHorizontal: 12,
+        color: Colors.violet,
+        backgroundColor: 'rgba(88,86,214, 0.2)',
+        margin: 8,
+        marginTop: 16
     },
     title: {
         ...Fonts.style.title,
@@ -85,4 +89,4 @@ const ApplicationStyles = {
     },
 };
 
-export default ApplicationStyles;
+export default Index;

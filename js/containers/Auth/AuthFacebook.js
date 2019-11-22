@@ -9,7 +9,7 @@ import formatError from '../../config/constants/networkErrors';
 import {navigationReset} from '../../config/Navigation/navigatorService';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {withNavigation} from 'react-navigation';
-import {ApplicationStyles} from '../../styles';
+import {Index} from '../../styles';
 
 const AuthFacebook = ({type = 'signup', api, onConnected, onSuccess, navigation}) => {
     const [state, setState] = useState({
@@ -116,7 +116,7 @@ export default connect(
 )(withNavigation(AuthFacebook));
 
 const styles = StyleSheet.create({
-    ...ApplicationStyles,
+    ...Index,
     AuthButton: {
         backgroundColor: '#3B5999',
         margin: 0,

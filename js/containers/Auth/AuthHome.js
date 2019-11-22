@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {StyleSheet, View, SafeAreaView, Text} from 'react-native';
 import AuthFacebook from './AuthFacebook';
 import AuthGoogle from './AuthGoogle';
-import {ApplicationStyles} from '../../styles';
+import {Index} from '../../styles';
 import {DefaultButton} from '../../components/Button';
 import AuthLogin from './AuthLogin';
 import {NavigationActions, StackActions} from 'react-navigation';
@@ -31,6 +31,6 @@ const AuthHome = props => {
 export default AuthHome;
 
 const styles = StyleSheet.create({
-    ...ApplicationStyles,
+    ...Index,
     socialMediaContainer: {},
 });

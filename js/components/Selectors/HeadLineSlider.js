@@ -9,7 +9,7 @@ function HeadLineSlider({navigation, onSelect, ...props}) {
         <ScrollView
             snapToEnd
             snapToAlignment={'end'}
-            snapToInterval={138}
+            snapToInterval={139}
             showsHorizontalScrollIndicator={false}
             horizontal={true}
             style={styles.scroller}

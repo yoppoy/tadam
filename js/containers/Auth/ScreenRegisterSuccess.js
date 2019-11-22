@@ -11,7 +11,7 @@ import {
     Linking,
 } from 'react-native';
 import useForm from 'react-hook-form';
-import {ApplicationStyles, Colors, Fonts} from '../../styles';
+import {Index, Colors, Fonts} from '../../styles';
 import FormError from '../../components/Form/FormError';
 import FormField from '../../components/Form/FormField';
 import MailOpener from '../../config/NativeModules/MailOpener';
@@ -33,7 +33,7 @@ const ScreenRegisterSuccess = ({navigation}) => {
                         <Text style={styles.title}>
                             Inscription terminée
                         </Text>
-                        <Text style={{...ApplicationStyles.sectionText, marginLeft: 16, marginRight: 16}}>
+                        <Text style={{...Index.sectionText, marginLeft: 16, marginRight: 16}}>
                             Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem
                             Ipsum ha sido el texto de relleno
                         </Text>
@@ -42,7 +42,7 @@ const ScreenRegisterSuccess = ({navigation}) => {
                         <DefaultButton
                             onPress={() => navigationReset(navigation, 'App')}
                             text={'Continuer'}
-                            style={{...ApplicationStyles.formButton, marginBottom: 15}}
+                            style={{...Index.formButton, marginBottom: 15}}
                             textStyle={{fontFamily: Fonts.type.bold}}
                         />
                     </View>
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.darkBlue,
     },
     checkBoxLine: {
-        ...ApplicationStyles.formCheckBoxText,
+        ...Index.formCheckBoxText,
         marginLeft: 4,
         color: Colors.green,
     },

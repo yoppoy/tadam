@@ -4,24 +4,21 @@ import {Colors, Fonts, Images} from '../../styles';
 import PropTypes from 'prop-types';
 import LinearGradient from 'react-native-linear-gradient';
 import TouchableView from '../Button/TouchableView';
-import OddsGrid from '../Card/OddsGrid';
+import CardComponentGrid from '../Card/CardComponentOdds';
 
 function HeadLineSliderItem({teamA, teamB, odds, imageSource, ...props}) {
     return (
         <TouchableView rippleColor={Colors.grey} rippleBorderless={false} useForeground>
             <View style={styles.container}>
-                <Image
-                    style={styles.background}
-                    source={imageSource}
-                />
+                <Image style={styles.background} source={imageSource}/>
                 <LinearGradient
-                    colors={[Colors.darkBlue, 'rgba(255, 255, 255, 0)']}
+                    colors={[Colors.darkBlue, 'rgba(32,36,51, 0)']}
                     style={styles.topGradient}/>
                 <View style={styles.textMatchContainer}>
                     <Text style={styles.textMatch}>{teamA}</Text>
                     <Text style={styles.textMatch}>{teamB}</Text>
                 </View>
-                <OddsGrid style={styles.oddsContainer} odds={odds}/>
+                <CardComponentGrid style={styles.oddsContainer} odds={odds}/>
             </View>
         </TouchableView>
     );

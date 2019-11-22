@@ -1,20 +1,20 @@
 import React from 'react';
 import {StyleSheet, Text, View, Image} from 'react-native';
 import PropTypes from 'prop-types';
-import {ApplicationStyles, Fonts, Images} from '../../styles';
+import {Index, Fonts, Images} from '../../styles';
 import Dash from 'react-native-dash';
 
-export default function CardProfile({name, ...props}) {
+export default function CardComponentProfile({name, ...props}) {
     return (
-        <View style={{...ApplicationStyles.rowSpaceBetween}}>
-            <View style={{...ApplicationStyles.row}}>
+        <View style={{...Index.rowSpaceBetween}}>
+            <View style={{...Index.row}}>
                 <Image
                     style={{width: 28, height: 28, marginRight: 7}}
                     source={Images.testProfileImg}
                 />
                 <Text style={styles.name}>Diego Morata</Text>
             </View>
-            <View style={{...ApplicationStyles.rowSpaceBetween, paddingVertical: 5}}>
+            <View style={{...Index.rowSpaceBetween, paddingVertical: 5}}>
                 <Text style={styles.stats}>1503€</Text>
                 <Text style={styles.stats}> - </Text>
                 <Text style={styles.stats}>13%</Text>
@@ -25,12 +25,12 @@ export default function CardProfile({name, ...props}) {
     );
 }
 
-CardProfile.defaultProps = {
+CardComponentProfile.defaultProps = {
     dashed: false,
     name: '...',
 };
 
-CardProfile.propTypes = {
+CardComponentProfile.propTypes = {
     dashed: PropTypes.bool,
     name: PropTypes.string,
 };
