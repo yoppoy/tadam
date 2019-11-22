@@ -36,7 +36,6 @@ const Index = {
         fontFamily: Fonts.type.AvenirB,
         fontSize: 10,
         letterSpacing: 0.8,
-        flex: 1,
         borderRadius: 4,
         paddingVertical: 8,
         paddingHorizontal: 12,

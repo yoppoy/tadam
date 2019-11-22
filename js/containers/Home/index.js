@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {StyleSheet, SafeAreaView, ScrollView, View, Button, Text, RefreshControl} from 'react-native';
+import {Platform, SafeAreaView, ScrollView, View, Button, Text, RefreshControl} from 'react-native';
 import {Index, Colors, Fonts} from '../../styles';
 import AuthActions from '../../redux/auth-reducer';
 import CardComponentMatch from '../../components/Card/CardComponentMatch';
@@ -39,12 +39,24 @@ const HomeScreen = props => {
                                     progressBackgroundColor={Colors.darkBlue}
                     />
                 }>
+                {Platform.OS === 'ios' && (
+                    <View
+                        style={{
+                            backgroundColor: '#EFEFEF',
+                            height: 500,
+                            position: 'absolute',
+                            bottom: -500,
+                            left: 0,
+                            right: 0,
+                        }}
+                    />
+                )}
                 <SportSlider/>
                 <View style={{backgroundColor: Colors.grey, borderTopLeftRadius: 14, borderTopRightRadius: 14}}>
                     <HeadLineSlider/>
                     <HeaderCalendar onDateSelect={date => console.log(date)}/>
                 </View>
-                <View style={{backgroundColor: '#EFEFEF'}}>
+                <View style={{backgroundColor: '#EFEFEF', flexGrow: 999}}>
                     <Text style={Index.sectionBanner}>TOP COMPÉTITIONS</Text>
                     <CardDropdown title={'Ligue 1'}>
                         <CardComponentMatch/>
