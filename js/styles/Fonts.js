@@ -1,5 +1,5 @@
 const type = {
-    bold: 'BaiJamjuree-Bold',
+    bold: 'AvenirNext-Bold',
     medium: 'BaiJamjuree-Medium',
     base: 'BaiJamjuree-Regular',
     sofia: 'SofiaProSemiBold',
@@ -40,7 +40,8 @@ export default {
     title: {
         fontFamily: type.bold,
         fontSize: 40,
-        lineHeight: 40,
+        lineHeight: 44,
+        letterSpacing: -0.31,
     },
     label: {
         fontFamily: type.regular,

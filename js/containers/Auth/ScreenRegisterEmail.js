@@ -14,6 +14,7 @@ import TouchableView from '../../components/Button/TouchableView';
 import Icon from 'react-native-vector-icons/Ionicons';
 import FormCheckboxLine from '../../components/Form/FormCheckboxLine';
 import GraphqlError from '../../components/Error/GraphqlError';
+import Header from '../../components/Navigation/Header';
 
 const EmailSchema = yup.object().shape({
     email: yup.string().email().required(),
@@ -48,6 +49,7 @@ const ScreenRegisterEmail = ({navigation}) => {
     return (
         <View style={{flex: 1, backgroundColor: Colors.darkBlue}}>
             <SafeAreaView style={styles.container}>
+                <Header/>
                 <ScrollView
                     keyboardShouldPersistTaps={'handled'} style={styles.scrollContainer}
                     contentContainerStyle={{flexGrow: 1}}>

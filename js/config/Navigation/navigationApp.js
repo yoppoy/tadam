@@ -1,13 +1,15 @@
 import React from 'react';
 import {Image} from 'react-native';
 import {createBottomTabNavigator, BottomTabBar} from 'react-navigation-tabs';
-import HomeScreen from '../../containers/Home/index';
+import HomeScreen from '../../containers/Pronostic/ScreenHome';
+import MatchScreen from '../../containers/Pronostic/ScreenMatch';
 import IconVip from '../../assets/img/menu/icon-vip';
 import IconLiveScore from '../../assets/img/menu/icon-livescore';
 import IconMenu from '../../assets/img/menu/icon-menu';
 import IconNotif from '../../assets/img/menu/icon-notif';
 import OverflowTab from '../../components/Navigation/OverflowTab';
 import {Colors, Fonts, Images} from '../../styles';
+import navigationProno from './navigationProno';
 
 const navigationApp = createBottomTabNavigator(
     {
@@ -28,7 +30,7 @@ const navigationApp = createBottomTabNavigator(
             }),
         },
         Pronos: {
-            screen: HomeScreen,
+            screen: navigationProno,
             navigationOptions: () => ({
                 tabBarIcon: ({tintColor}) => (
                     <OverflowTab

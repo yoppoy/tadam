@@ -1,15 +1,18 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Platform, SafeAreaView, ScrollView, View, Button, Text, RefreshControl} from 'react-native';
+import {Platform, SafeAreaView, ScrollView, View, Button, Text, RefreshControl, TouchableOpacity} from 'react-native';
 import {Index, Colors, Fonts} from '../../styles';
 import AuthActions from '../../redux/auth-reducer';
 import CardComponentMatch from '../../components/Card/CardComponentMatch';
 import HeaderCalendar from '../../components/HeaderCalendar/HeaderCalendar';
-import SportSlider from '../../components/Selectors/SportSlider';
+import SportSlider from '../../components/Sliders/SportSlider';
 import CardPronostic from '../../components/Card/CardPronostic';
-import HeadLineSlider from '../../components/Selectors/HeadLineSlider';
+import HeadLineSlider from '../../components/Sliders/HeadLineSlider';
 import CardDropdown from '../../components/Card/CardDropdown';
 import CardComponentOdds from '../../components/Card/CardComponentOdds';
+import Header from '../../components/Navigation/Header';
+import CardStyles from '../../styles/ApplicationStyles/CardStyles';
+import TouchableView from '../../components/Button/TouchableView';
 
 function wait(timeout) {
     return new Promise(resolve => {
@@ -17,7 +20,7 @@ function wait(timeout) {
     });
 }
 
-const HomeScreen = props => {
+const ScreenHome = ({navigation, ...props}) => {
     const [refreshing, setRefreshing] = React.useState(false);
 
     const onRefresh = React.useCallback(() => {
@@ -51,16 +54,21 @@ const HomeScreen = props => {
                         }}
                     />
                 )}
+                <Header/>
                 <SportSlider/>
-                <View style={{backgroundColor: Colors.grey, borderTopLeftRadius: 14, borderTopRightRadius: 14}}>
+                <View style={{...CardStyles.cardContainer, padding: 0}}>
                     <HeadLineSlider/>
                     <HeaderCalendar onDateSelect={date => console.log(date)}/>
                 </View>
-                <View style={{backgroundColor: '#EFEFEF', flexGrow: 999}}>
+                <View style={{backgroundColor: '#EFEFEF', flexGrow: 999, padding: 8}}>
                     <Text style={Index.sectionBanner}>TOP COMPÉTITIONS</Text>
                     <CardDropdown title={'Ligue 1'}>
-                        <CardComponentMatch/>
-                        <CardComponentOdds odds={[2.3, 1, 1.5]}/>
+                        <TouchableOpacity rippleColor={'red'} onPress={() => navigation.navigate('Match')}>
+                            <React.Fragment>
+                                <CardComponentMatch/>
+                                <CardComponentOdds odds={[2.3, 1, 1.5]}/>
+                            </React.Fragment>
+                        </TouchableOpacity>
                     </CardDropdown>
                     <CardDropdown title={'Première Ligue (Angleterre)'}>
                         <CardComponentMatch/>
@@ -90,4 +98,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps,
-)(HomeScreen);
+)(ScreenHome);

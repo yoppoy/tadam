@@ -14,11 +14,11 @@ const DefaultButton = props => {
         : 'rgba(255, 255, 255, 1)';
 
     return (
-        <TouchableView onPress={props.onPress} rippleColor={rippleColor}>
-            <View style={props.style ? [styles.main, props.style] : styles.main}>
+        <TouchableView onPress={props.onPress} style={props.touchStyle} rippleColor={rippleColor}>
+            <View style={[styles.main, props.style]}>
                 {props.icon && props.icon}
                 {props.text ? (
-                    <Text style={props.textStyle ? [styles.text, props.textStyle] : styles.text}>{props.text}</Text>
+                    <Text style={[styles.text, props.textStyle]}>{props.text}</Text>
                 ) : (
                     props.children
                 )}
@@ -26,14 +26,18 @@ const DefaultButton = props => {
         </TouchableView>
     );
 };
-
+DefaultButton.defaultProps = {
+    style: {},
+    textStyle: {},
+    touchStyle: {},
+};
 DefaultButton.propTypes = {
     onPress: PropTypes.func.isRequired,
     text: PropTypes.string,
     rippleColor: PropTypes.string,
     style: PropTypes.object,
     textStyle: PropTypes.object,
-    icon: PropTypes.object
+    icon: PropTypes.object,
 };
 
 const styles = StyleSheet.create({
@@ -45,7 +49,7 @@ const styles = StyleSheet.create({
         marginBottom: 0,
         backgroundColor: 'black',
         alignItems: 'center',
-        borderRadius: 4
+        borderRadius: 4,
     },
     text: {
         ...Fonts.button,

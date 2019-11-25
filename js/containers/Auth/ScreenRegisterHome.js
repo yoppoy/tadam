@@ -5,7 +5,6 @@ import AuthGoogle from './AuthGoogle';
 import {Index} from '../../styles';
 import {Fonts} from '../../styles';
 import {DefaultButton} from '../../components/Button';
-import AuthLogin from './AuthLogin';
 import AuthApple from './AuthApple';
 import {NavigationActions, StackActions} from 'react-navigation';
 

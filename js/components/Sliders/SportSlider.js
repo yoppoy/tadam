@@ -14,7 +14,7 @@ function SportSlider({navigation, onSelect, ...props}) {
             snapToInterval={80}
             showsHorizontalScrollIndicator={false}
             horizontal={true}
-            contentContainerStyle={{flexDirection: 'row', marginVertical: 16, marginLeft: 9}}>
+            contentContainerStyle={{flexDirection: 'row', marginBottom: 16, marginTop: 4, marginLeft: 9}}>
             <SportSliderItem name={'Football'} icon={<Icon name='md-baseball' style={{fontSize: 32}}/>} selected/>
             <SportSliderItem name={'Football'} icon={<Icon name='md-baseball' style={{fontSize: 32}}/>}/>
             <SportSliderItem name={'Football'} icon={<Icon name='md-baseball' style={{fontSize: 32}}/>}/>

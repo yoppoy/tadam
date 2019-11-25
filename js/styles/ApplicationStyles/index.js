@@ -41,8 +41,8 @@ const Index = {
         paddingHorizontal: 12,
         color: Colors.violet,
         backgroundColor: 'rgba(88,86,214, 0.2)',
-        margin: 8,
-        marginTop: 16
+        marginBottom: 8,
+        marginTop: 12,
     },
     title: {
         ...Fonts.style.title,
@@ -65,7 +65,7 @@ const Index = {
         backgroundColor: Colors.green,
         alignItems: 'center',
         justifyContent: 'center',
-        padding: 12,
+        padding: 14,
         margin: 0,
     },
     formCheckBoxText: {

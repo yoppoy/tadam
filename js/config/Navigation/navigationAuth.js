@@ -1,5 +1,5 @@
 import {createStackNavigator} from 'react-navigation-stack';
-import ScreenRegister from '../../containers/Auth/ScreenRegister';
+import ScreenRegisterProfile from '../../containers/Auth/ScreenRegisterProfile';
 import ScreenRegisterHome from '../../containers/Auth/ScreenRegisterHome';
 import ScreenRegisterEmail from '../../containers/Auth/ScreenRegisterEmail';
 import ScreenRegisterEmailConfirm from '../../containers/Auth/ScreenRegisterEmailConfirm';
@@ -11,7 +11,7 @@ const navigationAuth = createStackNavigator(
         RegisterEmail: ScreenRegisterEmail,
         RegisterEmailConfirm: ScreenRegisterEmailConfirm,
         RegisterSuccess: ScreenRegisterSuccess,
-        Register: ScreenRegister,
+        Register: ScreenRegisterProfile,
     },
     {
         initialRouteName: 'RegisterHome',

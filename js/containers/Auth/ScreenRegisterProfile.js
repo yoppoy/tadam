@@ -15,6 +15,7 @@ import TouchableView from '../../components/Button/TouchableView';
 import {DefaultButton} from '../../components/Button';
 import FormCheckboxLine from '../../components/Form/FormCheckboxLine';
 import FormDropdown from '../../components/Form/FormDropdown';
+import Header from '../../components/Navigation/Header';
 
 const RegisterSchema = yup.object().shape({
     pseudo: yup.string().min(1).max(128).required(),
@@ -28,7 +29,7 @@ const RegisterSchema = yup.object().shape({
 });
 
 
-const ScreenRegister = ({navigation}) => {
+const ScreenRegisterProfile = ({navigation}) => {
     const {register, setValue, handleSubmit, errors, triggerValidation} = useForm({
         validationSchema: RegisterSchema,
         submitFocusError: true,
@@ -77,6 +78,7 @@ const ScreenRegister = ({navigation}) => {
                     keyboardShouldPersistTaps={'handled'} style={styles.scrollContainer}
                     contentContainerStyle={{flexGrow: 1, justifyContent: 'space-between'}}>
                     <View>
+                        <Header/>
                         <Text style={styles.title}>
                             Inscription
                         </Text>
@@ -167,7 +169,7 @@ const ScreenRegister = ({navigation}) => {
     );
 };
 
-export default ScreenRegister;
+export default ScreenRegisterProfile;
 
 const styles = StyleSheet.create({
     container: {
@@ -182,7 +184,8 @@ const styles = StyleSheet.create({
         flex: 1,
         flexGrow: 1,
         flexDirection: 'column',
-        padding: 16,
+        paddingHorizontal: 16,
+        paddingBottom: 16,
         backgroundColor: Colors.darkBlue,
     },
     checkBoxLine: {
