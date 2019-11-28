@@ -10,7 +10,7 @@ const navigationProno = createStackNavigator(
         Subscribe: ScreenSubscription,
     },
     {
-        initialRouteName: 'Subscribe',
+        initialRouteName: 'Match',
         defaultNavigationOptions: {
             header: null,
         },

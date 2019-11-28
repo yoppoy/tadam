@@ -33,7 +33,7 @@ DefaultButton.defaultProps = {
 };
 DefaultButton.propTypes = {
     onPress: PropTypes.func.isRequired,
-    text: PropTypes.string,
+    text: PropTypes.string.isRequired,
     rippleColor: PropTypes.string,
     style: PropTypes.object,
     textStyle: PropTypes.object,

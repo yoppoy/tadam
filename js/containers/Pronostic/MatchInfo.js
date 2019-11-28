@@ -1,6 +1,7 @@
 import React from 'react';
 import {Image, Text, View} from 'react-native';
 import PropTypes from 'prop-types';
+import {scale, verticalScale} from 'react-native-size-matters';
 import ApplicationStyles from '../../styles/ApplicationStyles';
 import {Colors, Fonts, Images} from '../../styles';
 
@@ -66,7 +67,7 @@ const styles = {
         marginBottom: 0,
     },
     textHour: {
-        fontSize: 28,
+        fontSize: scale(24),
         fontFamily: Fonts.type.AvenirB,
         color: 'white',
         letterSpacing: 1.2,
@@ -103,7 +104,7 @@ const styles = {
         alignItems: 'center',
         marginTop: 20,
         marginBottom: 15,
-        marginHorizontal: 12,
+        marginHorizontal: scale(12),
     },
     textOddsScore: {
         padding: 6,

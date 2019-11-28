@@ -47,7 +47,7 @@ const ScreenSubscription = ({...props}) => {
                                         <Text style={styles.textOfferPrice}>{offer.price.toFixed(2)} €</Text>
                                         <View style={{
                                             ...styles.textOfferContainer,
-                                            backgroundColor: selected === index ? 'rgba(216, 216, 216, 0.5)' : 'rgba(216, 216, 216, 0.1)',
+                                            backgroundColor: selected === index ? 'rgba(216, 216, 216, 0.5)' : 'green',
                                         }}>
                                             <Text style={{...styles.textOfferCount}}>{offer.pronoCount}</Text>
                                         </View>
