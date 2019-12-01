@@ -8,7 +8,7 @@ const Navigation = createStackNavigator(
         Main: {
             screen: navigationRoot,
         },
-        CalendarPicker: {
+        ModalCalendarPicker: {
             screen: CalendarPicker,
         },
     },

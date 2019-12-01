@@ -1,9 +1,9 @@
 import React from 'react';
 import Svg, {G, Path} from 'react-native-svg';
+import {moderateScale} from '../../../services/pixelResizer';
 /* SVGR has dropped some elements not supported by react-native-svg: title */
 
 const IconLiveScore = ({tintColor, ...props}) => {
-    console.log(JSON.stringify(props));
     return (
         <Svg width={22} height={21} {...props}>
             <G fill={tintColor} fillRule="evenodd">

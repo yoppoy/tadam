@@ -7,8 +7,14 @@ import {Colors, Fonts} from '../../styles';
 const Header = ({navigation, style, left, right, title, ...props}) => {
     return (
         <View style={[styles.header, style]} {...props}>
-            <View style={{width: 50, paddingLeft: 5}}>
-                {left && (
+            <View style={{flex: 1}}>
+                {title && (
+                    <Text style={styles.headerText}>{title}</Text>
+                )}
+            </View>
+            {!left && (
+                <View style={{position: 'absolute', left: 0, paddingLeft: 25}}>
+
                     <TouchableOpacity
                         onPress={() => navigation.goBack()}
                         hitSlop={{top: 15, bottom: 15, left: 15, right: 15}}>
@@ -16,31 +22,24 @@ const Header = ({navigation, style, left, right, title, ...props}) => {
                             <Icon name={'ios-arrow-back'} style={styles.headerIcon}/>
                         </View>
                     </TouchableOpacity>
-                )}
-            </View>
-            <View>
-                {title && (
-                    <Text style={styles.headerText}>{title}</Text>
-                )}
-            </View>
-            <View style={{width: 50}}>
-                {right && (
-                    <TouchableOpacity
-                        onPress={() => console.log('hey')}
-                        hitSlop={{top: 15, bottom: 15, left: 15, right: 15}}>
-                        <View style={{alignSelf: 'center'}}>
-                            <Icon name={'ios-search'} style={styles.headerIcon}/>
-                        </View>
-                    </TouchableOpacity>
-                )}
-            </View>
+
+                </View>
+            )}
+            {left && (
+                <View style={{position: 'absolute', left: 0}}>
+                    {right}
+                </View>
+            )}
+            {right && (
+                <View style={{position: 'absolute', right: 0}}>
+                    {right}
+                </View>
+            )}
         </View>
     );
 };
 
 Header.defaultProps = {
-    left: true,
-    right: false,
     style: {},
 };
 
@@ -59,6 +58,7 @@ const styles = StyleSheet.create({
     },
     headerText: {
         color: 'white',
+        textAlign: 'center',
         fontSize: 16,
         fontFamily: Fonts.type.AvenirB,
         letterSpacing: 0.36,

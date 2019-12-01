@@ -1,8 +1,8 @@
 import React from 'react';
 import {Image} from 'react-native';
-import {createBottomTabNavigator, BottomTabBar} from 'react-navigation-tabs';
+import {createBottomTabNavigator} from 'react-navigation-tabs';
 import HomeScreen from '../../containers/Pronostic/ScreenHome';
-import MatchScreen from '../../containers/Pronostic/ScreenMatch';
+import {moderateScale} from '../../services/pixelResizer';
 import IconVip from '../../assets/img/menu/icon-vip';
 import IconLiveScore from '../../assets/img/menu/icon-livescore';
 import IconMenu from '../../assets/img/menu/icon-menu';
@@ -76,7 +76,7 @@ const navigationApp = createBottomTabNavigator(
             style: {
                 borderTopColor: 'transparent',
                 paddingTop: 4,
-                height: 62,
+                height: moderateScale(62, 62),
                 elevation: 30,
                 shadowOpacity: 0.75,
                 shadowRadius: 5,

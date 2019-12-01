@@ -12,6 +12,7 @@ import MatchInfo from './MatchInfo';
 import BottomModal from '../../components/BottomModal';
 import Icon from 'react-native-vector-icons/Ionicons';
 import PronosticCreate from './PronosticCreate';
+import Modal from 'react-native-modal';
 
 function wait(timeout) {
     return new Promise(resolve => {
@@ -30,6 +31,7 @@ const ScreenMatch = props => {
 
         wait(2000).then(() => setState({...state, refreshing: false}));
     }, [state]);
+
 
     return (
         <SafeAreaView style={{backgroundColor: Colors.darkBlue, flex: 1}}>
@@ -59,7 +61,7 @@ const ScreenMatch = props => {
                                    touchStyle={{flex: 1}}
                                    textStyle={{fontSize: scale(14), color: Colors.green}}/>
                 </View>
-                <View style={{...CardStyles.cardContainer, marginTop: 30, flexGrow: 1}}>
+                <View style={{...CardStyles.cardContainer, marginTop: verticalScale(30, 30), flexGrow: 1}}>
 
                 </View>
             </ScrollView>
@@ -116,7 +118,7 @@ const styles = {
     modalHeader: {
         ...Index.row,
         paddingHorizontal: 24,
-        paddingVertical: 16,
+        paddingVertical: verticalScale(16, 16),
     },
     modalTitle: {
         flex: 1,

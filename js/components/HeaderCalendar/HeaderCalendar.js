@@ -58,7 +58,7 @@ function HeaderCalendar({navigation, onDateSelect, ...props}) {
             </View>
             <View style={{flex: 1}}>
                 <HeaderCalendarSelect
-                    onPress={() => navigation.navigate('CalendarPicker', {onSelect: onCalendarSelect})}>
+                    onPress={() => navigation.navigate('ModalCalendarPicker', {onSelect: onCalendarSelect})}>
                     <IconCalendar/>
                 </HeaderCalendarSelect>
             </View>

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Image, Text, View} from 'react-native';
 import PropTypes from 'prop-types';
-import {scale, verticalScale} from 'react-native-size-matters';
+import {moderateScale, scale, verticalScale} from '../../services/pixelResizer';
 import ApplicationStyles from '../../styles/ApplicationStyles';
 import {Colors, Fonts, Images} from '../../styles';
 
@@ -63,7 +63,7 @@ const styles = {
     container: {
         ...ApplicationStyles.rowSpaceBetween,
         margin: 12,
-        marginTop: 24,
+        marginTop: verticalScale(24, 24),
         marginBottom: 0,
     },
     textHour: {
@@ -81,17 +81,17 @@ const styles = {
         color: 'white',
     },
     teamContainer: {
-        height: 64,
-        marginHorizontal: 13,
+        height: scale(64, 64),
+        marginHorizontal: verticalScale(13, 13),
         alignItems: 'center',
         justifyContent: 'center',
     },
     teamImage: {
-        width: 56,
+        width: scale(56, 56),
         marginHorizontal: 5,
     },
     teamText: {
-        marginTop: 16,
+        marginTop: verticalScale(16, 16),
         alignSelf: 'center',
         fontFamily: Fonts.type.AvenirB,
         color: 'white',
@@ -102,9 +102,9 @@ const styles = {
         borderColor: '#2E374A',
         borderWidth: 1,
         alignItems: 'center',
-        marginTop: 20,
-        marginBottom: 15,
-        marginHorizontal: scale(12),
+        marginTop: verticalScale(20, 20),
+        marginBottom: verticalScale(15, 15),
+        marginHorizontal: scale(12, 12),
     },
     textOddsScore: {
         padding: 6,

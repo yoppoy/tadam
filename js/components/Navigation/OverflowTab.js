@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {View, Platform, StyleSheet} from 'react-native';
+import {scale, moderateScale} from '../../services/pixelResizer';
 import {Colors} from '../../styles';
 
 const OverflowTab = ({icon}) => {
@@ -23,9 +24,9 @@ const styles = StyleSheet.create({
         left: 0,
         alignItems: 'center',
         justifyContent: 'center',
-        width: 70,
-        height: 70,
-        borderRadius: 70,
+        width: moderateScale(70, 70),
+        height: moderateScale(70, 70),
+        borderRadius: moderateScale(70, 70),
         borderColor: 'white',
         borderWidth: 10,
         marginBottom: Platform.OS === 'android' ? -6 : -3,

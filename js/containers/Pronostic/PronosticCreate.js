@@ -1,15 +1,16 @@
 import React, {useState} from 'react';
 import {Platform, SafeAreaView, Text, View, TouchableOpacity, TextInput} from 'react-native';
 import PropTypes from 'prop-types';
-import {scale, verticalScale} from 'react-native-size-matters';
+import {withNavigation} from 'react-navigation';
+import Modal from 'react-native-modal';
+import {scale, verticalScale, moderateScale} from '../../services/pixelResizer';
 import ApplicationStyles from '../../styles/ApplicationStyles';
 import {Colors, Fonts, Images, Index} from '../../styles';
 import Icon from 'react-native-vector-icons/Ionicons';
-import BottomModal from '../../components/BottomModal';
 import DefaultButton from '../../components/Button/DefaultButton';
 import TouchableView from '../../components/Button/TouchableView';
 
-export default function PronosticCreate({style, ...props}) {
+function PronosticCreate({navigation, style, ...props}) {
     const [state, setState] = useState({
         selected: 2,
         odds: [
@@ -39,7 +40,7 @@ export default function PronosticCreate({style, ...props}) {
                         <Icon name={'ios-arrow-down'} style={styles.dropdownIcon}/>
                     </View>
                 </TouchableView>
-                <View style={{marginBottom: verticalScale(24)}}>
+                <View style={{marginBottom: verticalScale(24, 24)}}>
                     <View style={styles.oddsTopRow}>
                         {state.odds.map((odd, index) => {
                             return (
@@ -76,7 +77,7 @@ export default function PronosticCreate({style, ...props}) {
                         })}
                     </View>
                 </View>
-                <View style={{marginBottom: verticalScale(24)}}>
+                <View style={{marginBottom: verticalScale(24, 24)}}>
                     <Text style={{...styles.textAmount, marginBottom: 9}}>Votre mise</Text>
                     <View style={{...Index.row}}>
                         <View style={[styles.inputContainer, isNaN(state.amount) && {borderColor: Colors.redError}]}>
@@ -114,7 +115,7 @@ export default function PronosticCreate({style, ...props}) {
                             marginRight: scale(8),
                         }}
                         touchStyle={{flex: 2}}
-                        textStyle={{fontSize: verticalScale(14), color: '#804E586E'}}
+                        textStyle={{fontSize: verticalScale(14, 14), color: '#804E586E'}}
                         rippleColor={'lightgrey'}
                         onPress={() => console.log('lol')}
                     />
@@ -126,7 +127,7 @@ export default function PronosticCreate({style, ...props}) {
                             borderColor: Colors.green,
                             flex: Platform.OS === 'android' ? 4 : 0,
                         }}
-                        textStyle={{fontSize: verticalScale(14)}}
+                        textStyle={{fontSize: verticalScale(14, 14)}}
                         touchStyle={{flex: 4}}
                         onPress={() => console.log('lol')}
                     />
@@ -147,8 +148,8 @@ PronosticCreate.propTypes = {
 const styles = {
     container: {
         ...ApplicationStyles.rowSpaceBetween,
-        margin: verticalScale(12),
-        marginTop: verticalScale(24),
+        margin: verticalScale(12, 12),
+        marginTop: verticalScale(24, 24),
         marginBottom: 0,
     },
     safeContainer: {
@@ -172,7 +173,7 @@ const styles = {
         fontSize: scale(18),
         letterSpacing: -0.27,
         alignSelf: 'center',
-        marginBottom: verticalScale(22),
+        marginBottom: verticalScale(22, 22),
     },
     dropdown: {
         ...Index.row,
@@ -181,16 +182,16 @@ const styles = {
         backgroundColor: '#EAEBEE',
         justifyContent: 'center',
         position: 'relative',
-        marginBottom: verticalScale(22),
+        marginBottom: verticalScale(22, 22),
     },
     dropdownText: {
         color: Colors.oxfordBlue,
         fontFamily: Fonts.type.Avenir,
-        fontSize: scale(14),
+        fontSize: scale(14, 14),
     },
     dropdownIcon: {
         color: '#4E586E',
-        fontSize: scale(16),
+        fontSize: scale(16, 16),
         position: 'absolute',
         right: 0,
         marginRight: 15,
@@ -216,13 +217,13 @@ const styles = {
     oddsTopContainer: {
         alignItems: 'center',
         justifyContent: 'center',
-        padding: verticalScale(14),
+        padding: verticalScale(14, 14),
         borderTopRightRadius: 4,
         borderTopLeftRadius: 4,
     },
     oddsTopText: {
         fontFamily: Fonts.type.AvenirDB,
-        fontSize: scale(13),
+        fontSize: scale(13, 13),
         letterSpacing: 0.6,
         opacity: 0.5,
         color: Colors.darkBlue,
@@ -231,13 +232,13 @@ const styles = {
         flex: 1,
         alignItems: 'center',
         backgroundColor: '#EAEBEE',
-        padding: verticalScale(8),
+        padding: verticalScale(8, 8),
         borderBottomLeftRadius: 4,
         borderBottomRightRadius: 4,
     },
     oddsBottomText: {
         fontFamily: Fonts.type.Avenir,
-        fontSize: scale(13),
+        fontSize: scale(13, 13),
         letterSpacing: 0.22,
         opacity: 0.5,
         color: Colors.darkBlue,
@@ -255,15 +256,15 @@ const styles = {
         borderRadius: 4,
         borderWidth: 1,
         borderColor: Colors.green,
-        paddingRight: scale(17),
-        paddingLeft: scale(13),
-        marginRight: scale(15),
+        paddingRight: scale(17, 17),
+        paddingLeft: scale(13, 13),
+        marginRight: scale(15, 15),
     },
     inputAmount: {
         width: scale(60),
-        paddingVertical: verticalScale(13),
-        marginRight: scale(5),
-        fontSize: verticalScale(16),
+        paddingVertical: verticalScale(13, 13),
+        marginRight: scale(5, 5),
+        fontSize: verticalScale(16, 16),
     },
     textAmount: {
         fontFamily: Fonts.type.base,
@@ -275,8 +276,8 @@ const styles = {
     button: {
         margin: 0,
         alignSelf: 'stretch',
-        paddingHorizontal: scale(14),
-        paddingVertical: verticalScale(14),
+        paddingHorizontal: scale(14, 14),
+        paddingVertical: verticalScale(14, 14),
         justifyContent: 'center',
         backgroundColor: 'white',
         borderColor: '#804E586E',
@@ -284,3 +285,5 @@ const styles = {
     },
 
 };
+
+export default withNavigation(PronosticCreate);
