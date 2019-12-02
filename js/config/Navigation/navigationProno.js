@@ -10,10 +10,10 @@ const navigationProno = createStackNavigator(
         Home: ScreenHome,
         Match: ScreenMatch,
         Subscribe: ScreenSubscription,
-        ModalPronoPicker: PronosticPicker,
+        //ModalPronoPicker: PronosticPicker,
     },
     {
-        initialRouteName: 'ModalPronoPicker',
+        initialRouteName: 'Match',
         defaultNavigationOptions: {
             header: null,
         },

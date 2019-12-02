@@ -1,18 +1,16 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Platform, SafeAreaView, ScrollView, View, Button, Text, RefreshControl, TouchableOpacity} from 'react-native';
+import {Platform, SafeAreaView, ScrollView, View, Text, RefreshControl, TouchableOpacity} from 'react-native';
 import {Index, Colors, Fonts} from '../../styles';
 import AuthActions from '../../redux/auth-reducer';
 import CardComponentMatch from '../../components/Card/CardComponentMatch';
 import HeaderCalendar from '../../components/HeaderCalendar/HeaderCalendar';
 import SportSlider from '../../components/Sliders/SportSlider';
-import CardPronostic from '../../components/Card/CardPronostic';
 import HeadLineSlider from '../../components/Sliders/HeadLineSlider';
 import CardDropdown from '../../components/Card/CardDropdown';
 import CardComponentOdds from '../../components/Card/CardComponentOdds';
 import Header from '../../components/Navigation/Header';
 import CardStyles from '../../styles/ApplicationStyles/CardStyles';
-import TouchableView from '../../components/Button/TouchableView';
 
 function wait(timeout) {
     return new Promise(resolve => {
@@ -35,11 +33,12 @@ const ScreenHome = ({navigation, ...props}) => {
                 style={{flex: 1}}
                 contentContainerStyle={{flexGrow: 1}}
                 refreshControl={
-                    <RefreshControl refreshing={refreshing}
-                                    onRefresh={onRefresh}
-                                    tintColor={Colors.green}
-                                    colors={[Colors.green]}
-                                    progressBackgroundColor={Colors.darkBlue}
+                    <RefreshControl
+                        refreshing={refreshing}
+                        onRefresh={onRefresh}
+                        tintColor={Colors.green}
+                        colors={[Colors.green]}
+                        progressBackgroundColor={Colors.darkBlue}
                     />
                 }>
                 {Platform.OS === 'ios' && (

@@ -14,7 +14,6 @@ const Header = ({navigation, style, left, right, title, ...props}) => {
             </View>
             {!left && (
                 <View style={{position: 'absolute', left: 0, paddingLeft: 25}}>
-
                     <TouchableOpacity
                         onPress={() => navigation.goBack()}
                         hitSlop={{top: 15, bottom: 15, left: 15, right: 15}}>
@@ -27,7 +26,7 @@ const Header = ({navigation, style, left, right, title, ...props}) => {
             )}
             {left && (
                 <View style={{position: 'absolute', left: 0}}>
-                    {right}
+                    {left}
                 </View>
             )}
             {right && (
@@ -51,6 +50,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         height: 50,
+        backgroundColor: Colors.darkBlue
     },
     headerIcon: {
         color: 'white',

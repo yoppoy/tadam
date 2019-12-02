@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Platform, SafeAreaView, Text, View, TouchableOpacity, TextInput} from 'react-native';
+import {Platform, SafeAreaView, Text, View, TouchableOpacity, TouchableWithoutFeedback, TextInput} from 'react-native';
 import PropTypes from 'prop-types';
 import {withNavigation} from 'react-navigation';
 import Modal from 'react-native-modal';
@@ -9,8 +9,9 @@ import {Colors, Fonts, Images, Index} from '../../styles';
 import Icon from 'react-native-vector-icons/Ionicons';
 import DefaultButton from '../../components/Button/DefaultButton';
 import TouchableView from '../../components/Button/TouchableView';
+import {sqrt} from 'react-native-reanimated';
 
-function PronosticCreate({navigation, style, ...props}) {
+function PronosticCreate({navigation, openPickerModal, style, ...props}) {
     const [state, setState] = useState({
         selected: 2,
         odds: [
@@ -32,9 +33,14 @@ function PronosticCreate({navigation, style, ...props}) {
 
     return (
         <SafeAreaView style={styles.safeContainer}>
+            {/*
+              * <TouchableWithoutFeedback onPress={() => navigation.goBack()}>
+                   <View style={{flex: 1}}/>
+                </TouchableWithoutFeedback>
+              */}
             <View style={styles.mainContainer}>
                 <Text style={styles.title}>Votre pronostique</Text>
-                <TouchableView rippleColor={'darkgrey'}>
+                <TouchableView onPress={openPickerModal} rippleColor={'darkgrey'}>
                     <View style={styles.dropdown}>
                         <Text style={styles.dropdownText}>Plus de paris</Text>
                         <Icon name={'ios-arrow-down'} style={styles.dropdownIcon}/>
@@ -44,9 +50,11 @@ function PronosticCreate({navigation, style, ...props}) {
                     <View style={styles.oddsTopRow}>
                         {state.odds.map((odd, index) => {
                             return (
-                                <TouchableOpacity onPress={() => setState({...state, selected: index})}
-                                                  style={[{flex: 1},
-                                                      index % 2 !== 0 && {marginHorizontal: scale(8)}]}>
+                                <TouchableOpacity
+                                    key={odd.label + index}
+                                    onPress={() => setState({...state, selected: index})}
+                                    style={[{flex: 1},
+                                        index % 2 !== 0 && {marginHorizontal: scale(8)}]}>
                                     <View style={[
                                         styles.oddsTopContainer,
                                         state.selected === index && styles.oddsContainerSelected,
@@ -62,18 +70,21 @@ function PronosticCreate({navigation, style, ...props}) {
                     </View>
                     <View style={styles.oddsBottomRow}>
                         {state.odds.map((odd, index) => {
-                            return (<View
-                                style={[
-                                    styles.oddsBottomContainer,
-                                    state.selected === index && styles.oddsContainerSelected,
-                                    index % 2 !== 0 && {marginHorizontal: scale(8)},
-                                ]}>
-                                <Text style={[
-                                    styles.oddsBottomText,
-                                    state.selected === index && styles.oddsTextSelected]}>
-                                    {odd.value.toFixed(2)}
-                                </Text>
-                            </View>);
+                            return (
+                                <View
+                                    key={odd.label + index}
+                                    style={[
+                                        styles.oddsBottomContainer,
+                                        state.selected === index && styles.oddsContainerSelected,
+                                        index % 2 !== 0 && {marginHorizontal: scale(8)},
+                                    ]}>
+                                    <Text style={[
+                                        styles.oddsBottomText,
+                                        state.selected === index && styles.oddsTextSelected]}>
+                                        {odd.value.toFixed(2)}
+                                    </Text>
+                                </View>
+                            );
                         })}
                     </View>
                 </View>
@@ -83,13 +94,14 @@ function PronosticCreate({navigation, style, ...props}) {
                         <View style={[styles.inputContainer, isNaN(state.amount) && {borderColor: Colors.redError}]}>
                             <TextInput
                                 placeholder={'0'}
-                                value={state.amount}
-                                onChangeText={(value) => setState({...state, amount: value})}
+                                value={state.amount > 0 ? state.amount.toString() : state.amount }
+                                onChangeText={(value) => setState({...state, amount: parseInt(value)})}
                                 keyboardType={'number-pad'}
                                 style={[styles.inputAmount, isNaN(state.amount) && {borderColor: Colors.redError}]}/>
-                            <TouchableView onPress={() => console.log('hey')}
-                                           rippleColor={'lightgrey'}
-                                           rippleBorderless={true}>
+                            <TouchableView
+                                onPress={() => console.log('hey')}
+                                rippleColor={'lightgrey'}
+                                rippleBorderless={true}>
                                 <View>
                                     <Icon name={'md-refresh'} size={17} style={{marginVertical: 3}}/>
                                 </View>
@@ -155,7 +167,9 @@ const styles = {
     safeContainer: {
         borderTopRightRadius: 12,
         borderTopLeftRadius: 12,
-        backgroundColor: 'white',
+        backgroundColor: 'transparent',
+        //justifyContent: 'flex-end',
+        //flex: 1,
     },
     mainContainer: {
         borderTopRightRadius: 12,

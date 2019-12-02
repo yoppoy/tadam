@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 import {SafeAreaView, ScrollView, View, Text, RefreshControl, TouchableOpacity} from 'react-native';
 import {scale, verticalScale} from 'react-native-size-matters';
@@ -9,10 +9,7 @@ import Header from '../../components/Navigation/Header';
 import {DefaultButton} from '../../components/Button';
 import CardStyles from '../../styles/ApplicationStyles/CardStyles';
 import MatchInfo from './MatchInfo';
-import BottomModal from '../../components/BottomModal';
-import Icon from 'react-native-vector-icons/Ionicons';
-import PronosticCreate from './PronosticCreate';
-import Modal from 'react-native-modal';
+import ModalPronosticCreate from './ModalPronosticCreate';
 
 function wait(timeout) {
     return new Promise(resolve => {
@@ -39,52 +36,39 @@ const ScreenMatch = props => {
                 style={{flex: 1}}
                 contentContainerStyle={{flexGrow: 1}}
                 refreshControl={
-                    <RefreshControl refreshing={state.refreshing}
-                                    onRefresh={onRefresh}
-                                    tintColor={Colors.green}
-                                    colors={[Colors.darkBlue]}
+                    <RefreshControl
+                        refreshing={state.refreshing}
+                        onRefresh={onRefresh}
+                        tintColor={Colors.green}
+                        colors={[Colors.darkBlue]}
                     />
                 }>
                 <Header title={'Ligue 1'}/>
                 <Text style={styles.textDate}>{'17 oct 2019'.toUpperCase()}</Text>
                 <MatchInfo/>
                 <View style={{...ApplicationStyles.row, marginHorizontal: scale(17)}}>
-                    <DefaultButton onPress={() => console.log('hey')}
-                                   text={'Ouvrir le salon'}
-                                   style={styles.actionButton}
-                                   touchStyle={{flex: 1}}
-                                   textStyle={{fontSize: scale(14), color: '#6F82AA'}}
+                    <DefaultButton
+                        onPress={() => console.log('hey')}
+                        text={'Ouvrir le salon'}
+                        style={styles.actionButton}
+                        touchStyle={{flex: 1}}
+                        textStyle={{fontSize: scale(14), color: '#6F82AA'}}
                     />
-                    <DefaultButton onPress={() => setState({...state, modalVisible: true})}
-                                   text={'Faire un prono'}
-                                   style={{...styles.actionButton, backgroundColor: 'rgba(13,202,157, 0.2)'}}
-                                   touchStyle={{flex: 1}}
-                                   textStyle={{fontSize: scale(14), color: Colors.green}}/>
+                    <DefaultButton
+                        onPress={() => setState({...state, modalVisible: true})}
+                        text={'Faire un prono'}
+                        style={{...styles.actionButton, backgroundColor: 'rgba(13,202,157, 0.2)'}}
+                        touchStyle={{flex: 1}}
+                        textStyle={{fontSize: scale(14), color: Colors.green}}/>
                 </View>
                 <View style={{...CardStyles.cardContainer, marginTop: verticalScale(30, 30), flexGrow: 1}}>
-
+                    <Text style={{alignSelf: 'center'}}>...</Text>
                 </View>
             </ScrollView>
-            <BottomModal
+            <ModalPronosticCreate
                 visible={state.modalVisible}
-                onSwipeComplete={() => setState({...state, modalVisible: false})}
-                onBackdropPress={() => setState({...state, modalVisible: false})}
-                animationInTiming={300}
-                style={{backgroundColor: Colors.grey, padding: 0}}
-                backdropColor={'rgba(0,0,0,0.4)'}
-            >
-                <React.Fragment>
-                    <TouchableOpacity onPress={() => setState({...state, modalVisible: false})}>
-                        <View style={styles.modalHeader}>
-                            <Text style={styles.modalTitle}>
-                                Analyse d'avant match
-                            </Text>
-                            <Icon name={'ios-arrow-down'} style={{fontSize: verticalScale(16)}}/>
-                        </View>
-                    </TouchableOpacity>
-                    <PronosticCreate/>
-                </React.Fragment>
-            </BottomModal>
+                onClose={() => setState({...state, modalVisible: false})}
+            />
         </SafeAreaView>
     );
 };
