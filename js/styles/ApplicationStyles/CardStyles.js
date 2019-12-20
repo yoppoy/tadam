@@ -1,4 +1,4 @@
-import {Colors} from '../index';
+import {Colors, Fonts} from '../index';
 
 const CardStyles = {
     card: {
@@ -18,6 +18,21 @@ const CardStyles = {
     },
     cardSection: {
         padding: 16,
+    },
+    cardNameText: {
+        fontFamily: Fonts.type.Avenir,
+        lineHeight: 18,
+        color: '#242A37',
+        fontSize: 13,
+        letterSpacing: 0.37,
+    },
+    cardStatsText: {
+        fontFamily: Fonts.type.AvenirDB,
+        color: '#242A37',
+        lineHeight: 18,
+        opacity: 0.64,
+        fontSize: 11,
+        letterSpacing: 0.57,
     },
 };
 

@@ -1,5 +1,5 @@
-import React, {useEffect} from 'react';
-import {Text, TouchableOpacity, View} from 'react-native';
+import React, {useRef} from 'react';
+import {Text, TouchableOpacity, View, TextInput, KeyboardAvoidingView, Platform} from 'react-native';
 import BottomModal from '../../components/BottomModal';
 import {Colors, Fonts, Index} from '../../styles';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -11,13 +11,15 @@ import PronosticPicker from './PronosticPicker';
 export default function ModalPronosticCreate({visible, onClose, ...props}) {
     const [state, setState] = React.useState({
         modalPickerVisible: false,
+        description: 'kjfe zkfjkzj ekzjk ezjkf jzekj',
+        descriptionFocused: false,
     });
 
     return (
         <React.Fragment>
             <BottomModal
                 visible={visible}
-                swipeDirection={!state.modalPickerVisible ? ['down'] : []}
+                swipeDirection={!state.modalPickerVisible ? [] : []}
                 onSwipeComplete={onClose}
                 onBackdropPress={onClose}
                 onRequestClose={onClose}
@@ -26,17 +28,49 @@ export default function ModalPronosticCreate({visible, onClose, ...props}) {
                 backdropColor={'rgba(0,0,0,0.4)'}
             >
                 <React.Fragment>
-                    <TouchableOpacity onPress={onClose}>
-                        <View style={styles.modalHeader}>
-                            <Text style={styles.modalTitle}>
-                                Analyse d'avant match
-                            </Text>
-                            <Icon name={'ios-arrow-down'} style={{fontSize: verticalScale(16)}}/>
+                    {
+                        /*
+                        *   <KeyboardAvoidingView
+                        keyboardVerticalOffset={40}
+                        behavior={Platform.OS === "android" ? "height" : "padding"}
+                        enabled={state.descriptionFocused}
+                        *
+                        * */}
+                        <TouchableOpacity onPress={onClose}>
+                            <View style={styles.modalHeader}>
+                                <Text style={styles.modalTitle}>
+                                    Analyse d'avant match
+                                </Text>
+                                <Icon name={'ios-arrow-down'} style={{fontSize: verticalScale(16)}}/>
+                            </View>
+                        </TouchableOpacity>
+                        <View style={{
+                            height: 100,
+                            backgroundColor: 'white',
+                            borderRadius: 8,
+                            margin: 14,
+                            marginTop: 0,
+                            padding: 8,
+                            paddingHorizontal: 16,
+                        }}>
+                            <TextInput
+                                multiline={true}
+                                numberOfLines={4}
+                                onFocus={() => setState({...state, descriptionFocused: true})}
+                                onEndEditing={() => setState({...state, descriptionFocused: false})}
+                                style={{
+                                    fontFamily: Fonts.type.Avenir,
+                                    fontSize: 13,
+                                    lineHeight: 21,
+                                    textAlignVertical: 'top',
+                                }}
+                                onChangeText={(text) => setState({...state, description: text})}
+                                value={state.description}/>
                         </View>
-                    </TouchableOpacity>
-                    <PronosticCreate
-                        openPickerModal={() => setState({...state, modalPickerVisible: true})}
-                    />
+                        <PronosticCreate
+                            openPickerModal={() => setState({...state, modalPickerVisible: true})}
+                        />
+                    {/*  </KeyboardAvoidingView>*/ }
                     <Modal
                         backdropTransitionOutTiming={0}
                         animationInTiming={100}

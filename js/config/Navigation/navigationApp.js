@@ -10,6 +10,7 @@ import IconNotif from '../../assets/img/menu/icon-notif';
 import OverflowTab from '../../components/Navigation/OverflowTab';
 import {Colors, Fonts, Images} from '../../styles';
 import navigationProno from './navigationProno';
+import ScreenVipHome from '../../containers/VIP/ScreenVipHome';
 
 const navigationApp = createBottomTabNavigator(
     {
@@ -22,7 +23,7 @@ const navigationApp = createBottomTabNavigator(
             }),
         },
         VIP: {
-            screen: HomeScreen,
+            screen: ScreenVipHome,
             navigationOptions: () => ({
                 tabBarIcon: ({tintColor}) => (
                     <IconLiveScore tintColor={tintColor}/>
@@ -63,7 +64,7 @@ const navigationApp = createBottomTabNavigator(
         },
     },
     {
-        initialRouteName: 'Pronos',
+        initialRouteName: 'Home',
         tabBarOptions: {
             activeTintColor: Colors.green,
             indicatorStyle: {opacity: 0},

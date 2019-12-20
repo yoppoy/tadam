@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Platform, SafeAreaView, Text, View, TouchableOpacity, TouchableWithoutFeedback, TextInput} from 'react-native';
+import {Platform, SafeAreaView, Text, View, TouchableOpacity, TextInput} from 'react-native';
 import PropTypes from 'prop-types';
 import {withNavigation} from 'react-navigation';
 import Modal from 'react-native-modal';

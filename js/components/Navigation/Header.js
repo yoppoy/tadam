@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {withNavigation} from 'react-navigation';
 import {Colors, Fonts} from '../../styles';
@@ -42,7 +43,12 @@ Header.defaultProps = {
     style: {},
 };
 
-Header.propTypes = {};
+Header.propTypes = {
+    style: PropTypes.Object,
+    left: PropTypes.Object,
+    right: PropTypes.Object,
+    title: PropTypes.String,
+};
 
 const styles = StyleSheet.create({
     header: {
