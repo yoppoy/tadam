@@ -18,20 +18,23 @@ export default function RootContainer() {
         return () => Linking.removeEventListener('url', handleDeepLink);
     });
 
-    const handleDeepLink = ({url}) => {
+    const handleDeepLink = ({url}: { url: string }) => {
         const route = url.split('?')[0].replace(/.*?:\/\//g, '');
         const routeName = route.split('/')[0];
 
         if (routeName === 'register') {
             let token = url.match(/\A?token=[^&]+&*/g);
-            navigatorRef.current.dispatch(
-                NavigationActions.navigate({
-                    routeName: 'Register',
-                    params: {
-                        token,
-                    },
-                }),
-            );
+            if (navigatorRef && navigatorRef.current) {
+                // @ts-ignore: Object is possibly 'null'.
+                navigatorRef.current.dispatch(
+                    NavigationActions.navigate({
+                        routeName: 'Register',
+                        params: {
+                            token,
+                        },
+                    }),
+                );
+            }
         }
     };
 

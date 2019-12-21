@@ -1,14 +1,17 @@
-import React, {useEffect} from 'react';
-import {StyleSheet, View, SafeAreaView, Text, TouchableOpacity} from 'react-native';
+import React from 'react';
+import {StyleSheet, View, ViewStyle, SafeAreaView, Text, TextStyle, TouchableOpacity} from 'react-native';
 import AuthFacebook from './AuthFacebook';
 import AuthGoogle from './AuthGoogle';
 import {Index} from '../../styles';
 import {Fonts} from '../../styles';
-import {DefaultButton} from '../../components/Button';
 import AuthApple from './AuthApple';
-import {NavigationActions, StackActions} from 'react-navigation';
+import {NavigationStackProp} from 'react-navigation-stack';
 
-const ScreenRegisterHome = props => {
+type Props = {
+    navigation: NavigationStackProp;
+};
+
+const ScreenRegisterHome = (props: Props) => {
     return (
         <SafeAreaView style={styles.mainContainer}>
             <View style={styles.mainContainer}>
@@ -18,7 +21,7 @@ const ScreenRegisterHome = props => {
                 <View style={styles.buttonContainer}>
                     <AuthApple/>
                     <AuthFacebook/>
-                    <AuthGoogle onSuccess={() => console.log('nonthinge')}/>
+                    <AuthGoogle callback={(userInfo: any) => console.log(userInfo)}/>
                     <TouchableOpacity onPress={() => props.navigation.navigate('RegisterEmail')}>
                         <View style={{alignSelf: 'center'}}>
                             <Text style={styles.buttonLocalSignup}>
@@ -34,7 +37,15 @@ const ScreenRegisterHome = props => {
 
 export default ScreenRegisterHome;
 
-const styles = StyleSheet.create({
+
+type StylesProp = {
+    title: TextStyle,
+    buttonContainer: ViewStyle,
+    buttonLocalSignup: TextStyle,
+    mainContainer: ViewStyle
+};
+
+const styles = StyleSheet.create<StylesProp>({
     ...Index,
     title: {
         ...Fonts.title,

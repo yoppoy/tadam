@@ -11,7 +11,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import {withNavigation} from 'react-navigation';
 import {Index} from '../../styles';
 
-const AuthApple = ({api, onConnected, onSuccess, navigation}) => {
+const AuthApple = ({api, onConnected, navigation}) => {
     const [state, setState] = useState({
         passwordVisible: false,
         error: null,
