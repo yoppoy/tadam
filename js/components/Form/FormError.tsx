@@ -1,10 +1,16 @@
 import React from 'react';
-import {Text, TextInput, View, StyleSheet} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import {Text, View, StyleSheet, TextStyle, ViewStyle} from 'react-native';
 import {Colors, Fonts} from '../../styles';
 import PropTypes from 'prop-types';
+import Icon from 'react-native-vector-icons/Ionicons';
 
-export default function FormError({title, style, customIcon, ...props}) {
+type Props = {
+    title: string;
+    style?: any;
+    customIcon?: React.ReactElement;
+};
+
+export default function FormError({title, style, customIcon}: Props) {
     return (
         <View style={[styles.container, style]}>
             {!customIcon ? <Icon name={'md-alert'} style={styles.icon}/> : customIcon}
@@ -13,7 +19,17 @@ export default function FormError({title, style, customIcon, ...props}) {
     );
 }
 
-const styles = StyleSheet.create({
+FormError.defaultProps = {
+    style: {},
+};
+
+type StylesProp = {
+    container: ViewStyle;
+    error: TextStyle;
+    icon: ViewStyle;
+};
+
+const styles = StyleSheet.create<StylesProp>({
     container: {
         flex: 1,
         alignSelf: 'stretch',

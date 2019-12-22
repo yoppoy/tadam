@@ -7,11 +7,10 @@ module.exports = {
         './Tests/setup',
     ],
     globals: {
+        window: {},
         fetch: fetch,
-        window: {}
     },
-    transformIgnorePatterns: [
-    ],
+    transformIgnorePatterns: [],
     transform: {
         '^.+\\.(ts|tsx)$': 'ts-jest',
     },

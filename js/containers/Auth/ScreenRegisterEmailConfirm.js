@@ -4,21 +4,17 @@ import {
     Text,
     View,
     SafeAreaView,
-    TouchableOpacity,
     ScrollView,
-    TextInput,
     Platform,
     Linking,
 } from 'react-native';
-import useForm from 'react-hook-form';
 import {Index, Colors, Fonts} from '../../styles';
 import FormError from '../../components/Form/FormError';
-import FormField from '../../components/Form/FormField';
 import MailOpener from '../../config/NativeModules/MailOpener';
 import {DefaultButton} from '../../components/Button';
 import IconRegister from '../../assets/img/auth/IconRegister';
 
-const ScreenRegisterEmailConfirm = ({navigation}) => {
+const ScreenRegisterEmailConfirm = () => {
     const [error, setError] = useState(null);
 
     const onPress = () => {

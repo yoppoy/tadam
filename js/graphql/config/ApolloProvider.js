@@ -18,7 +18,7 @@ const httpLink = new HttpLink({
 
 const apolloClient = new ApolloClient({
     cache: new InMemoryCache(),
-    link: concat(errorAfterware.concat(httpLink), authMiddleware),
+    link: concat(authMiddleware, errorAfterware.concat(httpLink)),
     connectToDevTools: __DEV__,
 });
 

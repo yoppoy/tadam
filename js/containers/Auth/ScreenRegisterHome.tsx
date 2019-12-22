@@ -37,7 +37,6 @@ const ScreenRegisterHome = (props: Props) => {
 
 export default ScreenRegisterHome;
 
-
 type StylesProp = {
     title: TextStyle,
     buttonContainer: ViewStyle,

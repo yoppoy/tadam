@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, View, SafeAreaView, TouchableOpacity, ScrollView} from 'react-native';
-import {NavigationActions, StackActions} from 'react-navigation';
 import {useMutation} from '@apollo/react-hooks';
 import useForm from 'react-hook-form';
 import * as yup from 'yup';
@@ -16,6 +15,7 @@ import {DefaultButton} from '../../components/Button';
 import FormCheckboxLine from '../../components/Form/FormCheckboxLine';
 import FormDropdown from '../../components/Form/FormDropdown';
 import Header from '../../components/Navigation/Header';
+import {NavigationStackProp} from "react-navigation-stack";
 
 const RegisterSchema = yup.object().shape({
     pseudo: yup.string().min(1).max(128).required(),
@@ -28,19 +28,27 @@ const RegisterSchema = yup.object().shape({
     /*phone: yup.string().matches(/^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/, 'Phone number is not valid'),*/
 });
 
+type Props = {
+    navigation: NavigationStackProp;
+};
 
-const ScreenRegisterProfile = ({navigation}) => {
+type State = {
+    filledFields: any;
+    passwordVisible: boolean;
+};
+
+const ScreenRegisterProfile = ({navigation}: Props) => {
     const {register, setValue, handleSubmit, errors, triggerValidation} = useForm({
         validationSchema: RegisterSchema,
         submitFocusError: true,
     });
-    const [state, setState] = useState({
+    const [state, setState] = useState<State>({
         filledFields: {},
         passwordVisible: false,
     });
-    const [createUser, {loading, error}] = useMutation(CREATE_USER);
+    //const [createUser, {loading, error}] = useMutation(CREATE_USER);
 
-    const onSubmit = async formData => {
+    const onSubmit = async (formData: any) => {
         try {
             navigation.navigate('RegisterSuccess');
         } catch (err) {
@@ -48,8 +56,9 @@ const ScreenRegisterProfile = ({navigation}) => {
         }
     };
 
-    const onChangeValue = (value, name) => {
-        let tmp = {};
+    const onChangeValue = (value: string, name: string) => {
+        let tmp: any = {};
+
         tmp[name] = value.length > 0;
         setState({
             ...state,
@@ -58,16 +67,16 @@ const ScreenRegisterProfile = ({navigation}) => {
         setValue(name, value, false);
     };
 
-    const createTextInputProps = (name, additionalProps = {}) => {
+    const createTextInputProps = (name: string, additionalProps: any = {}) => {
         return ({
             ref: register({name: name}),
-            onChangeText: text => onChangeValue(text, name),
+            onChangeText: (text: string) => onChangeValue(text, name),
             onBlur: () => triggerValidation({name: name}),
             ...additionalProps,
         });
     };
 
-    const onVerify = events => {
+    const onVerify = (events: any) => {
         handleSubmit(onSubmit)(events);
     };
 
@@ -89,20 +98,20 @@ const ScreenRegisterProfile = ({navigation}) => {
                             filled={state.filledFields['pseudo']}
                             textInputProps={createTextInputProps('pseudo', {textContentType: 'username'})}
                             left={<FormPrefix>@</FormPrefix>}
-                            error={errors.pseudo && <FormError title={errors.pseudo.message}/>}
+                            error={(errors.pseudo && errors.pseudo.message) && <FormError title={errors.pseudo.message}/>}
                             iconName={'md-person'}/>
                         <FormField
                             label={'Prénom'}
                             filled={state.filledFields['firstname']}
                             textInputProps={createTextInputProps('firstname', {textContentType: 'name'})}
-                            error={errors.firstname && <FormError title={errors.firstname.message}/>}
+                            error={(errors.firstname && errors.firstname.message) && <FormError title={errors.firstname.message}/>}
                             iconName={'md-person'}
                         />
                         <FormField
                             label={'Nom'}
                             filled={state.filledFields['lastname']}
                             textInputProps={createTextInputProps('lastname', {textContentType: 'familyName'})}
-                            error={errors.lastname && <FormError title={errors.lastname.message}/>}
+                            error={(errors.lastname && errors.lastname.message) && <FormError title={errors.lastname.message}/>}
                             iconName={'md-person'}
                         />
                         <FormField
@@ -110,14 +119,14 @@ const ScreenRegisterProfile = ({navigation}) => {
                             filled={state.filledFields['age']}
                             textInputProps={createTextInputProps('age', {keyboardType: 'number-pad'})}
                             iconName={'md-person'}
-                            error={errors.age && <FormError title={errors.age.message}/>}/>
+                            error={(errors.age && errors.age.message) && <FormError title={errors.age.message}/>}/>
                         <FormDropdown
                             ref={register({name: 'sex'})}
                             onValueChange={value => {
                                 onChangeValue(value, 'sex');
                                 triggerValidation({name: 'sex'});
                             }}
-                            error={errors.sex && <FormError title={errors.sex.message}/>}
+                            error={(errors.sex && errors.sex.message) && <FormError title={errors.sex.message}/>}
                         />
                         <FormField
                             label={'Mot de passe'}
@@ -136,10 +145,10 @@ const ScreenRegisterProfile = ({navigation}) => {
                                         name={state.passwordVisible ? 'md-eye' : 'md-eye-off'}
                                         style={Index.formIcon}/>
                                 </TouchableView>}
-                            error={errors.password && <FormError title={errors.password.message}/>}
+                            error={(errors.password && errors.password.message) && <FormError title={errors.password.message}/>}
                         />
                         <FormCheckboxLine
-                            onPress={(checked) => {
+                            onPress={(checked: boolean) => {
                                 setValue('validated', checked, false);
                                 triggerValidation({name: 'validated'});
                             }}
@@ -155,7 +164,6 @@ const ScreenRegisterProfile = ({navigation}) => {
                                 </Text>
                             </TouchableOpacity>
                         </FormCheckboxLine>
-                        <GraphqlError error={error}/>
                     </View>
                     <DefaultButton
                         onPress={onVerify}

@@ -1,10 +1,21 @@
-import React, {useState, useEffect} from 'react';
-import {Platform, Text, TextInput, View, StyleSheet, Animated} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import React, {useState} from 'react';
+import {Platform, Text, TextInput, View, StyleSheet} from 'react-native';
 import {Colors, Fonts} from '../../styles';
-import PropTypes from 'prop-types';
+import Icon from 'react-native-vector-icons/Ionicons';
 
-export default function FormField({error, children, filled, ...props}) {
+type Props = {
+    error?: any;
+    children?: any;
+    filled: boolean;
+    textInputProps?: any;
+    label: string;
+    iconName?: string;
+    style?: any;
+    left?: React.ReactElement;
+    right?: React.ReactElement;
+};
+
+export default function FormField({error, children, filled, ...props}: Props) {
     const [focused, setFocused] = useState(false);
 
     const onBlur = () => {
@@ -27,7 +38,8 @@ export default function FormField({error, children, filled, ...props}) {
                         {props.left && props.left}
                         <View style={styles.inputContainer}>
                             {(props.label) && (
-                                <Text style={[styles.label, (filled || focused) && styles.labelFocused]}>{props.label}</Text>
+                                <Text
+                                    style={[styles.label, (filled || focused) && styles.labelFocused]}>{props.label}</Text>
                             )}
                             <TextInput
                                 blurOnSubmit
@@ -37,7 +49,7 @@ export default function FormField({error, children, filled, ...props}) {
                                 onBlur={onBlur}
                             />
                         </View>
-                        {!props.right ? (
+                        {(!props.right && props.iconName) ? (
                             <Icon name={props.iconName} style={[styles.icon, error && styles.error]}/>
                         ) : (
                             props.right
@@ -113,16 +125,6 @@ const styles = StyleSheet.create({
 FormField.defaultProps = {
     textInputProps: {},
     style: {},
-};
-
-FormField.propTypes = {
-    filled: PropTypes.bool,
-    textInputProps: PropTypes.object,
-    label: PropTypes.string,
-    iconName: PropTypes.string,
-    style: PropTypes.object,
-    left: PropTypes.object,
-    right: PropTypes.object,
 };
 
 /* WITH ANIMATION :

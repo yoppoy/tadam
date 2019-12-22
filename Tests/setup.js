@@ -1,5 +1,5 @@
 import mockAsyncStorage from '@react-native-community/async-storage/jest/async-storage-mock';
-import {NativeModules as RNNativeModules, Linking} from 'react-native';
+import {NativeModules as RNNativeModules} from 'react-native';
 
 RNNativeModules.UIManager = RNNativeModules.UIManager || {};
 RNNativeModules.UIManager.RCTView = RNNativeModules.UIManager.RCTView || {};

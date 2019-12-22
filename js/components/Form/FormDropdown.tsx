@@ -1,10 +1,16 @@
 import React, {useState} from 'react';
-import {Platform, Picker, View, Text, StyleSheet} from 'react-native';
+import {Platform, Picker, View, Text, StyleSheet, ViewStyle, TextStyle} from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {Colors, Fonts} from '../../styles';
 
-const FormDropdown = ({onValueChange, error}) => {
+type Props = {
+    onValueChange: (value: any) => void;
+    error?: any;
+    ref: any
+};
+
+const FormDropdown = ({onValueChange, error}: Props) => {
     const [value, setValue] = useState('');
 
     return (
@@ -64,7 +70,8 @@ const FormDropdown = ({onValueChange, error}) => {
                             return (
                                 <Icon
                                     name={'md-arrow-dropdown'}
-                                    style={{ padding: 20, fontSize: 20,
+                                    style={{
+                                        padding: 20, fontSize: 20,
                                         color: error
                                             ? Colors.redError
                                             : 'white',
@@ -80,7 +87,13 @@ const FormDropdown = ({onValueChange, error}) => {
     );
 };
 
-const styles = StyleSheet.create({
+type StylesTypes = {
+    container: ViewStyle,
+    fieldContainer: ViewStyle,
+    label: TextStyle,
+}
+
+const styles = StyleSheet.create<StylesTypes>({
     container: {
         marginTop: 0,
         marginBottom: 8,

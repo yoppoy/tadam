@@ -1,37 +1,42 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, View, SafeAreaView, TouchableOpacity, ScrollView, TextInput} from 'react-native';
-import {NavigationActions, StackActions} from 'react-navigation';
-import {useMutation} from '@apollo/react-hooks';
+import {StyleSheet, Text, View, SafeAreaView, ScrollView} from 'react-native';
 import useForm from 'react-hook-form';
 import * as yup from 'yup';
-import {CREATE_USER} from '../../graphql/User';
 import {Index, Colors, Fonts} from '../../styles';
 import FormError from '../../components/Form/FormError';
 import FormField from '../../components/Form/FormField';
 import {DefaultButton} from '../../components/Button';
-import FormPrefix from '../../components/Form/FormPrefix';
 import TouchableView from '../../components/Button/TouchableView';
-import Icon from 'react-native-vector-icons/Ionicons';
-import FormCheckboxLine from '../../components/Form/FormCheckboxLine';
-import GraphqlError from '../../components/Error/GraphqlError';
 import Header from '../../components/Navigation/Header';
+import Icon from 'react-native-vector-icons/Ionicons';
+import {NavigationStackProp} from 'react-navigation-stack';
 
 const EmailSchema = yup.object().shape({
     email: yup.string().email().required(),
 });
 
-const ScreenRegisterEmail = ({navigation}) => {
+type Props = {
+    navigation: NavigationStackProp;
+};
+
+type State = {
+    filledFields: any;
+    passwordVisible: boolean;
+    error: any;
+};
+
+const ScreenRegisterEmail = ({navigation}: Props) => {
     const {register, setValue, handleSubmit, errors, triggerValidation} = useForm({
         validationSchema: EmailSchema,
         submitFocusError: true,
     });
-    const [state, setState] = useState({
+    const [state, setState] = useState<State>({
         filledFields: {},
         passwordVisible: false,
         error: null,
     });
 
-    const onSubmit = async formData => {
+    const onSubmit = async (formData: any) => {
         try {
             //SEND EMAIL
             navigation.navigate('RegisterEmailConfirm');
@@ -41,7 +46,7 @@ const ScreenRegisterEmail = ({navigation}) => {
         }
     };
 
-    const onVerify = events => {
+    const onVerify = (events: any) => {
         setState({...state, error: null});
         handleSubmit(onSubmit)(events);
     };
@@ -54,9 +59,7 @@ const ScreenRegisterEmail = ({navigation}) => {
                     keyboardShouldPersistTaps={'handled'} style={styles.scrollContainer}
                     contentContainerStyle={{flexGrow: 1}}>
                     <View>
-                        <Text style={styles.title}>
-                            Votre Email
-                        </Text>
+                        <Text style={styles.title}>Votre Email</Text>
                     </View>
                     <View style={{marginTop: 20}}>
                         <FormField
@@ -66,7 +69,7 @@ const ScreenRegisterEmail = ({navigation}) => {
                                 autoCompleteType: 'email',
                                 autoCapitalize: 'none',
                                 ref: register({name: 'email'}),
-                                onChangeText: (text) => {
+                                onChangeText: (text: string) => {
                                     setValue('email', text, false);
                                     setState({
                                         ...state,
@@ -77,7 +80,7 @@ const ScreenRegisterEmail = ({navigation}) => {
                                 onSubmitEditing: onVerify,
                                 textContentType: 'emailAddress',
                             }}
-                            error={errors.email && <FormError title={errors.email.message}/>}
+                            error={(errors.email && errors.email.message) && <FormError title={errors.email.message}/>}
                             iconName={'md-mail'}
                         />
                         <FormField
@@ -91,7 +94,7 @@ const ScreenRegisterEmail = ({navigation}) => {
                                 ref: register({name: 'password'}),
                                 textContentType: 'password',
                                 secureTextEntry: !state.passwordVisible,
-                                onChangeText: text => {
+                                onChangeText: (text: string) => {
                                     setValue('password', text, false);
                                     setState({
                                         ...state,
@@ -108,7 +111,12 @@ const ScreenRegisterEmail = ({navigation}) => {
                                         name={state.passwordVisible ? 'md-eye' : 'md-eye-off'}
                                         style={Index.formIcon}/>
                                 </TouchableView>}
-                            error={errors.password && <FormError title={errors.password.message}/>}
+                            error={
+                                errors.password &&
+                                errors.password.message && (
+                                    <FormError title={errors.password.message}/>
+                                )
+                            }
                         />
                     </View>
                     <View style={{flexGrow: 1}}/>
