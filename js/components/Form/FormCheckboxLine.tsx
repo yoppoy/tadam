@@ -1,11 +1,17 @@
 import React, {useState} from 'react';
 import FormCheckBox from './FormCheckBox';
 import {TouchableOpacity, View, StyleSheet} from 'react-native';
-import {Colors, Fonts} from '../../styles';
-import PropTypes from 'prop-types';
 
-export default function FormCheckboxLine({children, onPress, style, ...props}) {
-    const [checked, setChecked] = useState(false);
+type Props = {
+    children: React.ReactElement;
+    onPress: (checked: boolean) => void;
+    style?: any;
+    color?: string;
+    ref: any;
+};
+
+export default function FormCheckboxLine({children, onPress, style, ...props}: Props) {
+    const [checked, setChecked] = useState<boolean>(false);
 
     return (
         <View style={[styles.container, style]}>
@@ -47,9 +53,4 @@ const styles = StyleSheet.create({
 FormCheckboxLine.defaultProps = {
     style: {},
     checked: false,
-};
-
-FormCheckboxLine.propTypes = {
-    onPress: PropTypes.func,
-    checked: PropTypes.bool,
 };

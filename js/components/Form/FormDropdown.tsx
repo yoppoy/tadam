@@ -7,7 +7,7 @@ import {Colors, Fonts} from '../../styles';
 type Props = {
     onValueChange: (value: any) => void;
     error?: any;
-    ref: any
+    ref: any;
 };
 
 const FormDropdown = ({onValueChange, error}: Props) => {

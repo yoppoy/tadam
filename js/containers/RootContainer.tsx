@@ -16,7 +16,7 @@ export default function RootContainer() {
         });
         Linking.addEventListener('url', handleDeepLink);
         return () => Linking.removeEventListener('url', handleDeepLink);
-    });
+    }, []);
 
     const handleDeepLink = ({url}: { url: string }) => {
         const route = url.split('?')[0].replace(/.*?:\/\//g, '');

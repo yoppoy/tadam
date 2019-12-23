@@ -98,20 +98,23 @@ const ScreenRegisterProfile = ({navigation}: Props) => {
                             filled={state.filledFields['pseudo']}
                             textInputProps={createTextInputProps('pseudo', {textContentType: 'username'})}
                             left={<FormPrefix>@</FormPrefix>}
-                            error={(errors.pseudo && errors.pseudo.message) && <FormError title={errors.pseudo.message}/>}
+                            error={(errors.pseudo && errors.pseudo.message) &&
+                            <FormError title={errors.pseudo.message}/>}
                             iconName={'md-person'}/>
                         <FormField
                             label={'Prénom'}
                             filled={state.filledFields['firstname']}
                             textInputProps={createTextInputProps('firstname', {textContentType: 'name'})}
-                            error={(errors.firstname && errors.firstname.message) && <FormError title={errors.firstname.message}/>}
+                            error={(errors.firstname && errors.firstname.message) &&
+                            <FormError title={errors.firstname.message}/>}
                             iconName={'md-person'}
                         />
                         <FormField
                             label={'Nom'}
                             filled={state.filledFields['lastname']}
                             textInputProps={createTextInputProps('lastname', {textContentType: 'familyName'})}
-                            error={(errors.lastname && errors.lastname.message) && <FormError title={errors.lastname.message}/>}
+                            error={(errors.lastname && errors.lastname.message) &&
+                            <FormError title={errors.lastname.message}/>}
                             iconName={'md-person'}
                         />
                         <FormField
@@ -145,7 +148,8 @@ const ScreenRegisterProfile = ({navigation}: Props) => {
                                         name={state.passwordVisible ? 'md-eye' : 'md-eye-off'}
                                         style={Index.formIcon}/>
                                 </TouchableView>}
-                            error={(errors.password && errors.password.message) && <FormError title={errors.password.message}/>}
+                            error={(errors.password && errors.password.message) &&
+                            <FormError title={errors.password.message}/>}
                         />
                         <FormCheckboxLine
                             onPress={(checked: boolean) => {
@@ -153,16 +157,18 @@ const ScreenRegisterProfile = ({navigation}: Props) => {
                                 triggerValidation({name: 'validated'});
                             }}
                             ref={register({name: 'validated'})}
-                            color={errors.validated ? Colors.redError : null}>
-                            <Text
-                                style={[Index.formCheckBoxText, errors.validated && {color: Colors.redError}]}>
-                                J’accèpte les
-                            </Text>
-                            <TouchableOpacity onPress={() => console.log('Display terms')}>
-                                <Text style={styles.checkBoxLine}>
-                                    conditions générales de vente
+                            color={errors.validated ? Colors.redError : undefined}>
+                            <React.Fragment>
+                                <Text
+                                    style={[Index.formCheckBoxText, errors.validated && {color: Colors.redError}]}>
+                                    J’accèpte les
                                 </Text>
-                            </TouchableOpacity>
+                                <TouchableOpacity onPress={() => console.log('Display terms')}>
+                                    <Text style={styles.checkBoxLine}>
+                                        conditions générales de vente
+                                    </Text>
+                                </TouchableOpacity>
+                            </React.Fragment>
                         </FormCheckboxLine>
                     </View>
                     <DefaultButton

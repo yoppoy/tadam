@@ -1,10 +1,17 @@
-import React, {useState} from 'react';
-import {View, StyleSheet} from 'react-native';
+import React from 'react';
+import {View, StyleSheet, GestureResponderEvent} from 'react-native';
 import TouchableView from '../Button/TouchableView';
 import {Colors} from '../../styles';
-import PropTypes from 'prop-types';
 
-export default function FormCheckBox({onPress, checked, style, color, size, ...props}) {
+type Props = {
+    onPress: (event: GestureResponderEvent) => void;
+    checked: boolean,
+    style?: any;
+    color?: string;
+    size?: number;
+};
+
+export default function FormCheckBox({onPress, checked, style, color, size, ...props}: Props) {
     return (
         <TouchableView
             onPress={onPress}
@@ -17,6 +24,13 @@ export default function FormCheckBox({onPress, checked, style, color, size, ...p
         </TouchableView>
     );
 }
+
+FormCheckBox.defaultProps = {
+    style: {},
+    color: Colors.green,
+    size: 14,
+    checked: false,
+};
 
 const styles = StyleSheet.create({
     checkBox: {
@@ -31,16 +45,3 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.green,
     },
 });
-
-FormCheckBox.propTypes = {
-    onPress: PropTypes.func,
-    color: PropTypes.string,
-    check: PropTypes.bool,
-};
-
-FormCheckBox.defaultProps = {
-    style: {},
-    color: Colors.green,
-    size: 14,
-    checked: false,
-};
