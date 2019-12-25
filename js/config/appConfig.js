@@ -13,6 +13,7 @@ export default {
     graphqlHost: Config.GRAPHQL_HOST
         ? Config.GRAPHQL_HOST
         : 'http://178.62.87.154:8001/query',
+    cacheVersion: '0',
 };
 
 /* Yup config */

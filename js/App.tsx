@@ -1,13 +1,16 @@
 import React from 'react';
 import {Provider} from 'react-redux';
 // @ts-ignore
-import {NetworkProvider} from 'react-native-offline';
+import {NetworkProvider, NetworkConsumer} from 'react-native-offline';
 import ApolloProvider from './graphql/config/ApolloProvider';
 import RootContainer from './containers/RootContainer';
 import {createStore} from './redux';
 
 const store = createStore();
 
+type NetworkProps = {
+    isConnected: boolean;
+};
 /*type NetworkProps = {
     children: React.Node,
     pingTimeout?: number = 10000,
@@ -21,11 +24,15 @@ const store = createStore();
 const App: React.FC<object> = () => {
     return (
         <NetworkProvider>
-            <ApolloProvider>
-                <Provider store={store}>
-                    <RootContainer/>
-                </Provider>
-            </ApolloProvider>
+            <NetworkConsumer>
+                {({isConnected}: NetworkProps) => (
+                    <ApolloProvider isConnected={isConnected}>
+                        <Provider store={store}>
+                            <RootContainer/>
+                        </Provider>
+                    </ApolloProvider>
+                )}
+            </NetworkConsumer>
         </NetworkProvider>
     );
 };
