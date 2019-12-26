@@ -44,7 +44,7 @@ export default {
         letterSpacing: -0.31,
     },
     label: {
-        fontFamily: type.regular,
+        fontFamily: type.base,
         fontSize: 15,
         color: 'rgba(255, 255, 255, 0.5)',
     },

@@ -1,0 +1,19 @@
+import React from 'react';
+import LottieView from 'lottie-react-native';
+import {Text, View} from 'react-native';
+import {Animations} from '../styles';
+
+type Props = {
+    message?: string;
+};
+
+export default function Loading({message}: Props) {
+    return (
+        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+            <LottieView source={Animations.loadingCircle} autoPlay loop style={{height: 100}}/>
+            {message && (
+                <Text>{message}</Text>
+            )}
+        </View>
+    );
+};

@@ -11,6 +11,7 @@ import OverflowTab from '../../components/Navigation/OverflowTab';
 import {Colors, Fonts, Images} from '../../styles';
 import navigationProno from './navigationProno';
 import ScreenVipHome from '../../containers/VIP/ScreenVipHome';
+import ScreenNotifications from '../../containers/Notifications/ScreenNotifications';
 
 const navigationApp = createBottomTabNavigator(
     {
@@ -46,8 +47,8 @@ const navigationApp = createBottomTabNavigator(
                 ),
             }),
         },
-        Notification: {
-            screen: HomeScreen,
+        Notifications: {
+            screen: ScreenNotifications,
             navigationOptions: () => ({
                 tabBarIcon: ({tintColor}) => (
                     <IconNotif tintColor={tintColor}/>
@@ -64,7 +65,7 @@ const navigationApp = createBottomTabNavigator(
         },
     },
     {
-        initialRouteName: 'Home',
+        initialRouteName: 'Notifications',
         tabBarOptions: {
             activeTintColor: Colors.green,
             indicatorStyle: {opacity: 0},

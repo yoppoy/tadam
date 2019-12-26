@@ -16,6 +16,7 @@ export const CREATE_USER = gql`
         createUser(input: $user) {
             id
             email
+            firstname
             lastname
         }
     }

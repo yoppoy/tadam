@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 import {SafeAreaView, ScrollView, View, Text, RefreshControl, TouchableOpacity} from 'react-native';
 import {scale, verticalScale} from 'react-native-size-matters';
-import {Index, Colors, Fonts, Images} from '../../styles';
+import {Index, Colors, Fonts, Images, Animations} from '../../styles';
 import AuthActions from '../../redux/auth-reducer';
 import ApplicationStyles from '../../styles/ApplicationStyles';
 import Header from '../../components/Navigation/Header';
@@ -10,6 +10,7 @@ import {DefaultButton} from '../../components/Button';
 import CardStyles from '../../styles/ApplicationStyles/CardStyles';
 import MatchInfo from './MatchInfo';
 import ModalPronosticCreate from './ModalPronosticCreate';
+import LottieView from 'lottie-react-native';
 
 function wait(timeout) {
     return new Promise(resolve => {
@@ -62,7 +63,7 @@ const ScreenMatch = props => {
                         textStyle={{fontSize: scale(14), color: Colors.green}}/>
                 </View>
                 <View style={{...CardStyles.cardContainer, marginTop: verticalScale(30, 30), flexGrow: 1}}>
-                    <Text style={{alignSelf: 'center'}}>...</Text>
+                    <LottieView source={Animations.loadingCircle} autoPlay loop hardwareAccelerationAndroid={true} style={{height: 50, alignSelf: 'center', padding: 0}}/>
                 </View>
             </ScrollView>
             <ModalPronosticCreate

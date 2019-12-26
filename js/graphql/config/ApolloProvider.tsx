@@ -3,7 +3,7 @@ import {ApolloLink} from 'apollo-link';
 import {InMemoryCache, NormalizedCacheObject} from 'apollo-cache-inmemory';
 import {HttpLink} from 'apollo-link-http';
 import {RetryLink} from 'apollo-link-retry';
-import {getMainDefinition} from 'apollo-utilities';
+import {setContext} from 'apollo-link-context';
 import SerializingLink from 'apollo-link-serialize';
 import QueueLink from 'apollo-link-queue';
 import {onError} from 'apollo-link-error';
@@ -13,18 +13,17 @@ import {ApolloProvider as Provider} from 'react-apollo';
 import AsyncStorage from '@react-native-community/async-storage';
 import React, {useEffect, useState, useRef} from 'react';
 import appConfig from '../../config/appConfig';
-import authMiddleware from './authMiddleware';
-import {Text, View} from 'react-native';
+import Loading from '../../components/Loading';
 
 const CACHE_VERSION_KEY: string = 'apollo-cache-version';
 
-const errorLink = onError((error) => {
+const serializingLink = new SerializingLink();
+const cache = new InMemoryCache({});
+const queueLink = new QueueLink();
+const httpLink = new HttpLink({uri: appConfig.graphqlHost});
+const errorLink = onError(error => {
     console.log(error);
 });
-const httpLink = new HttpLink({
-    uri: appConfig.graphqlHost,
-});
-const queueLink = new QueueLink();
 const retryLink = new RetryLink({
     delay: {
         initial: 300,
@@ -35,17 +34,25 @@ const retryLink = new RetryLink({
         max: 5,
     },
 });
-const serializingLink = new SerializingLink();
-const cache = new InMemoryCache({});
+const authLink = setContext(async (_, {headers}) => {
+    const token = await AsyncStorage.getItem('token');
+
+    return {
+        headers: {
+            ...headers,
+            authorization: `Bearer ${token ? token : 'hey'}`,
+        },
+    };
+});
 
 const apolloClient = new ApolloClient({
     cache: cache,
     link: ApolloLink.from([
-        queueLink,
         retryLink,
+        //queueLink,
         serializingLink,
         errorLink,
-        authMiddleware,
+        authLink,
         httpLink,
     ]),
     connectToDevTools: __DEV__,
@@ -62,6 +69,7 @@ export default function ApolloProvider({children, isConnected}: Props) {
     const apolloQueueOpenedRef = useRef(false);
 
     async function loadCache() {
+        console.log("Loading cache...");
         const persistor = new CachePersistor({
             cache,
             storage: AsyncStorage as PersistentStorage<PersistedData<NormalizedCacheObject>>,
@@ -87,9 +95,11 @@ export default function ApolloProvider({children, isConnected}: Props) {
             });
         }
         if (!isConnected) {
+            console.log("QUEUE STARTED");
             queueLink.open();
             apolloQueueOpenedRef.current = true;
         } else if (apolloQueueOpenedRef.current) {
+            console.log("QUEUE CLOSED");
             queueLink.close();
             apolloQueueOpenedRef.current = false;
         }
@@ -97,9 +107,7 @@ export default function ApolloProvider({children, isConnected}: Props) {
 
     if (!cachePersisted) {
         return (
-            <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-                <Text>Loading Graphql...</Text>
-            </View>
+            <Loading/>
         );
     }
     return <Provider client={apolloClient}>{children}</Provider>;
