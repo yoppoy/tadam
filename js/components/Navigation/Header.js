@@ -43,13 +43,6 @@ Header.defaultProps = {
     style: {},
 };
 
-Header.propTypes = {
-    style: PropTypes.Object,
-    left: PropTypes.Object,
-    right: PropTypes.Object,
-    title: PropTypes.String,
-};
-
 const styles = StyleSheet.create({
     header: {
         flexDirection: 'row',

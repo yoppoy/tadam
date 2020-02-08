@@ -12,6 +12,7 @@ import {Colors, Fonts, Images} from '../../styles';
 import navigationProno from './navigationProno';
 import ScreenVipHome from '../../containers/VIP/ScreenVipHome';
 import ScreenNotifications from '../../containers/Notifications/ScreenNotifications';
+import ScreenMenu from '../../containers/Menu/ScreenMenu';
 
 const navigationApp = createBottomTabNavigator(
     {
@@ -56,7 +57,7 @@ const navigationApp = createBottomTabNavigator(
             }),
         },
         Menu: {
-            screen: HomeScreen,
+            screen: ScreenMenu,
             navigationOptions: () => ({
                 tabBarIcon: ({tintColor}) => (
                     <IconMenu tintColor={tintColor}/>
@@ -65,7 +66,7 @@ const navigationApp = createBottomTabNavigator(
         },
     },
     {
-        initialRouteName: 'Notifications',
+        initialRouteName: 'Home',
         tabBarOptions: {
             activeTintColor: Colors.green,
             indicatorStyle: {opacity: 0},

@@ -1,19 +1,40 @@
-import React from 'react';
-import {View, Button, StyleSheet, Dimensions, SafeAreaView} from 'react-native';
+import React, {useState} from 'react';
+import {
+    View,
+    Text,
+    StyleSheet,
+    Dimensions,
+    SafeAreaView,
+    InteractionManager,
+    Platform,
+    ActivityIndicator,
+} from 'react-native';
 import {LocaleConfig, CalendarList} from 'react-native-calendars';
 import {Colors, Fonts} from '../../styles';
 import Icon from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
 import TouchableView from '../Button/TouchableView';
+import {useFocusEffect} from 'react-navigation-hooks';
 
 const SCREEN_WIDTH = Math.round(Dimensions.get('window').width);
 
 export default function CalendarPicker({navigation, ...props}) {
+    //const [loaded, setLoaded] = useState(false);
     const currentDate = props.currentDate.toISOString().slice(0, 10);
 
+    /*useFocusEffect(
+        React.useCallback(() => {
+            const task = InteractionManager.runAfterInteractions(() => {
+                setLoaded(true);
+            });
+
+            return () => task.cancel();
+        }, []),
+    );*/
+
     const onSelect = day => {
-        navigation.goBack();
         navigation.state.params.onSelect(new Date(day.dateString));
+        navigation.goBack();
     };
 
     const onExit = () => {
@@ -21,7 +42,13 @@ export default function CalendarPicker({navigation, ...props}) {
     };
 
     return (
-        <SafeAreaView style={{backgroundColor: 'white'}}>
+        <SafeAreaView style={{backgroundColor: 'white', flex: 1}}>
+            {/*!loaded && (
+                <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+                    <Icon name={'ios-calendar'} size={100} style={{opacity: 0.5, color: Colors.oxfordBlue}}/>
+                    <ActivityIndicator size="small" color={'#80344356'}/>
+                </View>
+            )*/}
             <CalendarList
                 current={currentDate}
                 minDate={currentDate}
@@ -29,7 +56,7 @@ export default function CalendarPicker({navigation, ...props}) {
                 //maxDate={'2012-05-30'}
                 // Handler which gets executed on day press. Default = undefined
                 onDayPress={day => {
-                    console.log("Hey there")
+                    console.log('Hey there');
                     onSelect(day);
                 }}
                 // Handler which gets executed on day long press. Default = undefined
@@ -61,8 +88,8 @@ export default function CalendarPicker({navigation, ...props}) {
                 pointerEvents={'none'}
                 colors={['rgba(255, 255, 255, 0)', 'white']}
                 style={styles.bottomGradient}/>
-            <TouchableView onPress={onExit}>
-                <View style={styles.roundButton}>
+            <TouchableView style={Platform.OS !== 'android' && styles.absoluteContainerIOS} onPress={onExit}>
+                <View style={Platform.OS !== 'android' ? styles.roundButtonIOS : styles.roundButtonAndroid}>
                     <Icon name={'md-close'} style={{fontSize: 28, color: 'white'}}/>
                 </View>
             </TouchableView>
@@ -84,15 +111,29 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end',
         height: 150,
     },
-    roundButton: {
-        bottom: 0,
+    roundButtonIOS: {
         width: 66,
         height: 66,
-        left: SCREEN_WIDTH / 2 - 33,
-        position: 'absolute',
         justifyContent: 'center',
         alignItems: 'center',
+        borderRadius: 33,
+        backgroundColor: Colors.darkBlue,
+    },
+    absoluteContainerIOS: {
+        left: SCREEN_WIDTH / 2 - 33,
+        position: 'absolute',
+        bottom: 0,
+        marginBottom: 30,
+    },
+    roundButtonAndroid: {
+        left: SCREEN_WIDTH / 2 - 33,
+        position: 'absolute',
+        bottom: 0,
         marginBottom: 10,
+        width: 66,
+        height: 66,
+        justifyContent: 'center',
+        alignItems: 'center',
         borderRadius: 33,
         backgroundColor: Colors.darkBlue,
     },

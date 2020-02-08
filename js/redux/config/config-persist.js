@@ -13,7 +13,7 @@ export const persistConfig = {
     },
 };
 
-export const updateReducers = (store: Object) => {
+export const updateReducers = store => {
     const reducerVersion = persistConfig.reducerVersion;
     const rehydrated = () => store.dispatch(AppActions.onRehydration());
 

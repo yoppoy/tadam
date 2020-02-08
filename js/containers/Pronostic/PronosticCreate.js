@@ -11,7 +11,7 @@ import DefaultButton from '../../components/Button/DefaultButton';
 import TouchableView from '../../components/Button/TouchableView';
 import {sqrt} from 'react-native-reanimated';
 
-function PronosticCreate({navigation, openPickerModal, style, ...props}) {
+function PronosticCreate({navigation, openPickerModal, onClose, style, ...props}) {
     const [state, setState] = useState({
         selected: 2,
         odds: [
@@ -94,7 +94,7 @@ function PronosticCreate({navigation, openPickerModal, style, ...props}) {
                         <View style={[styles.inputContainer, isNaN(state.amount) && {borderColor: Colors.redError}]}>
                             <TextInput
                                 placeholder={'0'}
-                                value={state.amount > 0 ? state.amount.toString() : state.amount }
+                                value={state.amount.to > 0 ? state.amount.toString() : '' }
                                 onChangeText={(value) => setState({...state, amount: parseInt(value)})}
                                 keyboardType={'number-pad'}
                                 style={[styles.inputAmount, isNaN(state.amount) && {borderColor: Colors.redError}]}/>
@@ -141,7 +141,7 @@ function PronosticCreate({navigation, openPickerModal, style, ...props}) {
                         }}
                         textStyle={{fontSize: verticalScale(14, 14)}}
                         touchStyle={{flex: 4}}
-                        onPress={() => console.log('lol')}
+                        onPress={onClose}
                     />
                 </View>
             </View>

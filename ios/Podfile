@@ -1,5 +1,5 @@
 platform :ios, '10.0'
-require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
+require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules.rb'
 require_relative '../node_modules/react-native-unimodules/cocoapods.rb'
 
 target 'Tadam' do
@@ -64,11 +64,10 @@ post_install do |installer|
                             " && RNC_ROOT=./node_modules/react-native-config/"\
                             " && export SYMROOT=$RNC_ROOT/ios/ReactNativeConfig"\
                             " && export BUILD_DIR=$RNC_ROOT/ios/ReactNativeConfig"\
-                            " && ruby $RNC_ROOT/ios/ReactNativeConfig/BuildDotenvConfig.ruby"
+                            " && ruby $RNC_ROOT/ios/ReactNativeConfig/BuildDotenvConfig.rb \"${SRC_ROOT}/../\" \"${SYMROOT}\""
 
       target.build_phases << phase
       target.build_phases.move(phase,0)
     end
-
   end
 end

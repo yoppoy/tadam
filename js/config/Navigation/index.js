@@ -2,6 +2,7 @@ import {createStackNavigator} from 'react-navigation-stack';
 import {createAppContainer} from 'react-navigation';
 import navigationRoot from './navigationRoot';
 import CalendarPicker from '../../components/HeaderCalendar/CalendarPicker';
+import ModalLoading from '../../components/ModalLoading';
 import PronosticCreate from '../../containers/Pronostic/PronosticCreate';
 import PronosticPicker from '../../containers/Pronostic/PronosticPicker';
 
@@ -32,13 +33,8 @@ const Navigation = createStackNavigator(
     {
         mode: 'modal',
         headerMode: 'none',
-        transparentCard: true,
         navigationOptions: {
             gesturesEnabled: true,
-        },
-        cardStyle: {
-            backgroundColor: 'transparent',
-            opacity: 1,
         },
     },
 );

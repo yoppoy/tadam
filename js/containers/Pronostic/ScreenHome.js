@@ -20,7 +20,6 @@ function wait(timeout) {
 
 const ScreenHome = ({navigation, ...props}) => {
     const [refreshing, setRefreshing] = React.useState(false);
-
     const onRefresh = React.useCallback(() => {
         setRefreshing(true);
 
@@ -53,7 +52,7 @@ const ScreenHome = ({navigation, ...props}) => {
                         }}
                     />
                 )}
-                <Header/>
+                <Header left={<View/>} title/>
                 <SportSlider/>
                 <View style={{...CardStyles.cardContainer, padding: 0}}>
                     <HeadLineSlider/>
