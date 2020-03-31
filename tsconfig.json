@@ -6,17 +6,41 @@
     "isolatedModules": true,
     "jsx": "react",
     "lib": [
-      "es6"
+      "es6",
+      "es7"
+      /*, "dom"*/
+    ],
+    "rootDirs": [
+      "js"
     ],
     "moduleResolution": "node",
     "noEmit": true,
     "strict": true,
-    "target": "esnext"
+    "target": "esnext",
+    "plugins": [
+      {
+        "transform": "ts-transformer-keys/transformer"
+      }
+    ],
+    "sourceMap": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "importHelpers": true,
+    "strictNullChecks": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "noUnusedLocals": false,
+    "skipLibCheck": true,
+    "resolveJsonModule": true
   },
   "exclude": [
     "node_modules",
     "babel.config.js",
     "metro.config.js",
     "jest.config.js"
+  ],
+  "include": [
+    "js"
   ]
 }

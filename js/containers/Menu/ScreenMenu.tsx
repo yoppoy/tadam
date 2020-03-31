@@ -65,16 +65,12 @@ type Field = {
     onPress: (navigation: NavigationStackProp) => void;
 };
 
-type Category = {
-    [key: number]: Field;
-};
-
 export default function ScreenMenu({navigation}: Props) {
     return (
         <SafeAreaView style={{backgroundColor: Colors.darkBlue, flex: 1}}>
             <Header left={<View/>} title={'Menu'}/>
             <ScrollView style={{flex: 1}} contentContainerStyle={styles.mainContainer}>
-                {menuCategories.map((category: Category) => {
+                {menuCategories.map((category: any) => {
                     return (
                         <View style={styles.category}>
                             {category.map((field: Field) => {
