@@ -64,7 +64,7 @@ PODS:
   - GTMSessionFetcher/Core (1.3.0)
   - GTMSessionFetcher/Full (1.3.0):
     - GTMSessionFetcher/Core (= 1.3.0)
-  - lottie-ios (3.1.3)
+  - lottie-ios (3.1.5)
   - lottie-react-native (3.3.2):
     - lottie-ios (~> 3.1.3)
     - React
@@ -233,21 +233,23 @@ PODS:
   - React-jsinspector (0.61.2)
   - react-native-config (0.12.0):
     - React
-  - react-native-fbsdk (1.0.4):
+  - react-native-fbsdk (1.1.1):
     - React
-    - react-native-fbsdk/Core (= 1.0.4)
-    - react-native-fbsdk/Login (= 1.0.4)
-    - react-native-fbsdk/Share (= 1.0.4)
-  - react-native-fbsdk/Core (1.0.4):
-    - FBSDKCoreKit (~> 5.5)
+    - react-native-fbsdk/Core (= 1.1.1)
+    - react-native-fbsdk/Login (= 1.1.1)
+    - react-native-fbsdk/Share (= 1.1.1)
+  - react-native-fbsdk/Core (1.1.1):
+    - FBSDKCoreKit (= 5.8)
     - React
-  - react-native-fbsdk/Login (1.0.4):
-    - FBSDKLoginKit (~> 5.5)
+  - react-native-fbsdk/Login (1.1.1):
+    - FBSDKLoginKit (= 5.8)
     - React
-  - react-native-fbsdk/Share (1.0.4):
-    - FBSDKShareKit (~> 5.5)
+  - react-native-fbsdk/Share (1.1.1):
+    - FBSDKShareKit (= 5.8)
     - React
   - react-native-netinfo (5.0.1):
+    - React
+  - react-native-safe-area-context (0.7.3):
     - React
   - React-RCTActionSheet (0.61.2):
     - React-Core/RCTActionSheetHeaders (= 0.61.2)
@@ -286,16 +288,18 @@ PODS:
     - ReactCommon/jscallinvoker (= 0.61.2)
   - RNCAsyncStorage (1.6.2):
     - React
-  - RNGestureHandler (1.5.0):
+  - RNCMaskedView (0.1.7):
+    - React
+  - RNGestureHandler (1.5.2):
     - React
   - RNGoogleSignin (3.0.3):
     - GoogleSignIn (~> 5.0.0)
     - React
   - RNReanimated (1.4.0):
     - React
-  - RNScreens (2.0.0-alpha.8):
+  - RNScreens (2.0.0-alpha.22):
     - React
-  - RNSVG (9.13.3):
+  - RNSVG (9.13.6):
     - React
   - RNVectorIcons (6.6.0):
     - React
@@ -346,6 +350,7 @@ DEPENDENCIES:
   - react-native-config (from `../node_modules/react-native-config`)
   - react-native-fbsdk (from `../node_modules/react-native-fbsdk`)
   - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
+  - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
   - React-RCTBlob (from `../node_modules/react-native/Libraries/Blob`)
@@ -358,6 +363,7 @@ DEPENDENCIES:
   - ReactCommon/jscallinvoker (from `../node_modules/react-native/ReactCommon`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
+  - "RNCMaskedView (from `../node_modules/@react-native-community/masked-view`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - "RNGoogleSignin (from `../node_modules/@react-native-community/google-signin`)"
   - RNReanimated (from `../node_modules/react-native-reanimated`)
@@ -445,6 +451,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-fbsdk"
   react-native-netinfo:
     :path: "../node_modules/@react-native-community/netinfo"
+  react-native-safe-area-context:
+    :path: "../node_modules/react-native-safe-area-context"
   React-RCTActionSheet:
     :path: "../node_modules/react-native/Libraries/ActionSheetIOS"
   React-RCTAnimation:
@@ -467,6 +475,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   RNCAsyncStorage:
     :path: "../node_modules/@react-native-community/async-storage"
+  RNCMaskedView:
+    :path: "../node_modules/@react-native-community/masked-view"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
   RNGoogleSignin:
@@ -523,11 +533,11 @@ SPEC CHECKSUMS:
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   BVLinearGradient: e3aad03778a456d77928f594a649e96995f1c872
   DoubleConversion: 5805e889d232975c086db112ece9ed034df7a0b2
-  EXAppleAuthentication: 25210302320b3d61d8b9fa6af3059a113a12018a
-  EXAppLoaderProvider: 98f3e889fa48b441b19c64f19193c82ebb1c15ca
-  EXConstants: db705745139c4c674b1a54ddce94766d9ddf8387
-  EXFileSystem: 217d1480b63c595d0620e64d6a6845dc52229bbd
-  EXPermissions: b4e5d6e134317bfb29bed37998b7c0deab318e6d
+  EXAppleAuthentication: 73447420d5b740854610befc0eb6558261e694ad
+  EXAppLoaderProvider: 5d348813a9cf09b03bbe5b8b55437bc1bfbddbd1
+  EXConstants: 857aa7b1c84e2878f8402d712061860bca16a697
+  EXFileSystem: 7e53a2c30a2eb6987ba6d5158ab908f947523228
+  EXPermissions: df10ad83df2f6b647aec304619354f8ab48d5f63
   FBLazyVector: 68b6a76960fbd8ecd9fb7ce0aadd3329c3340a99
   FBReactNativeSpec: 5a764c60abdc3336a213e5310c40b74741f32839
   FBSDKCoreKit: e7dcac0aabcfb09d0166998edd95fe3b05a0ce5d
@@ -538,7 +548,7 @@ SPEC CHECKSUMS:
   GoogleSignIn: 3a51b9bb8e48b635fd7f4272cee06ca260345b86
   GTMAppAuth: 4deac854479704f348309e7b66189e604cf5e01e
   GTMSessionFetcher: 43b8b64263023d4f32caa0b40f4c8bfa3c5f36d8
-  lottie-ios: 496ac5cea1bbf1a7bd1f1f472f3232eb1b8d744b
+  lottie-ios: 32bf84389337d86fbc8b12266e88452e0abf1dee
   lottie-react-native: 2a1a82bb326ae51331a5520de0cf706733c6db69
   RCTRequired: c639d59ed389cfb1f1203f65c2ea946d8ec586e2
   RCTTypeSafety: dc23fb655d6c77667c78e327bf661bc11e3b8aec
@@ -550,8 +560,9 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 8909917ff7d8f21a57e443a866fd8d4560e50c65
   React-jsinspector: 111d7d342b07a904c400592e02a2b958f1098b60
   react-native-config: f2c2ae45625a068c35681a16b9bfb1ca58b0adc7
-  react-native-fbsdk: 45e28bbab3e905cbc635c0bdd3444b372e933ae9
-  react-native-netinfo: 266dbdb4ad07121427e7a7d280faba1535d1f22f
+  react-native-fbsdk: b94a83971c496a35803f38b921aec6d637ba07b5
+  react-native-netinfo: f85616b5f5819085624f2c26dcb98ff3ab013a41
+  react-native-safe-area-context: e200d4433aba6b7e60b52da5f37af11f7a0b0392
   React-RCTActionSheet: 89b037c0fb7d2671607cb645760164e7e0c013f6
   React-RCTAnimation: e3cefa93c38c004c318f7ec04b883eb14b8b8235
   React-RCTBlob: d26ac0e313fbf14e7203473fd593ccaaeee8329e
@@ -562,25 +573,26 @@ SPEC CHECKSUMS:
   React-RCTText: e3ef6191cdb627855ff7fe8fa0c1e14094967fb8
   React-RCTVibration: fb54c732fd20405a76598e431aa2f8c2bf527de9
   ReactCommon: 5848032ed2f274fcb40f6b9ec24067787c42d479
-  RNCAsyncStorage: 5ae4d57458804e99f73d427214442a6b10a53856
-  RNGestureHandler: a4ddde1ffc6e590c8127b8b7eabfdade45475c74
+  RNCAsyncStorage: 60a80e72d95bf02a01cace55d3697d9724f0d77f
+  RNCMaskedView: 76c40a1d41c3e2535df09246a2b5487f04de0814
+  RNGestureHandler: 946a7691e41df61e2c4b1884deab41a4cdc3afff
   RNGoogleSignin: a10b849c165088c737d4465de6c2062f24d06002
   RNReanimated: b2ab0b693dddd2339bd2f300e770f6302d2e960c
-  RNScreens: bfa9143ca291bcf3804c932f77b9617ff324704f
-  RNSVG: f6177f8d7c095fada7cfee2e4bb7388ba426064c
+  RNScreens: 6adf01eb4080f44af6cca551207c6b0505066857
+  RNSVG: 8ba35cbeb385a52fd960fd28db9d7d18b4c2974f
   RNVectorIcons: 0bb4def82230be1333ddaeee9fcba45f0b288ed4
-  UMBarCodeScannerInterface: 07047b4faa779e7963efa3d2c5951a71a0a807bf
-  UMCameraInterface: f6a3e71ddd928617637084bfd67db2daec3b1927
-  UMConstantsInterface: 20e6caaba4ddac70d0b50827d6cf35a202ac988f
-  UMCore: 01d7ed248e2d4789105292a71ce1385ff4315c53
-  UMFaceDetectorInterface: 623ca9703dc664d13edf315ec930df9d2246b7d0
-  UMFileSystemInterface: c7dc550ff72d2b38258f218b086b32b3de536957
-  UMFontInterface: a1ec983801daad298617d00dabbfdb609325665c
-  UMImageLoaderInterface: f7b69ad8dfcae00c87d70a2081af78293e445fee
-  UMPermissionsInterface: 0d060960ebb35d905d74a52461a3e6ab2d43b53b
-  UMReactNativeAdapter: 619f5e9769977caf4a862e8e232ce1ef5c74ac01
-  UMSensorsInterface: 1d276f7fdf781a09715091bad7873c27da271e9b
-  UMTaskManagerInterface: 8f2117979aacb688fe304f834ff8800fadc320bb
+  UMBarCodeScannerInterface: d5a6fdc98ed6241225b0a8432a7f4e2b397668bc
+  UMCameraInterface: 68870a3197fee85bd5afca5609ba4a5b7257d19d
+  UMConstantsInterface: d25b8e8887ca7aaf568c06caf08f4d40734ee4ef
+  UMCore: 402cee150324974974f5c32b5404d8af65e4cff5
+  UMFaceDetectorInterface: 7b4f1a92f0c726b58b086296048efe193b570678
+  UMFileSystemInterface: aadb9a67aa6470d7ebc06cf04dc54fee6781ac48
+  UMFontInterface: 2d3c128285086bbed3d2a650f1d698323ef3b25a
+  UMImageLoaderInterface: 2829a7571a12d2e754c73c55ffe7e327d8402c7d
+  UMPermissionsInterface: b6a6e96db0f4011a25aaca14e6022529dd3d6e4e
+  UMReactNativeAdapter: 93c2f520a1cdb6ef3058a7b6a95275a804e0923b
+  UMSensorsInterface: cf59dd7602764a2419e00167429be3e4be39c61d
+  UMTaskManagerInterface: 1e70fe58b872355f0ecb44fb81bb1a16484047f0
   Yoga: 14927e37bd25376d216b150ab2a561773d57911f
 
 PODFILE CHECKSUM: 9664776ed20a7207683eceb5eb10aee1fd1a2232

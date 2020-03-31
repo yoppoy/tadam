@@ -1,5 +1,5 @@
-//@flow
 import React, {useState} from 'react';
+import {useNavigation} from '@react-navigation/native';
 import {View, Text, Alert, StyleSheet} from 'react-native';
 import {LoginManager, AccessToken} from 'react-native-fbsdk';
 import {DefaultButton} from '../../components/Button';
@@ -8,10 +8,10 @@ import {connect} from 'react-redux';
 import formatError from '../../config/constants/networkErrors';
 import {navigationReset} from '../../config/Navigation/navigatorService';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {withNavigation} from 'react-navigation';
 import {Index} from '../../styles';
 
-const AuthFacebook = ({type = 'signup', api, onConnected, navigation}) => {
+const AuthFacebook = ({type = 'signup', api, onConnected}) => {
+    const navigation = useNavigation();
     const [state, setState] = useState({
         passwordVisible: false,
         error: null,
@@ -28,10 +28,7 @@ const AuthFacebook = ({type = 'signup', api, onConnected, navigation}) => {
             } else if (request.status === 409) {
                 return await onLogin(data);
             } else {
-                Alert.alert(
-                    'Erreur Facebook',
-                    formatError(request, 'auth'),
-                );
+                Alert.alert('Erreur Facebook', formatError(request, 'auth'));
                 setState({error: request.error});
             }
         } catch (e) {
@@ -113,7 +110,7 @@ const mapDispatchToProps = dispatch => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps,
-)(withNavigation(AuthFacebook));
+)(AuthFacebook);
 
 const styles = StyleSheet.create({
     ...Index,

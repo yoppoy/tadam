@@ -5,11 +5,12 @@ import {Index} from '../../styles';
 import HeaderCalendarSelect from './HeaderCalendarSelect';
 import HeaderCalendarDay from './HeaderCalendarDay';
 import IconCalendar from '../../assets/img/misc/IconCalendar';
-import {withNavigation} from 'react-navigation';
 import CalendarPicker from './CalendarPicker';
 import moment from 'moment';
+import {useNavigation} from '@react-navigation/native';
 
-function HeaderCalendar({navigation, onDateSelect, ...props}) {
+function HeaderCalendar({onDateSelect, ...props}) {
+    const navigation = useNavigation();
     const [state, setState] = useState({
         startDate: new Date().toString(),
         selectedDate: new Date().toString(),
@@ -89,4 +90,4 @@ HeaderCalendar.propTypes = {
     onDateSelect: PropTypes.func,
 };
 
-export default withNavigation(HeaderCalendar);
+export default HeaderCalendar;

@@ -1,11 +1,12 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
-import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {withNavigation} from 'react-navigation';
 import {Colors, Fonts} from '../../styles';
+import {useNavigation} from '@react-navigation/native';
 
-const Header = ({navigation, style, left, right, title, ...props}) => {
+const Header = ({style, left, right, title, ...props}) => {
+    console.log(props);
+    const navigation = useNavigation();
     return (
         <View style={[styles.header, style]} {...props}>
             <View style={{flex: 1}}>
@@ -64,4 +65,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default withNavigation(Header);
+export default Header;

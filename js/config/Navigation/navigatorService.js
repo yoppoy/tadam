@@ -1,7 +1,7 @@
 import React from 'react';
 import {NavigationActions, StackActions} from 'react-navigation';
 
-export const navigationReset = (navigation, routeName) => {
+export const navigationReset = (navigation, routeName) => {//TODO change to commonactions reset
     navigation.dispatch(
         StackActions.reset({
             index: 0,

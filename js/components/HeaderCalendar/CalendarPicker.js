@@ -9,16 +9,17 @@ import {
     Platform,
     ActivityIndicator,
 } from 'react-native';
+import { useRoute } from '@react-navigation/native';
 import {LocaleConfig, CalendarList} from 'react-native-calendars';
 import {Colors, Fonts} from '../../styles';
 import Icon from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
 import TouchableView from '../Button/TouchableView';
-import {useFocusEffect} from 'react-navigation-hooks';
 
 const SCREEN_WIDTH = Math.round(Dimensions.get('window').width);
 
 export default function CalendarPicker({navigation, ...props}) {
+    const route = useRoute();
     //const [loaded, setLoaded] = useState(false);
     const currentDate = props.currentDate.toISOString().slice(0, 10);
 
@@ -33,7 +34,7 @@ export default function CalendarPicker({navigation, ...props}) {
     );*/
 
     const onSelect = day => {
-        navigation.state.params.onSelect(new Date(day.dateString));
+        route.params.onSelect(new Date(day.dateString));
         navigation.goBack();
     };
 

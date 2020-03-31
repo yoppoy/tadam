@@ -1,4 +1,3 @@
-//@flow
 import React, {useState} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {GoogleSignin} from '@react-native-community/google-signin';

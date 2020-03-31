@@ -1,17 +1,16 @@
 import React, {useState} from 'react';
 import {Platform, SafeAreaView, Text, View, TouchableOpacity, TextInput} from 'react-native';
 import PropTypes from 'prop-types';
-import {withNavigation} from 'react-navigation';
-import Modal from 'react-native-modal';
 import {scale, verticalScale, moderateScale} from '../../services/pixelResizer';
 import ApplicationStyles from '../../styles/ApplicationStyles';
-import {Colors, Fonts, Images, Index} from '../../styles';
+import {Colors, Fonts, Index} from '../../styles';
 import Icon from 'react-native-vector-icons/Ionicons';
 import DefaultButton from '../../components/Button/DefaultButton';
 import TouchableView from '../../components/Button/TouchableView';
-import {sqrt} from 'react-native-reanimated';
+import {useNavigation} from '@react-navigation/native';
 
-function PronosticCreate({navigation, openPickerModal, onClose, style, ...props}) {
+function PronosticCreate({openPickerModal, onClose, style, ...props}) {
+    const navigation = useNavigation();
     const [state, setState] = useState({
         selected: 2,
         odds: [
@@ -94,7 +93,7 @@ function PronosticCreate({navigation, openPickerModal, onClose, style, ...props}
                         <View style={[styles.inputContainer, isNaN(state.amount) && {borderColor: Colors.redError}]}>
                             <TextInput
                                 placeholder={'0'}
-                                value={state.amount.to > 0 ? state.amount.toString() : '' }
+                                value={state.amount.to > 0 ? state.amount.toString() : ''}
                                 onChangeText={(value) => setState({...state, amount: parseInt(value)})}
                                 keyboardType={'number-pad'}
                                 style={[styles.inputAmount, isNaN(state.amount) && {borderColor: Colors.redError}]}/>
@@ -300,4 +299,4 @@ const styles = {
 
 };
 
-export default withNavigation(PronosticCreate);
+export default PronosticCreate;

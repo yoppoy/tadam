@@ -11,6 +11,7 @@ import CardDropdown from '../../components/Card/CardDropdown';
 import CardComponentOdds from '../../components/Card/CardComponentOdds';
 import Header from '../../components/Navigation/Header';
 import CardStyles from '../../styles/ApplicationStyles/CardStyles';
+import {useNavigation} from '@react-navigation/native';
 
 function wait(timeout) {
     return new Promise(resolve => {
@@ -18,7 +19,7 @@ function wait(timeout) {
     });
 }
 
-const ScreenHome = ({navigation, ...props}) => {
+const ScreenHome = ({navigation}) => {
     const [refreshing, setRefreshing] = React.useState(false);
     const onRefresh = React.useCallback(() => {
         setRefreshing(true);

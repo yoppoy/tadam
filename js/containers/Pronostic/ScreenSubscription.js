@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import Header from '../../components/Navigation/Header';
 import {DefaultButton} from '../../components/Button';
 import TouchableView from '../../components/Button/TouchableView';
-import {withNavigation} from 'react-navigation';
 
 const ScreenSubscription = ({...props}) => {
     const [selected, setSelected] = useState(undefined);
@@ -162,4 +161,4 @@ ScreenSubscription.propTypes = {
     style: PropTypes.object,
 };
 
-export default withNavigation(ScreenSubscription);
+export default ScreenSubscription;
