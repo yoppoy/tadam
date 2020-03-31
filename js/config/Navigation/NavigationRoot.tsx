@@ -7,7 +7,7 @@ const Stack = createStackNavigator();
 
 export default function NavigationRoot() {
     return (
-        <Stack.Navigator initialRouteName={'App'} headerMode={'none'} screenOptions={{header: undefined}}>
+        <Stack.Navigator initialRouteName={'Auth'} headerMode={'none'} screenOptions={{header: undefined}}>
             <Stack.Screen name="App" component={NavigationApp}/>
             <Stack.Screen name="Auth" component={NavigationAuth}/>
         </Stack.Navigator>
