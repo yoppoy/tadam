@@ -39,11 +39,20 @@ const Navigation = createStackNavigator(
     },
 );*/
 
-const Stack = createStackNavigator();
+type NavigatorProps = {
+    navigationRef: any;
+};
 
-export default function App() {
+export type NavigatorParamsList = {
+    Main: undefined;
+    ModalCalendarPicker: undefined;
+};
+
+const Stack = createStackNavigator<NavigatorParamsList>();
+
+export default function Navigator({navigationRef}: NavigatorProps) {
     return (
-        <NavigationContainer>
+        <NavigationContainer ref={navigationRef}>
             <Stack.Navigator
                 initialRouteName="Main"
                 mode={'modal'}

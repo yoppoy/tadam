@@ -1,14 +1,14 @@
 import React, {useEffect, useRef} from 'react';
-import Navigation from '../config/Navigation';
-import {Linking, StatusBar, Platform} from 'react-native';
+import Navigator from '../config/Navigation';
+import {Linking, StatusBar} from 'react-native';
 import {Colors} from '../styles';
-import {NavigationActions} from 'react-navigation';
+import {CommonActions} from '@react-navigation/native';
 
 export default function RootContainer() {
     const navigatorRef = useRef(null);
 
     useEffect(() => {
-        //navigate('tadam://register?token=foeoifoeifozeifo&love=89');
+        //handleDeepLink({url: 'tadam://register?token=foeoifoeifozeifo&love=89'});
         Linking.getInitialURL().then(url => {
             if (url) {
                 handleDeepLink({url});
@@ -18,7 +18,7 @@ export default function RootContainer() {
         return () => Linking.removeEventListener('url', handleDeepLink);
     }, []);
 
-    const handleDeepLink = ({url}: { url: string }) => {
+    const handleDeepLink = ({url}: {url: string}) => {
         const route = url.split('?')[0].replace(/.*?:\/\//g, '');
         const routeName = route.split('/')[0];
 
@@ -27,8 +27,8 @@ export default function RootContainer() {
             if (navigatorRef && navigatorRef.current) {
                 // @ts-ignore: Object is possibly 'null'.
                 navigatorRef.current.dispatch(
-                    NavigationActions.navigate({
-                        routeName: 'Register',
+                    CommonActions.navigate('Auth', {
+                        screen: 'RegisterSuccess',
                         params: {
                             token,
                         },
@@ -41,7 +41,7 @@ export default function RootContainer() {
     return (
         <React.Fragment>
             <StatusBar backgroundColor={Colors.darkBlue} barStyle="light-content"/>
-            <Navigation ref={navigatorRef}/>
+            <Navigator navigationRef={navigatorRef}/>
         </React.Fragment>
     );
 }

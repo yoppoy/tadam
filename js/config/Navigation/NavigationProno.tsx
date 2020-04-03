@@ -4,7 +4,13 @@ import ScreenHome from '../../containers/Pronostic/ScreenHome';
 import ScreenMatch from '../../containers/Pronostic/ScreenMatch';
 import ScreenSubscription from '../../containers/Pronostic/ScreenSubscription';
 
-const Stack = createStackNavigator();
+export type PronoParamsList = {
+    Home: undefined;
+    Match: undefined;
+    Subscribe: undefined;
+};
+
+const Stack = createStackNavigator<PronoParamsList>();
 
 export default function NavigationProno() {
     return (

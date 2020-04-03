@@ -2,9 +2,10 @@ import React from 'react';
 import {SafeAreaView, ScrollView, StyleSheet, Text, View, ViewStyle} from 'react-native';
 import Header from '../../components/Navigation/Header';
 import TouchableView from '../../components/Button/TouchableView';
-import {NavigationStackProp} from 'react-navigation-stack';
 import {Colors} from '../../styles';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {StackNavigationProp} from "@react-navigation/stack";
+import {AppParamsList} from "../../config/Navigation/NavigationApp";
 
 const menuCategories = [
     [
@@ -56,13 +57,13 @@ const menuCategories = [
 ];
 
 type Props = {
-    navigation: NavigationStackProp;
+    navigation: StackNavigationProp<AppParamsList>;
 };
 
 type Field = {
     title: string;
     icon: ViewStyle;
-    onPress: (navigation: NavigationStackProp) => void;
+    onPress: (navigation: StackNavigationProp<AppParamsList>) => void;
 };
 
 export default function ScreenMenu({navigation}: Props) {

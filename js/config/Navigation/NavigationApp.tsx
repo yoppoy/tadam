@@ -1,7 +1,6 @@
 import React from 'react';
 import {Image, Platform} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import HomeScreen from '../../containers/Pronostic/ScreenHome';
 import {moderateScale} from '../../services/pixelResizer';
 import IconVip from '../../assets/img/menu/icon-vip';
 import IconLiveScore from '../../assets/img/menu/icon-livescore';
@@ -14,7 +13,15 @@ import ScreenVipHome from '../../containers/VIP/ScreenVipHome';
 import ScreenNotifications from '../../containers/Notifications/ScreenNotifications';
 import ScreenMenu from '../../containers/Menu/ScreenMenu';
 
-const Tab = createBottomTabNavigator();
+export type AppParamsList = {
+    Home: undefined;
+    VIP: undefined;
+    Pronos: undefined;
+    Notifications: undefined;
+    Menu: undefined;
+};
+
+const Tab = createBottomTabNavigator<AppParamsList>();
 
 export default function NavigationApp() {
     const HeightStyle = Platform.OS === 'android' ? {height: moderateScale(62, 62)} : {};
@@ -48,18 +55,14 @@ export default function NavigationApp() {
                 name="Home"
                 component={NavigationProno}
                 options={{
-                    tabBarIcon: ({color}) => (
-                        <IconVip tintColor={color}/>
-                    ),
+                    tabBarIcon: ({color}) => <IconVip tintColor={color} />,
                 }}
             />
             <Tab.Screen
                 name="VIP"
                 component={ScreenVipHome}
                 options={{
-                    tabBarIcon: ({color}) => (
-                        <IconLiveScore tintColor={color}/>
-                    )
+                    tabBarIcon: ({color}) => <IconLiveScore tintColor={color} />,
                 }}
             />
             <Tab.Screen
@@ -75,18 +78,14 @@ export default function NavigationApp() {
                 name="Notifications"
                 component={ScreenNotifications}
                 options={{
-                    tabBarIcon: ({color}) => (
-                        <IconNotif tintColor={color}/>
-                    )
+                    tabBarIcon: ({color}) => <IconNotif tintColor={color} />,
                 }}
             />
             <Tab.Screen
                 name="Menu"
                 component={ScreenMenu}
                 options={{
-                    tabBarIcon: ({color}) => (
-                        <IconMenu tintColor={color}/>
-                    )
+                    tabBarIcon: ({color}) => <IconMenu tintColor={color} />,
                 }}
             />
         </Tab.Navigator>

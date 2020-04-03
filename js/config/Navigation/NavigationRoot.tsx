@@ -3,7 +3,12 @@ import {createStackNavigator} from '@react-navigation/stack';
 import NavigationApp from './NavigationApp';
 import NavigationAuth from './NavigationAuth';
 
-const Stack = createStackNavigator();
+export type RootParamsList = {
+    App: undefined;
+    Auth: undefined;
+};
+
+const Stack = createStackNavigator<RootParamsList>();
 
 export default function NavigationRoot() {
     return (

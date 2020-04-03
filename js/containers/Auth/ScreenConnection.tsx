@@ -4,7 +4,6 @@ import AuthFacebook from './AuthFacebook';
 import AuthGoogle from './AuthGoogle';
 import {Index} from '../../styles';
 import {Fonts} from '../../styles';
-import AuthApple from './AuthApple';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {AuthParamsList} from '../../config/Navigation/NavigationAuth';
 
@@ -12,7 +11,7 @@ type Props = {
     navigation: StackNavigationProp<AuthParamsList>;
 };
 
-const ScreenRegisterHome = (props: Props) => {
+export default function ScreenConnection(props: Props) {
     return (
         <SafeAreaView style={styles.mainContainer}>
             <View style={styles.mainContainer}>
@@ -36,13 +35,11 @@ const ScreenRegisterHome = (props: Props) => {
     );
 };
 
-export default ScreenRegisterHome;
-
 type StylesProp = {
-    title: TextStyle;
-    buttonContainer: ViewStyle;
-    buttonLocalSignup: TextStyle;
-    mainContainer: ViewStyle;
+    title: TextStyle,
+    buttonContainer: ViewStyle,
+    buttonLocalSignup: TextStyle,
+    mainContainer: ViewStyle
 };
 
 const styles = StyleSheet.create<StylesProp>({

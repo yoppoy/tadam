@@ -9,14 +9,15 @@ import {DefaultButton} from '../../components/Button';
 import TouchableView from '../../components/Button/TouchableView';
 import Header from '../../components/Navigation/Header';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {NavigationStackProp} from 'react-navigation-stack';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {AuthParamsList} from "../../config/Navigation/NavigationAuth";
 
 const EmailSchema = yup.object().shape({
     email: yup.string().email().required(),
 });
 
 type Props = {
-    navigation: NavigationStackProp;
+    navigation: StackNavigationProp<AuthParamsList>;
 };
 
 type State = {

@@ -22,7 +22,20 @@ import ScreenRegisterSuccess from '../../containers/Auth/ScreenRegisterSuccess';
     },
 );*/
 
-const Stack = createStackNavigator();
+export type AuthParamsList = {
+    RegisterHome: undefined;
+    RegisterEmail: undefined;
+    RegisterEmailConfirm: undefined;
+    RegisterSuccess: undefined;
+    RegisterProfile: {
+        firstName?: string;
+        lastName?: string;
+        gender?: string;
+        email?: string;
+    };
+};
+
+const Stack = createStackNavigator<AuthParamsList>();
 
 export default function NavigationAuth() {
     return (
@@ -30,7 +43,7 @@ export default function NavigationAuth() {
             <Stack.Screen name="RegisterHome" component={ScreenRegisterHome}/>
             <Stack.Screen name="RegisterEmail" component={ScreenRegisterEmail}/>
             <Stack.Screen name="RegisterEmailConfirm" component={ScreenRegisterEmailConfirm}/>
-            <Stack.Screen name="ResgiterSuccess" component={ScreenRegisterSuccess}/>
+            <Stack.Screen name="RegisterSuccess" component={ScreenRegisterSuccess}/>
             <Stack.Screen name="RegisterProfile" component={ScreenRegisterProfile}/>
         </Stack.Navigator>
     );

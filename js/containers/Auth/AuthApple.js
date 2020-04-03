@@ -8,7 +8,6 @@ import {connect} from 'react-redux';
 import formatError from '../../config/constants/networkErrors';
 import {navigationReset} from '../../config/Navigation/navigatorService';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {withNavigation} from 'react-navigation';
 import {Index} from '../../styles';
 
 const AuthApple = ({api, onConnected, navigation}) => {
@@ -28,10 +27,7 @@ const AuthApple = ({api, onConnected, navigation}) => {
             } else if (request.status === 409) {
                 return await onLogin(data);
             } else {
-                Alert.alert(
-                    'Erreur Apple',
-                    formatError(request, 'auth'),
-                );
+                Alert.alert('Erreur Apple', formatError(request, 'auth'));
                 setState({error: request.error});
             }
         } catch (e) {
@@ -70,7 +66,8 @@ const AuthApple = ({api, onConnected, navigation}) => {
                 style={styles.AuthButton}
                 rippleColor={'#242A37'}
                 icon={<Icon name={'logo-apple'} style={{...styles.buttonIcon, color: '#242A37'}}/>}
-                textStyle={styles.AuthButtonText}/>
+                textStyle={styles.AuthButtonText}
+            />
             {state.error && <Text>Error : {state.error}</Text>}
         </View>
     );
@@ -91,7 +88,7 @@ const mapDispatchToProps = dispatch => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps,
-)(withNavigation(AuthApple));
+)(AuthApple);
 
 const styles = StyleSheet.create({
     ...Index,
@@ -102,7 +99,7 @@ const styles = StyleSheet.create({
     },
     AuthButtonText: {
         color: '#242A37',
-        alignSelf: 'flex-start'
+        alignSelf: 'flex-start',
     },
 });
 
